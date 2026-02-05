@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="bg-white dark:bg-black text-[#1d1d1f] dark:text-[#f5f5f7] overflow-x-hidden">
+    <div className="bg-white text-[#1d1d1f] overflow-x-hidden">
       <ClientWrapper>
         <AnimatedContent>
           {/* Hero Section */}
@@ -13,7 +13,7 @@ export default function Home() {
             {/* Background gradient orbs */}
             <div
               data-speed="0.5"
-                            className="absolute top-20 -left-40 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-purple-300/20 to-violet-400/20 dark:from-purple-900/20 dark:to-violet-900/20 rounded-full blur-[120px] pointer-events-none"
+              className="absolute top-20 -left-40 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-purple-300/20 to-violet-400/20 rounded-full blur-[120px] pointer-events-none"
             />
 
             <div className="w-full max-w-6xl mx-auto">
@@ -63,7 +63,7 @@ export default function Home() {
                       href="https://x.com/brunopinheiroms"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#86868b] hover:text-[#1d1d1f] dark:hover:text-white transition-colors duration-300"
+                      className="text-[#86868b] hover:text-[#1d1d1f]  transition-colors duration-300"
                       aria-label="X (Twitter)"
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -88,7 +88,7 @@ export default function Home() {
                 <div className="relative hidden lg:flex items-center justify-center">
                   <div
                     data-speed="0.6"
-                                        className="absolute w-[500px] h-[500px] bg-gradient-to-br from-purple-200/40 to-violet-300/40 dark:from-purple-900/30 dark:to-violet-900/30 rounded-full blur-[100px]"
+                                        className="absolute w-[500px] h-[500px] bg-gradient-to-br from-purple-200/40 to-violet-300/40 rounded-full blur-[100px]"
                   />
                   <div
                     data-speed="1.1"
@@ -115,62 +115,53 @@ export default function Home() {
           </section>
 
           {/* Pinubi Section */}
-          <section className="min-h-screen flex items-center relative py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-[#f5f5f7] dark:bg-[#1d1d1f] overflow-hidden">
+          <section className="min-h-screen flex items-center relative py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-[#f5f5f7] overflow-hidden">
             {/* Animated background */}
             <div
               data-speed="0.4"
-                            className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] md:w-[700px] md:h-[700px] bg-gradient-to-br from-purple-400/20 to-violet-500/20 rounded-full blur-[150px] pointer-events-none"
+              className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] md:w-[700px] md:h-[700px] bg-gradient-to-br from-purple-400/20 to-violet-500/20 rounded-full blur-[150px] pointer-events-none"
             />
 
             <div className="w-full max-w-6xl mx-auto relative z-10">
-              <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-20">
-                {/* Logo + Text together on mobile */}
-                <div className="flex flex-col items-center lg:items-start gap-8 lg:flex-row lg:flex-1">
-                  {/* Logo - smaller on mobile */}
-                  <div
-                    data-reveal-left
-                    className="relative flex-shrink-0"
+              <div className="flex flex-col items-center text-center gap-8 lg:gap-12">
+                {/* Logo */}
+                <div data-reveal-left className="relative flex-shrink-0">
+                  <Image
+                    src="/pinubi-logo.png"
+                    alt="Pinubi"
+                    width={200}
+                    height={200}
+                    className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 drop-shadow-xl transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+
+                {/* Text */}
+                <div className="space-y-4 md:space-y-6">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-[1.1] tracking-[-0.02em]">
+                    <TextCycle />
+                  </h2>
+
+                  <p
+                    data-scroll-fade
+                    className="text-base md:text-lg lg:text-xl text-[#86868b] max-w-md mx-auto leading-relaxed"
                   >
-                    <Image
-                      src="/pinubi-logo.png"
-                      alt="Pinubi"
-                      width={200}
-                      height={200}
-                      className="w-24 h-24 md:w-32 md:h-32 lg:w-48 lg:h-48 drop-shadow-xl transition-transform duration-500 hover:scale-110"
-                    />
-                  </div>
+                    Pinubi ajuda voce a descobrir e organizar os melhores lugares da sua cidade.
+                  </p>
+                </div>
 
-                  {/* Text */}
-                  <div className="space-y-4 md:space-y-6 text-center lg:text-left">
-                    <div>
-                      <h2
-                        className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-[1.1] tracking-[-0.02em]"
-                      >
-                        <TextCycle />
-                      </h2>
-                    </div>
-
-                    <p
-                      data-scroll-fade
-                      className="text-base md:text-lg lg:text-xl text-[#86868b] max-w-md mx-auto lg:mx-0 leading-relaxed"
-                    >
-                      Pinubi ajuda voce a descobrir e organizar os melhores lugares da sua cidade.
-                    </p>
-
-                    <div data-scale className="pt-2">
-                      <a
-                        href="https://pinubi.com.br"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] text-base md:text-lg font-medium rounded-full hover:scale-105 hover:shadow-xl active:scale-95 transition-all duration-300"
-                      >
-                        Conhecer Pinubi
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
+                {/* Button */}
+                <div data-scale>
+                  <a
+                    href="https://pinubi.com.br"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-[#1d1d1f] text-white text-base md:text-lg font-medium rounded-full hover:scale-105 hover:shadow-xl active:scale-95 transition-all duration-300"
+                  >
+                    Conhecer Pinubi
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
@@ -181,7 +172,7 @@ export default function Home() {
             {/* Background elements */}
             <div
               data-speed="0.3"
-                            className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] md:w-[800px] md:h-[400px] bg-gradient-to-b from-purple-200/20 to-transparent dark:from-purple-900/20 rounded-full blur-[120px] pointer-events-none"
+                            className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] md:w-[800px] md:h-[400px] bg-gradient-to-b from-purple-200/20 to-transparent rounded-full blur-[120px] pointer-events-none"
             />
 
             <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-10 relative z-10">
@@ -195,7 +186,7 @@ export default function Home() {
               <div data-scale className="space-y-4">
                 <a
                   href="mailto:contato@bridglabs.com"
-                  className="inline-flex items-center text-lg md:text-xl text-[#86868b] hover:text-[#1d1d1f] dark:hover:text-white transition-all duration-300 border-b border-[#86868b]/30 hover:border-purple-500 pb-1"
+                  className="inline-flex items-center text-lg md:text-xl text-[#86868b] hover:text-[#1d1d1f]  transition-all duration-300 border-b border-[#86868b]/30 hover:border-purple-500 pb-1"
                 >
                   contato@bridglabs.com
                 </a>
@@ -207,7 +198,7 @@ export default function Home() {
                   href="https://x.com/brunopinheiroms"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#86868b] hover:text-[#1d1d1f] dark:hover:text-white transition-colors duration-300"
+                  className="text-[#86868b] hover:text-[#1d1d1f]  transition-colors duration-300"
                   aria-label="X (Twitter)"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -230,7 +221,7 @@ export default function Home() {
           </section>
 
           {/* Footer */}
-          <footer className="py-6 md:py-8 px-6 md:px-12 lg:px-24 border-t border-[#d2d2d7]/50 dark:border-[#424245]/50">
+          <footer className="py-6 md:py-8 px-6 md:px-12 lg:px-24 border-t border-[#d2d2d7]/50">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-xs md:text-sm text-[#86868b]">
                 © {new Date().getFullYear()} Bruno Pinheiro
@@ -240,7 +231,7 @@ export default function Home() {
                   href="https://x.com/brunopinheiroms"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#86868b] hover:text-[#1d1d1f] dark:hover:text-white transition-colors duration-300"
+                  className="text-[#86868b] hover:text-[#1d1d1f]  transition-colors duration-300"
                   aria-label="X (Twitter)"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
