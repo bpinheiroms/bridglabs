@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bridg Labs - Aplicativos e Soluções SaaS",
-  description: "Empresa brasileira de tecnologia focada em criar aplicativos e soluções SaaS inovadoras.",
+  title: "Bruno Pinheiro - Building in Public",
+  description: "Desenvolvedor construindo apps em público. Criador do Pinubi.",
 };
 
 export default function RootLayout({
