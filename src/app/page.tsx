@@ -50,18 +50,28 @@ export default function Home() {
                   />
                   Pinubi
                 </a>
-                {" "}e mais dois projetos:
-              </p>
-              <div className="flex items-center gap-3 mt-3">
+                , o{" "}
+                <a
+                  href="https://destrua.me?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-baseline gap-1.5 text-[#1d1d1f] font-medium hover:opacity-70 transition-opacity"
+                >
+                  <Image
+                    src="/destrua-me-logo.svg"
+                    alt="destrua.me"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5 rounded translate-y-0.5"
+                  />
+                  destrua.me
+                </a>
+                {" "}e mais outros projetos:{" "}
                 <span className="inline-flex items-center gap-1.5 text-[#1d1d1f]/40 font-medium select-none blur-[5px]">
-                  <span className="w-5 h-5 rounded bg-[#d2d2d7] inline-block" />
+                  <span className="w-5 h-5 rounded bg-[#d2d2d7] inline-block translate-y-0.5" />
                   Projeto secreto
                 </span>
-                <span className="inline-flex items-center gap-1.5 text-[#1d1d1f]/40 font-medium select-none blur-[5px]">
-                  <span className="w-5 h-5 rounded bg-[#d2d2d7] inline-block" />
-                  Novo app
-                </span>
-              </div>
+              </p>
             </div>
 
             {/* Links */}
