@@ -1,0 +1,15 @@
+{
+  "Metadata": {
+    "title": "Bruno Pinheiro - Building in Public",
+    "description": "Developer building apps in public. Creator of Pinubi."
+  },
+  "HomePage": {
+    "greeting": "Hi, I'm Bruno",
+    "bio": "I'm a developer building apps in public. I share the process, the mistakes, and what I learn along the way.",
+    "currentlyBuilding": "Currently building",
+    "projectConnector": ",",
+    "andMoreProjects": "and more projects:",
+    "secretProject": "Secret project",
+    "footerEmail": "contato@bridglabs.com"
+  }
+}
