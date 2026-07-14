@@ -1,14 +1,13 @@
 {
   "Metadata": {
-    "title": "Bruno Pinheiro - Building in Public",
-    "description": "Desenvolvedor construindo apps em publico. Criador do Pinubi."
+    "title": "Bruno Pinheiro — Senior Software Engineer",
+    "description": "Engenheiro de software com mais de 10 anos de experiência construindo produtos digitais."
   },
   "HomePage": {
     "greeting": "Oi, eu sou o Bruno",
-    "bio": "Sou desenvolvedor e construo apps em publico. Compartilho o processo, os erros e o que aprendo pelo caminho.",
-    "currentlyBuilding": "Agora estou construindo o",
-    "projectConnector": ", o",
-    "andMoreProjects": "e mais outros projetos:",
+    "bio": "Sou engenheiro de software e trabalho com desenvolvimento de produtos há mais de 10 anos. Hoje estou na Blue River Technology, uma empresa da John Deere no Vale do Silício. Antes disso, passei por Globo, B3 e startups de blockchain e BNPL.",
+    "sideProjectsTitle": "Além do trabalho",
+    "sideProjectsIntro": "Também desenvolvo alguns projetos por conta própria:",
     "secretProject": "Projeto secreto",
     "footerEmail": "contato@bridglabs.com"
   }
