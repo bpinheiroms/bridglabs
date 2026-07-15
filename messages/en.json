@@ -8,7 +8,19 @@
     "bio": "I'm a software engineer with over 10 years of experience building products. Today I'm at Blue River Technology, a John Deere company in Silicon Valley. Before that, I worked at Globo (Latin America's largest media group), B3 (Brazil's stock exchange and one of the world's largest financial market infrastructure companies), a blockchain startup, and Pagaleve (one of Brazil's leading BNPL fintechs, with over 5 million app downloads and 10,000 partner stores).",
     "sideProjectsTitle": "Outside of work",
     "sideProjectsIntro": "I also build a few projects of my own:",
+    "projects": {
+      "pinubi": {
+        "description": "Save places from any app and find them all on your map."
+      },
+      "destrua": {
+        "description": "AI-powered landing page roasts with brutally honest feedback."
+      },
+      "claudeOffice": {
+        "description": "Claude Code quotas, costs, and savings right in your terminal."
+      }
+    },
     "secretProject": "Secret project",
+    "secretProjectDescription": "Another project in the works",
     "footerEmail": "contato@bridglabs.com"
   }
 }

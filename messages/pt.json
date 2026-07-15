@@ -8,7 +8,19 @@
     "bio": "Sou engenheiro de software e trabalho com desenvolvimento de produtos há mais de 10 anos. Hoje estou na Blue River Technology, uma empresa da John Deere no Vale do Silício. Antes disso, passei por Globo, B3 e startups de blockchain e BNPL.",
     "sideProjectsTitle": "Além do trabalho",
     "sideProjectsIntro": "Também desenvolvo alguns projetos por conta própria:",
+    "projects": {
+      "pinubi": {
+        "description": "Salve lugares de qualquer app e encontre tudo no mapa."
+      },
+      "destrua": {
+        "description": "Roasts de landing pages com IA e feedback brutalmente honesto."
+      },
+      "claudeOffice": {
+        "description": "Limites, custos e economia do Claude Code direto no terminal."
+      }
+    },
     "secretProject": "Projeto secreto",
+    "secretProjectDescription": "Mais um projeto em construção",
     "footerEmail": "contato@bridglabs.com"
   }
 }
