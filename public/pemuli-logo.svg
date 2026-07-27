@@ -1,0 +1,10 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <title>Pemuli app icon — Livre</title>
+  <rect width="1024" height="1024" fill="#0D4E50"/>
+  <g transform="translate(150 152) scale(0.70)" fill="#F6F8F4" stroke="#F6F8F4">
+    <circle cx="297" cy="225" r="113" stroke="none"/>
+    <circle cx="681" cy="486" r="87" stroke="none"/>
+    <path d="M133 860C164 512 369 394 543 676C687 877 827 850 901 687"
+          fill="none" stroke-width="108" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

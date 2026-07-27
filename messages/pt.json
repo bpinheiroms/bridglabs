@@ -16,6 +16,11 @@
       "destrua": {
         "description": "Feedback direto para landing pages: coloque duas URLs frente a frente e veja a IA comparar e destruir as duas ao vivo, de graça.",
         "engineeringDescription": "Aplicação 100% Cloudflare com Hono, D1 e KV; OpenRouter com failover automático entre 8 modelos gratuitos e OG gerado por batalha."
+      },
+      "pemuli": {
+        "status": "Construindo",
+        "description": "De madrugada e com um bebê no colo, registrar mamadas, fraldas e hidratação não pode depender da memória. O Pemuli deixa a rotina registrada em poucos toques, pelo celular ou relógio.",
+        "engineeringDescription": "App local-first em SwiftUI e Swift 6 para iPhone, iPad e Apple Watch, com Live Activities, Dynamic Island, widgets e sincronização offline com o Watch."
       }
     },
     "footerEmail": "contato@bridglabs.com"

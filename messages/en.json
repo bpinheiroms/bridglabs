@@ -16,6 +16,11 @@
       "destrua": {
         "description": "Direct feedback for landing pages: put two URLs head to head and watch AI compare and roast both live, for free.",
         "engineeringDescription": "A 100% Cloudflare app with Hono, D1, and KV; OpenRouter failover across 8 free models and a generated OG image for every battle."
+      },
+      "pemuli": {
+        "status": "Building",
+        "description": "Late at night with a baby in your arms, logging feeds, diapers, and hydration cannot rely on memory. Pemuli captures the routine in just a few taps, from your phone or watch.",
+        "engineeringDescription": "A local-first SwiftUI and Swift 6 app for iPhone, iPad, and Apple Watch, with Live Activities, Dynamic Island, widgets, and offline Watch sync."
       }
     },
     "footerEmail": "contato@bridglabs.com"

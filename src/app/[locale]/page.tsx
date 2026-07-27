@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 const projects = [
   {
     name: "Pinubi",
+    statusKey: null,
     descriptionKey: "projects.pinubi.description",
     engineeringDescriptionKey: "projects.pinubi.engineeringDescription",
     stack: [
@@ -28,7 +29,26 @@ const projects = [
     image: "/pinubi-logo.png",
   },
   {
+    name: "Pemuli",
+    statusKey: "projects.pemuli.status",
+    descriptionKey: "projects.pemuli.description",
+    engineeringDescriptionKey: "projects.pemuli.engineeringDescription",
+    stack: [
+      "Swift 6",
+      "SwiftUI",
+      "ActivityKit",
+      "WidgetKit",
+      "App Intents",
+      "watchOS",
+      "WatchConnectivity",
+      "XcodeGen",
+    ],
+    href: "https://pemuli.com?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
+    image: "/pemuli-logo.svg",
+  },
+  {
     name: "Destrua.me",
+    statusKey: null,
     descriptionKey: "projects.destrua.description",
     engineeringDescriptionKey: "projects.destrua.engineeringDescription",
     stack: [
@@ -111,8 +131,15 @@ export default function Home() {
                             height={36}
                             className="h-9 w-9 shrink-0 rounded-lg"
                           />
-                          <span className="min-w-0 text-xl font-medium leading-9 text-[#1d1d1f] transition-colors group-hover:text-[#6e6e73] md:text-2xl">
-                            {project.name}
+                          <span className="flex min-w-0 flex-wrap items-center gap-2">
+                            <span className="text-xl font-medium leading-9 text-[#1d1d1f] transition-colors group-hover:text-[#6e6e73] md:text-2xl">
+                              {project.name}
+                            </span>
+                            {project.statusKey ? (
+                              <span className="rounded-full border border-[#d2d2d7] bg-[#f5f5f7] px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.08em] text-[#6e6e73]">
+                                {t(project.statusKey)}
+                              </span>
+                            ) : null}
                           </span>
                         </span>
                         <svg
