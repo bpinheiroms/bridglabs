@@ -10,20 +10,39 @@ const projects = [
   {
     name: "Pinubi",
     descriptionKey: "projects.pinubi.description",
+    engineeringDescriptionKey: "projects.pinubi.engineeringDescription",
+    stack: [
+      "React Native",
+      "Expo",
+      "Deep Linking",
+      "RevenueCat",
+      "OneSignal",
+      "PostHog",
+      "Hono",
+      "Firebase",
+      "Cloud Run",
+      "Gemini",
+      "Langfuse",
+    ],
     href: "https://pinubi.com.br?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
     image: "/pinubi-logo.png",
   },
   {
-    name: "Destrua me",
+    name: "Destrua.me",
     descriptionKey: "projects.destrua.description",
+    engineeringDescriptionKey: "projects.destrua.engineeringDescription",
+    stack: [
+      "React 19",
+      "Vite",
+      "Tailwind CSS 4",
+      "Hono",
+      "OpenRouter",
+      "Cloudflare Workers",
+      "D1",
+      "KV",
+    ],
     href: "https://destrua.me?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
     image: "/destrua-me-logo.svg",
-  },
-  {
-    name: "Claude Office",
-    descriptionKey: "projects.claudeOffice.description",
-    href: "https://github.com/bpinheiroms/claude-office",
-    image: null,
   },
 ] as const;
 
@@ -34,7 +53,7 @@ export default function Home() {
     <div className="bg-white text-[#1d1d1f] min-h-screen">
       <ClientWrapper>
         <AnimatedContent>
-          <main className="max-w-2xl mx-auto px-6 pt-24 md:pt-32 pb-16">
+          <main className="mx-auto max-w-3xl px-6 pb-16 pt-24 md:pt-32">
             {/* Language Switcher */}
             <div data-hero className="flex justify-end mb-6">
               <LanguageSwitcher />
@@ -55,8 +74,8 @@ export default function Home() {
               />
             </div>
 
-            <div data-hero className="mb-10">
-              <p className="text-lg md:text-xl text-[#6e6e73] leading-relaxed">
+            <div data-hero className="mb-12 max-w-2xl">
+              <p className="text-lg leading-relaxed text-[#6e6e73] md:text-xl">
                 {t("bio")}
               </p>
             </div>
@@ -69,13 +88,10 @@ export default function Home() {
             >
               <h2
                 id="projects-heading"
-                className="mb-3 text-lg md:text-xl font-medium text-[#1d1d1f]"
+                className="mb-5 text-lg font-medium text-[#1d1d1f] md:text-xl"
               >
                 {t("sideProjectsTitle")}
               </h2>
-              <p className="mb-3 text-base md:text-lg text-[#6e6e73] leading-relaxed">
-                {t("sideProjectsIntro")}
-              </p>
 
               <ul className="divide-y divide-[#d2d2d7] border-y border-[#d2d2d7]">
                 {projects.map((project) => (
@@ -84,70 +100,58 @@ export default function Home() {
                       href={project.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex min-h-16 items-center justify-between gap-4 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a855f7] focus-visible:ring-offset-2"
+                      className="group block py-7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a855f7] focus-visible:ring-offset-4"
                     >
-                      <span className="flex min-w-0 items-start gap-3">
-                        {project.image ? (
+                      <span className="flex items-start justify-between gap-5">
+                        <span className="flex min-w-0 items-start gap-3">
                           <Image
                             src={project.image}
                             alt=""
-                            width={24}
-                            height={24}
-                            className="mt-0.5 h-6 w-6 shrink-0 rounded"
+                            width={36}
+                            height={36}
+                            className="h-9 w-9 shrink-0 rounded-lg"
                           />
-                        ) : (
-                          <svg
-                            aria-hidden="true"
-                            className="mt-0.5 h-6 w-6 shrink-0"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                          </svg>
-                        )}
-                        <span className="min-w-0">
-                          <span className="block text-lg font-medium text-[#1d1d1f] transition-colors group-hover:text-[#86868b] md:text-xl">
+                          <span className="min-w-0 text-xl font-medium leading-9 text-[#1d1d1f] transition-colors group-hover:text-[#6e6e73] md:text-2xl">
                             {project.name}
                           </span>
-                          <span className="mt-0.5 block text-sm font-normal leading-snug text-[#86868b] md:text-base">
-                            {t(project.descriptionKey)}
-                          </span>
+                        </span>
+                        <svg
+                          aria-hidden="true"
+                          className="mt-1 h-5 w-5 shrink-0 text-[#86868b] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transform-none"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="1.75"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M7 17 17 7M8 7h9v9"
+                          />
+                        </svg>
+                      </span>
+
+                      <span className="mt-4 block max-w-2xl text-base leading-relaxed text-[#6e6e73] md:text-lg">
+                        {t(project.descriptionKey)}
+                      </span>
+
+                      <span className="mt-5 block border-t border-[#e5e5e7] pt-4">
+                        <span className="block text-[11px] font-medium uppercase tracking-[0.14em] text-[#86868b]">
+                          {t("howBuilt")}
+                        </span>
+                        <span className="mt-2 block max-w-2xl text-sm leading-relaxed text-[#6e6e73] md:text-[15px]">
+                          {t(project.engineeringDescriptionKey)}
                         </span>
                       </span>
-                      <svg
-                        aria-hidden="true"
-                        className="h-5 w-5 shrink-0 text-[#86868b] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transform-none"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="1.75"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M7 17 17 7M8 7h9v9"
-                        />
-                      </svg>
+
+                      <span className="mt-4 flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-[11px] text-[#6e6e73]">
+                        {project.stack.map((technology) => (
+                          <span key={technology}>{technology}</span>
+                        ))}
+                      </span>
                     </a>
                   </li>
                 ))}
-                <li
-                  aria-label={t("secretProject")}
-                  className="flex min-h-16 select-none items-start gap-3 py-4 text-[#1d1d1f]/40"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="mt-0.5 h-6 w-6 shrink-0 rounded bg-[#d2d2d7]"
-                  />
-                  <span aria-hidden="true" className="min-w-0 blur-[5px]">
-                    <span className="block text-lg font-medium md:text-xl">
-                      {t("secretProject")}
-                    </span>
-                    <span className="mt-0.5 block text-sm font-normal leading-snug md:text-base">
-                      {t("secretProjectDescription")}
-                    </span>
-                  </span>
-                </li>
               </ul>
             </section>
 
@@ -187,7 +191,7 @@ export default function Home() {
           </main>
 
           {/* Footer */}
-          <footer className="max-w-2xl mx-auto px-6 pb-12">
+          <footer className="mx-auto max-w-3xl px-6 pb-12">
             <div
               data-entrance
               className="flex items-center gap-4 text-sm text-[#86868b]"

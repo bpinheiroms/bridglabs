@@ -6,21 +6,18 @@
   "HomePage": {
     "greeting": "Oi, eu sou o Bruno",
     "bio": "Sou engenheiro de software e trabalho com desenvolvimento de produtos há mais de 10 anos. Hoje estou na Blue River Technology, uma empresa da John Deere no Vale do Silício. Antes disso, passei por Globo, B3 e startups de blockchain e BNPL.",
-    "sideProjectsTitle": "Além do trabalho",
-    "sideProjectsIntro": "Também desenvolvo alguns projetos por conta própria:",
+    "sideProjectsTitle": "Projetos próprios",
+    "howBuilt": "Engenharia",
     "projects": {
       "pinubi": {
-        "description": "Salve lugares de qualquer app e encontre tudo no mapa."
+        "description": "Chega de perder lugares salvos em Reels, TikToks e prints: o Pinubi transforma tudo em lugares organizados no seu mapa.",
+        "engineeringDescription": "Pipeline multimodal com scraping, Gemini e Google Maps; avaliação no Langfuse com 95% de recall e 97% de precisão."
       },
       "destrua": {
-        "description": "Roasts de landing pages com IA e feedback brutalmente honesto."
-      },
-      "claudeOffice": {
-        "description": "Limites, custos e economia do Claude Code direto no terminal."
+        "description": "Feedback direto para landing pages: coloque duas URLs frente a frente e veja a IA comparar e destruir as duas ao vivo, de graça.",
+        "engineeringDescription": "Aplicação 100% Cloudflare com Hono, D1 e KV; OpenRouter com failover automático entre 8 modelos gratuitos e OG gerado por batalha."
       }
     },
-    "secretProject": "Projeto secreto",
-    "secretProjectDescription": "Mais um projeto em construção",
     "footerEmail": "contato@bridglabs.com"
   }
 }

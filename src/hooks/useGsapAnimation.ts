@@ -9,6 +9,10 @@ export function useScrollParallax() {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const ctx = gsap.context(() => {
       // Hero entrance animation
       const heroElements = containerRef.current?.querySelectorAll("[data-hero]");

@@ -6,21 +6,18 @@
   "HomePage": {
     "greeting": "Hi, I'm Bruno",
     "bio": "I'm a software engineer with over 10 years of experience building products. Today I'm at Blue River Technology, a John Deere company in Silicon Valley. Before that, I worked at Globo (Latin America's largest media group), B3 (Brazil's stock exchange and one of the world's largest financial market infrastructure companies), a blockchain startup, and Pagaleve (one of Brazil's leading BNPL fintechs, with over 5 million app downloads and 10,000 partner stores).",
-    "sideProjectsTitle": "Outside of work",
-    "sideProjectsIntro": "I also build a few projects of my own:",
+    "sideProjectsTitle": "Independent projects",
+    "howBuilt": "Engineering",
     "projects": {
       "pinubi": {
-        "description": "Save places from any app and find them all on your map."
+        "description": "Stop losing places saved from Reels, TikToks, and screenshots: Pinubi turns them into organized places on your map.",
+        "engineeringDescription": "A multimodal pipeline using scraping, Gemini, and Google Maps; evaluated in Langfuse at 95% recall and 97% precision."
       },
       "destrua": {
-        "description": "AI-powered landing page roasts with brutally honest feedback."
-      },
-      "claudeOffice": {
-        "description": "Claude Code quotas, costs, and savings right in your terminal."
+        "description": "Direct feedback for landing pages: put two URLs head to head and watch AI compare and roast both live, for free.",
+        "engineeringDescription": "A 100% Cloudflare app with Hono, D1, and KV; OpenRouter failover across 8 free models and a generated OG image for every battle."
       }
     },
-    "secretProject": "Secret project",
-    "secretProjectDescription": "Another project in the works",
     "footerEmail": "contato@bridglabs.com"
   }
 }
