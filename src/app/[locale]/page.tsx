@@ -1,60 +1,37 @@
 "use client";
 
-import ClientWrapper from "@/components/ClientWrapper";
 import AnimatedContent from "@/components/AnimatedContent";
+import ClientWrapper from "@/components/ClientWrapper";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-const projects = [
+const shippedProjects = [
   {
+    number: "01",
     name: "Pinubi",
-    statusKey: null,
     descriptionKey: "projects.pinubi.description",
     engineeringDescriptionKey: "projects.pinubi.engineeringDescription",
+    tagKeys: ["mobile", "maps", "ai"],
     stack: [
       "React Native",
       "Expo",
-      "Deep Linking",
-      "RevenueCat",
-      "OneSignal",
-      "PostHog",
-      "Hono",
-      "Firebase",
-      "Cloud Run",
       "Gemini",
+      "Google Maps",
       "Langfuse",
+      "Cloud Run",
     ],
     href: "https://pinubi.com.br?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
     image: "/pinubi-logo.png",
   },
   {
-    name: "Pemuli",
-    statusKey: "projects.pemuli.status",
-    descriptionKey: "projects.pemuli.description",
-    engineeringDescriptionKey: "projects.pemuli.engineeringDescription",
-    stack: [
-      "Swift 6",
-      "SwiftUI",
-      "ActivityKit",
-      "WidgetKit",
-      "App Intents",
-      "watchOS",
-      "WatchConnectivity",
-      "XcodeGen",
-    ],
-    href: "https://pemuli.com?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
-    image: "/pemuli-logo.svg",
-  },
-  {
+    number: "02",
     name: "Destrua.me",
-    statusKey: null,
     descriptionKey: "projects.destrua.description",
     engineeringDescriptionKey: "projects.destrua.engineeringDescription",
+    tagKeys: ["web", "ai", "cloud"],
     stack: [
       "React 19",
-      "Vite",
-      "Tailwind CSS 4",
       "Hono",
       "OpenRouter",
       "Cloudflare Workers",
@@ -66,171 +43,249 @@ const projects = [
   },
 ] as const;
 
+const nextProject = {
+  name: "Pemuli",
+  descriptionKey: "projects.pemuli.description",
+  engineeringDescriptionKey: "projects.pemuli.engineeringDescription",
+  stack: [
+    "Swift 6",
+    "SwiftUI",
+    "ActivityKit",
+    "WidgetKit",
+    "watchOS",
+    "WatchConnectivity",
+  ],
+  href: "https://pemuli.com?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
+  image: "/pemuli-logo.svg",
+} as const;
+
+function ArrowIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="link-arrow"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="1.75"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M7 17 17 7M8 7h9v9"
+      />
+    </svg>
+  );
+}
+
 export default function Home() {
   const t = useTranslations("HomePage");
 
   return (
-    <div className="bg-white text-[#1d1d1f] min-h-screen">
+    <div className="site-shell">
       <ClientWrapper>
         <AnimatedContent>
-          <main className="mx-auto max-w-3xl px-6 pb-16 pt-24 md:pt-32">
-            {/* Language Switcher */}
-            <div data-hero className="flex justify-end mb-6">
+          <header data-hero className="site-header">
+            <a className="wordmark" href="#top" aria-label="BridgLabs — início">
+              <span className="wordmark-mark" aria-hidden="true">
+                B
+              </span>
+              <span>
+                bridg<span>/labs</span>
+              </span>
+            </a>
+
+            <nav className="site-nav" aria-label={t("navLabel")}>
+              <a href="#build-log">{t("navWork")}</a>
+              <a href={`mailto:${t("footerEmail")}`}>{t("navContact")}</a>
               <LanguageSwitcher />
-            </div>
+            </nav>
+          </header>
 
-            {/* Intro */}
-            <div data-hero className="flex items-center gap-3 mb-8">
-              <h1 className="text-2xl md:text-3xl font-medium">
-                {t("greeting")}
+          <main id="top">
+            <section className="hero" aria-labelledby="hero-heading">
+              <div data-hero className="hero-identity">
+                <Image
+                  src="/bruno.jpg"
+                  alt=""
+                  width={52}
+                  height={52}
+                  className="hero-avatar"
+                  priority
+                />
+                <p>{t("heroEyebrow")}</p>
+              </div>
+
+              <h1 data-hero id="hero-heading">
+                {t("headline")}
               </h1>
-              <Image
-                src="/bruno.jpg"
-                alt="Bruno Pinheiro"
-                width={40}
-                height={40}
-                className="w-10 h-10 rounded-full object-cover"
-                priority
-              />
-            </div>
 
-            <div data-hero className="mb-12 max-w-2xl">
-              <p className="text-lg leading-relaxed text-[#6e6e73] md:text-xl">
-                {t("bio")}
-              </p>
-            </div>
+              <div data-hero className="hero-copy">
+                <p>{t("bio")}</p>
+                <a href="#build-log" className="text-link">
+                  {t("seeProjects")}
+                  <span aria-hidden="true">↓</span>
+                </a>
+              </div>
+            </section>
 
-            {/* Projects */}
             <section
-              data-hero
-              aria-labelledby="projects-heading"
-              className="mb-12"
+              id="build-log"
+              className="build-log"
+              aria-labelledby="build-log-heading"
             >
-              <h2
-                id="projects-heading"
-                className="mb-5 text-lg font-medium text-[#1d1d1f] md:text-xl"
-              >
-                {t("sideProjectsTitle")}
-              </h2>
+              <div data-project className="section-heading">
+                <p className="log-meta">{t("logMeta")}</p>
+                <h2 id="build-log-heading">{t("logTitle")}</h2>
+              </div>
 
-              <ul className="divide-y divide-[#d2d2d7] border-y border-[#d2d2d7]">
-                {projects.map((project) => (
-                  <li key={project.name}>
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group block py-7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a855f7] focus-visible:ring-offset-4"
-                    >
-                      <span className="flex items-start justify-between gap-5">
-                        <span className="flex min-w-0 items-start gap-3">
+              <ol className="timeline">
+                {shippedProjects.map((project) => (
+                  <li key={project.name} data-project className="timeline-entry">
+                    <span className="timeline-node" aria-hidden="true">
+                      <span />
+                    </span>
+
+                    <article className="project-card">
+                      <div className="project-meta">
+                        <span className="release-number">
+                          rel/{project.number}
+                        </span>
+                        <span className="project-tags">
+                          {project.tagKeys.map((tagKey) => (
+                            <span key={tagKey}>{t(`tags.${tagKey}`)}</span>
+                          ))}
+                        </span>
+                        <span className="meta-rule" aria-hidden="true" />
+                        <span className="release-state">{t("live")}</span>
+                      </div>
+
+                      <div
+                        data-stamp
+                        className="shipped-stamp"
+                        role="img"
+                        aria-label={t("shippedStampLabel")}
+                      >
+                        <span>{t("shippedStamp")}</span>
+                      </div>
+
+                      <div className="project-body">
+                        <div className="project-mark" aria-hidden="true">
                           <Image
                             src={project.image}
                             alt=""
-                            width={36}
-                            height={36}
-                            className="h-9 w-9 shrink-0 rounded-lg"
+                            width={72}
+                            height={72}
                           />
-                          <span className="flex min-w-0 flex-wrap items-center gap-2">
-                            <span className="text-xl font-medium leading-9 text-[#1d1d1f] transition-colors group-hover:text-[#6e6e73] md:text-2xl">
-                              {project.name}
-                            </span>
-                            {project.statusKey ? (
-                              <span className="rounded-full border border-[#d2d2d7] bg-[#f5f5f7] px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.08em] text-[#6e6e73]">
-                                {t(project.statusKey)}
-                              </span>
-                            ) : null}
-                          </span>
-                        </span>
-                        <svg
-                          aria-hidden="true"
-                          className="mt-1 h-5 w-5 shrink-0 text-[#86868b] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 motion-reduce:transform-none"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="1.75"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M7 17 17 7M8 7h9v9"
-                          />
-                        </svg>
-                      </span>
+                        </div>
 
-                      <span className="mt-4 block max-w-2xl text-base leading-relaxed text-[#6e6e73] md:text-lg">
-                        {t(project.descriptionKey)}
-                      </span>
+                        <div className="project-content">
+                          <h3>{project.name}</h3>
+                          <p className="project-description">
+                            {t(project.descriptionKey)}
+                          </p>
 
-                      <span className="mt-5 block border-t border-[#e5e5e7] pt-4">
-                        <span className="block text-[11px] font-medium uppercase tracking-[0.14em] text-[#86868b]">
-                          {t("howBuilt")}
-                        </span>
-                        <span className="mt-2 block max-w-2xl text-sm leading-relaxed text-[#6e6e73] md:text-[15px]">
-                          {t(project.engineeringDescriptionKey)}
-                        </span>
-                      </span>
+                          <div className="engineering-note">
+                            <span>{t("howBuilt")}</span>
+                            <p>{t(project.engineeringDescriptionKey)}</p>
+                          </div>
 
-                      <span className="mt-4 flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-[11px] text-[#6e6e73]">
-                        {project.stack.map((technology) => (
-                          <span key={technology}>{technology}</span>
-                        ))}
-                      </span>
-                    </a>
+                          <div className="project-footer">
+                            <a
+                              href={project.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="project-link"
+                            >
+                              {t("visitProject")}
+                              <ArrowIcon />
+                            </a>
+
+                            <ul
+                              className="tech-list"
+                              aria-label={t("technologiesLabel")}
+                            >
+                              {project.stack.map((technology) => (
+                                <li key={technology}>{technology}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
                   </li>
                 ))}
-              </ul>
-            </section>
 
-            {/* Links */}
-            <div data-hero className="flex items-center gap-5">
+                <li data-next className="timeline-entry timeline-next">
+                  <span className="timeline-node" aria-hidden="true">
+                    <span />
+                  </span>
+
+                  <article className="next-card">
+                    <div className="project-meta">
+                      <span className="release-number">v-next</span>
+                      <span className="progress-badge">{t("inProgress")}</span>
+                      <span className="meta-rule" aria-hidden="true" />
+                      <span className="release-state">{t("landsHere")}</span>
+                    </div>
+
+                    <div className="next-content">
+                      <div className="project-mark next-project-mark" aria-hidden="true">
+                        <Image
+                          src={nextProject.image}
+                          alt=""
+                          width={72}
+                          height={72}
+                        />
+                      </div>
+
+                      <div>
+                        <p className="next-kicker">{t("whatsNext")}</p>
+                        <h3>{nextProject.name}</h3>
+                        <p className="project-description">
+                          {t(nextProject.descriptionKey)}
+                        </p>
+
+                        <div className="engineering-note">
+                          <span>{t("buildingNow")}</span>
+                          <p>{t(nextProject.engineeringDescriptionKey)}</p>
+                        </div>
+
+                        <a
+                          href={nextProject.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link"
+                        >
+                          {t("followProject")}
+                          <ArrowIcon />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+              </ol>
+            </section>
+          </main>
+
+          <footer data-entrance className="site-footer">
+            <p>{t("footerNote")}</p>
+            <div>
               <a
                 href="https://x.com/brunopinheiroms"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#86868b] hover:text-[#1d1d1f] transition-colors"
-                aria-label="X (Twitter)"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
+                X
               </a>
               <a
                 href="https://www.linkedin.com/in/bpinheiroms/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#86868b] hover:text-[#0A66C2] transition-colors"
-                aria-label="LinkedIn"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
+                LinkedIn
               </a>
-            </div>
-          </main>
-
-          {/* Footer */}
-          <footer className="mx-auto max-w-3xl px-6 pb-12">
-            <div
-              data-entrance
-              className="flex items-center gap-4 text-sm text-[#86868b]"
-            >
-              <a
-                href={`mailto:${t("footerEmail")}`}
-                className="hover:text-[#1d1d1f] transition-colors"
-              >
-                {t("footerEmail")}
-              </a>
-              <span className="text-[#d2d2d7]">&middot;</span>
-              <span>&copy; {new Date().getFullYear()} Bruno Pinheiro</span>
+              <a href={`mailto:${t("footerEmail")}`}>{t("footerEmail")}</a>
             </div>
           </footer>
         </AnimatedContent>

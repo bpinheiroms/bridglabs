@@ -13,9 +13,8 @@ export default function LanguageSwitcher() {
   }
 
   return (
-    <div className="flex items-center gap-1.5 text-sm">
+    <div className="language-switcher">
       <svg
-        className="w-4 h-4 text-[#86868b]"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -28,23 +27,19 @@ export default function LanguageSwitcher() {
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
       </svg>
       <button
+        type="button"
         onClick={() => switchLocale("pt")}
-        className={`transition-colors ${
-          locale === "pt"
-            ? "text-[#1d1d1f] font-medium"
-            : "text-[#86868b] hover:text-[#1d1d1f]"
-        }`}
+        aria-pressed={locale === "pt"}
+        aria-label="Usar português"
       >
         PT
       </button>
-      <span className="text-[#d2d2d7]">/</span>
+      <span className="language-divider">/</span>
       <button
+        type="button"
         onClick={() => switchLocale("en")}
-        className={`transition-colors ${
-          locale === "en"
-            ? "text-[#1d1d1f] font-medium"
-            : "text-[#86868b] hover:text-[#1d1d1f]"
-        }`}
+        aria-pressed={locale === "en"}
+        aria-label="Use English"
       >
         EN
       </button>

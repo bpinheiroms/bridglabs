@@ -1,28 +1,51 @@
 {
   "Metadata": {
-    "title": "Bruno Pinheiro — Senior Software Engineer",
-    "description": "Engenheiro de software com mais de 10 anos de experiência construindo produtos digitais."
+    "title": "BridgLabs — Produtos independentes por Bruno Pinheiro",
+    "description": "Produtos independentes criados e entregues por Bruno Pinheiro, engenheiro de software."
   },
   "HomePage": {
-    "greeting": "Oi, eu sou o Bruno",
-    "bio": "Sou engenheiro de software e trabalho com desenvolvimento de produtos há mais de 10 anos. Hoje estou na Blue River Technology, uma empresa da John Deere no Vale do Silício. Antes disso, passei por Globo, B3 e startups de blockchain e BNPL.",
-    "sideProjectsTitle": "Projetos próprios",
-    "howBuilt": "Engenharia",
+    "navLabel": "Navegação principal",
+    "navWork": "Entregas",
+    "navContact": "Contato",
+    "heroEyebrow": "Bruno Pinheiro · engenheiro de software",
+    "headline": "Projetos próprios, da primeira linha ao produto no ar.",
+    "bio": "Construo produtos digitais há mais de 10 anos. Hoje trabalho na Blue River Technology, uma empresa da John Deere no Vale do Silício. A BridgLabs é onde transformo problemas que me incomodam em software que outras pessoas podem usar.",
+    "seeProjects": "Ver o build log",
+    "logMeta": "bridg/releases · 2 entregas · mais recentes primeiro",
+    "logTitle": "O que já saiu do laboratório",
+    "howBuilt": "Por baixo do capô",
+    "buildingNow": "Construindo agora",
+    "live": "no ar",
+    "inProgress": "em construção",
+    "landsHere": "a próxima entrega",
+    "whatsNext": "O que vem agora",
+    "shippedStamp": "SHIPPED",
+    "shippedStampLabel": "Projeto entregue",
+    "visitProject": "Visitar projeto",
+    "followProject": "Acompanhar o Pemuli",
+    "technologiesLabel": "Tecnologias usadas",
+    "tags": {
+      "mobile": "mobile",
+      "maps": "mapas",
+      "ai": "IA",
+      "web": "web",
+      "cloud": "cloud"
+    },
     "projects": {
       "pinubi": {
         "description": "Chega de perder lugares salvos em Reels, TikToks e prints: o Pinubi transforma tudo em lugares organizados no seu mapa.",
         "engineeringDescription": "Pipeline multimodal com scraping, Gemini e Google Maps; avaliação no Langfuse com 95% de recall e 97% de precisão."
       },
       "destrua": {
-        "description": "Feedback direto para landing pages: coloque duas URLs frente a frente e veja a IA comparar e destruir as duas ao vivo, de graça.",
-        "engineeringDescription": "Aplicação 100% Cloudflare com Hono, D1 e KV; OpenRouter com failover automático entre 8 modelos gratuitos e OG gerado por batalha."
+        "description": "Coloque duas landing pages frente a frente e veja a IA comparar, criticar e escolher a melhor ao vivo — de graça.",
+        "engineeringDescription": "Aplicação 100% Cloudflare com Hono, D1 e KV; OpenRouter com failover automático entre 8 modelos e uma imagem social gerada para cada batalha."
       },
       "pemuli": {
-        "status": "Construindo",
-        "description": "De madrugada e com um bebê no colo, registrar mamadas, fraldas e hidratação não pode depender da memória. O Pemuli deixa a rotina registrada em poucos toques, pelo celular ou relógio.",
+        "description": "De madrugada e com um bebê no colo, registrar mamadas, fraldas e hidratação não pode depender da memória. O Pemuli resolve isso em poucos toques, pelo celular ou relógio.",
         "engineeringDescription": "App local-first em SwiftUI e Swift 6 para iPhone, iPad e Apple Watch, com Live Activities, Dynamic Island, widgets e sincronização offline com o Watch."
       }
     },
+    "footerNote": "Projetado e construído por Bruno Pinheiro.",
     "footerEmail": "contato@bridglabs.com"
   }
 }
