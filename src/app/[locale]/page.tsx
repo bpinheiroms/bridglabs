@@ -104,21 +104,17 @@ export default function Home() {
 
           <main id="top">
             <section className="hero" aria-labelledby="hero-heading">
-              <div data-hero className="hero-identity">
+              <div data-hero className="hero-intro">
+                <h1 id="hero-heading">{t("headline")}</h1>
                 <Image
                   src="/bruno.jpg"
                   alt=""
-                  width={52}
-                  height={52}
+                  width={96}
+                  height={96}
                   className="hero-avatar"
                   priority
                 />
-                <p>{t("heroEyebrow")}</p>
               </div>
-
-              <h1 data-hero id="hero-heading">
-                {t("headline")}
-              </h1>
 
               <div data-hero className="hero-copy">
                 <p>{t("bio")}</p>

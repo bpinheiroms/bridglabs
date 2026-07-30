@@ -182,27 +182,26 @@ a:focus-visible {
   justify-content: center;
   margin: 0 auto;
   max-width: 1180px;
-  min-height: min(790px, calc(100vh - 78px));
-  padding: clamp(90px, 12vh, 142px) 28px clamp(110px, 15vh, 170px);
+  min-height: min(680px, calc(100vh - 78px));
+  padding: clamp(86px, 11vh, 126px) 28px clamp(96px, 13vh, 142px);
 }
 
-.hero-identity {
+.hero-intro {
   align-items: center;
   display: flex;
-  gap: 14px;
-  margin-bottom: clamp(28px, 4vw, 48px);
+  gap: clamp(18px, 2.6vw, 34px);
 }
 
 .hero-avatar {
   border: 1px solid white;
   border-radius: 50%;
   box-shadow: 0 0 0 1px var(--line), 0 7px 22px rgba(30, 35, 58, 0.1);
-  height: 48px;
+  flex: 0 0 auto;
+  height: clamp(76px, 7.5vw, 96px);
   object-fit: cover;
-  width: 48px;
+  width: clamp(76px, 7.5vw, 96px);
 }
 
-.hero-identity p,
 .log-meta {
   color: var(--muted);
   font-family: var(--font-geist-mono), monospace;
@@ -212,12 +211,11 @@ a:focus-visible {
 }
 
 .hero h1 {
-  font-size: clamp(50px, 7.3vw, 98px);
+  font-size: clamp(52px, 6vw, 76px);
   font-weight: 560;
-  letter-spacing: -0.072em;
-  line-height: 0.97;
+  letter-spacing: -0.06em;
+  line-height: 1;
   margin: 0;
-  max-width: 1050px;
   text-wrap: balance;
 }
 
@@ -227,7 +225,7 @@ a:focus-visible {
   gap: 32px;
   grid-template-columns: minmax(0, 670px) auto;
   justify-content: space-between;
-  margin-top: clamp(40px, 6vw, 68px);
+  margin-top: clamp(38px, 5vw, 54px);
 }
 
 .hero-copy > p {
@@ -677,18 +675,28 @@ html.lenis body {
 
   .hero {
     min-height: calc(100svh - 68px);
-    padding: 78px 22px 94px;
+    padding: 76px 22px 86px;
+  }
+
+  .hero-intro {
+    align-items: center;
+    gap: 16px;
   }
 
   .hero h1 {
-    font-size: clamp(48px, 15.5vw, 70px);
-    letter-spacing: -0.068em;
+    font-size: clamp(44px, 12.8vw, 54px);
+    letter-spacing: -0.062em;
+  }
+
+  .hero-avatar {
+    height: 76px;
+    width: 76px;
   }
 
   .hero-copy {
     align-items: start;
     grid-template-columns: 1fr;
-    margin-top: 38px;
+    margin-top: 34px;
   }
 
   .hero-copy > p {
@@ -818,10 +826,6 @@ html.lenis body {
 }
 
 @media (max-width: 410px) {
-  .hero-identity p {
-    max-width: 220px;
-  }
-
   .section-heading {
     padding-left: 39px;
   }
