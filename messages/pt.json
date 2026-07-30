@@ -1,15 +1,15 @@
 {
   "Metadata": {
-    "title": "BridgLabs — Produtos independentes por Bruno Pinheiro",
-    "description": "Produtos independentes criados e entregues por Bruno Pinheiro, engenheiro de software."
+    "title": "BridgLabs — Engenharia de software por Bruno Pinheiro",
+    "description": "Software projetado, construído e entregue pelo engenheiro de software Bruno Pinheiro."
   },
   "HomePage": {
     "navLabel": "Navegação principal",
     "navWork": "Entregas",
     "navContact": "Contato",
     "heroEyebrow": "Bruno Pinheiro · engenheiro de software",
-    "headline": "Projetos próprios, da primeira linha ao produto no ar.",
-    "bio": "Construo produtos digitais há mais de 10 anos. Hoje trabalho na Blue River Technology, uma empresa da John Deere no Vale do Silício. A BridgLabs é onde transformo problemas que me incomodam em software que outras pessoas podem usar.",
+    "headline": "Engenharia de software, da primeira linha à produção.",
+    "bio": "Sou engenheiro de software há mais de 10 anos. Hoje trabalho na Blue River Technology, uma empresa da John Deere no Vale do Silício. A BridgLabs é onde transformo problemas que me incomodam em software que outras pessoas podem usar.",
     "seeProjects": "Ver o build log",
     "logMeta": "bridg/releases · 2 entregas · mais recentes primeiro",
     "logTitle": "O que já saiu do laboratório",
