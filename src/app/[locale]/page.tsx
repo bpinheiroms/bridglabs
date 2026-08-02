@@ -136,6 +136,55 @@ export default function Home() {
               </div>
 
               <ol className="timeline">
+                <li data-next className="timeline-entry timeline-next">
+                  <span className="timeline-node" aria-hidden="true">
+                    <span />
+                  </span>
+
+                  <article className="next-card">
+                    <div className="project-meta">
+                      <span className="release-number">v-next</span>
+                      <span className="progress-badge">{t("inProgress")}</span>
+                      <span className="meta-rule" aria-hidden="true" />
+                      <span className="release-state">{t("landsHere")}</span>
+                    </div>
+
+                    <div className="next-content">
+                      <div className="project-mark next-project-mark" aria-hidden="true">
+                        <Image
+                          src={nextProject.image}
+                          alt=""
+                          width={72}
+                          height={72}
+                        />
+                      </div>
+
+                      <div>
+                        <p className="next-kicker">{t("whatsNext")}</p>
+                        <h3>{nextProject.name}</h3>
+                        <p className="project-description">
+                          {t(nextProject.descriptionKey)}
+                        </p>
+
+                        <div className="engineering-note">
+                          <span>{t("buildingNow")}</span>
+                          <p>{t(nextProject.engineeringDescriptionKey)}</p>
+                        </div>
+
+                        <a
+                          href={nextProject.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link"
+                        >
+                          {t("followProject")}
+                          <ArrowIcon />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+
                 {shippedProjects.map((project) => (
                   <li key={project.name} data-project className="timeline-entry">
                     <span className="timeline-node" aria-hidden="true">
@@ -211,55 +260,6 @@ export default function Home() {
                     </article>
                   </li>
                 ))}
-
-                <li data-next className="timeline-entry timeline-next">
-                  <span className="timeline-node" aria-hidden="true">
-                    <span />
-                  </span>
-
-                  <article className="next-card">
-                    <div className="project-meta">
-                      <span className="release-number">v-next</span>
-                      <span className="progress-badge">{t("inProgress")}</span>
-                      <span className="meta-rule" aria-hidden="true" />
-                      <span className="release-state">{t("landsHere")}</span>
-                    </div>
-
-                    <div className="next-content">
-                      <div className="project-mark next-project-mark" aria-hidden="true">
-                        <Image
-                          src={nextProject.image}
-                          alt=""
-                          width={72}
-                          height={72}
-                        />
-                      </div>
-
-                      <div>
-                        <p className="next-kicker">{t("whatsNext")}</p>
-                        <h3>{nextProject.name}</h3>
-                        <p className="project-description">
-                          {t(nextProject.descriptionKey)}
-                        </p>
-
-                        <div className="engineering-note">
-                          <span>{t("buildingNow")}</span>
-                          <p>{t(nextProject.engineeringDescriptionKey)}</p>
-                        </div>
-
-                        <a
-                          href={nextProject.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-link"
-                        >
-                          {t("followProject")}
-                          <ArrowIcon />
-                        </a>
-                      </div>
-                    </div>
-                  </article>
-                </li>
               </ol>
             </section>
           </main>

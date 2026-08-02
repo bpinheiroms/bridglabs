@@ -555,7 +555,7 @@ a:focus-visible {
   margin-left: 9px;
 }
 
-.timeline-next {
+.timeline-entry:last-child {
   padding-bottom: 40px;
 }
 
