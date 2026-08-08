@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="icon" href="/src/app/icon.svg" type="image/svg+xml" />
+    <title>BridgLabs</title>
+    <script>
+      (() => {
+        const saved = document.cookie.match(/(?:^|; )bridglabs_locale=(pt|en)(?:;|$)/)?.[1];
+        const locale = saved || (navigator.language.toLowerCase().startsWith("en") ? "en" : "pt");
+        const destination = new URL(`/${locale}/`, location.origin);
+        destination.search = location.search;
+        destination.hash = location.hash;
+        location.replace(destination);
+      })();
+    </script>
+  </head>
+  <body>
+    <p><a href="/pt/">Português</a> · <a href="/en/">English</a></p>
+  </body>
+</html>

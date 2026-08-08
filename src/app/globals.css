@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 :root {
   --paper: #f7f8fc;
   --paper-deep: #eef1f8;
@@ -13,13 +11,8 @@
   --signal-soft: #e8e4ff;
   --stamp: #d83d61;
   --stamp-soft: rgba(216, 61, 97, 0.15);
-}
-
-@theme inline {
-  --color-background: var(--paper);
-  --color-foreground: var(--ink);
-  --font-sans: var(--font-geist-sans), "Helvetica Neue", Arial, sans-serif;
-  --font-mono: var(--font-geist-mono), "SFMono-Regular", Consolas, monospace;
+  --font-geist-sans: "Geist Variable";
+  --font-geist-mono: "Geist Mono Variable";
 }
 
 * {

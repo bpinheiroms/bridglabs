@@ -1,10 +1,7 @@
-"use client";
-
 import AnimatedContent from "@/components/AnimatedContent";
 import ClientWrapper from "@/components/ClientWrapper";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import Image from "next/image";
-import { useTranslations } from "next-intl";
+import type { Locale, Translator } from "@/i18n";
 
 const shippedProjects = [
   {
@@ -78,9 +75,7 @@ function ArrowIcon() {
   );
 }
 
-export default function Home() {
-  const t = useTranslations("HomePage");
-
+export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
   return (
     <div className="site-shell">
       <ClientWrapper>
@@ -98,7 +93,7 @@ export default function Home() {
             <nav className="site-nav" aria-label={t("navLabel")}>
               <a href="#build-log">{t("navWork")}</a>
               <a href={`mailto:${t("footerEmail")}`}>{t("navContact")}</a>
-              <LanguageSwitcher />
+              <LanguageSwitcher locale={locale} />
             </nav>
           </header>
 
@@ -106,13 +101,12 @@ export default function Home() {
             <section className="hero" aria-labelledby="hero-heading">
               <div data-hero className="hero-intro">
                 <h1 id="hero-heading">{t("headline")}</h1>
-                <Image
+                <img
                   src="/bruno.jpg"
                   alt=""
                   width={96}
                   height={96}
                   className="hero-avatar"
-                  priority
                 />
               </div>
 
@@ -151,7 +145,7 @@ export default function Home() {
 
                     <div className="next-content">
                       <div className="project-mark next-project-mark" aria-hidden="true">
-                        <Image
+                        <img
                           src={nextProject.image}
                           alt=""
                           width={72}
@@ -216,7 +210,7 @@ export default function Home() {
 
                       <div className="project-body">
                         <div className="project-mark" aria-hidden="true">
-                          <Image
+                          <img
                             src={project.image}
                             alt=""
                             width={72}

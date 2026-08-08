@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BridgLabs
 
-## Getting Started
+Site institucional bilíngue da BridgLabs, construído com React, Vite e publicado como Cloudflare Worker com Static Assets.
 
-First, run the development server:
+O Worker é necessário porque a publicação também precisa controlar o host
+canônico, a escolha de idioma na raiz e os headers de segurança. O build
+estático preserva o conteúdo e os metadados das rotas `/pt/` e `/en/` sem
+manter runtime de Next.js ou dependência de hosting da Vercel.
+
+## Desenvolvimento
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O site fica disponível em `http://127.0.0.1:3100`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Verificações
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+npm run verify
+```
 
-## Learn More
+## Publicação
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run deploy
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O Worker:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- redireciona `bridglabs.com` para `www.bridglabs.com` com 301;
+- escolhe `/pt/` ou `/en/` na raiz por cookie e `Accept-Language`;
+- normaliza `/pt` e `/en` para a forma com barra final;
+- injeta headers de segurança e cache imutável nos assets versionados;
+- serve o sitemap diretamente pelo Worker e mantém `robots.txt` sob o controle
+  gerenciado do Cloudflare (incluindo content signals para crawlers).
 
-## Deploy on Vercel
+As rotas localizadas mantêm canonical, Open Graph, `hreflang`, título,
+descrição e o conteúdo bilíngue do site anterior. O site não tinha variáveis de
+ambiente, API ou formulário server-side para migrar: o contato continua sendo
+um link `mailto:`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Rollback
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O deploy deve permanecer versionado no Cloudflare. Antes do cutover, mantenha
+o projeto anterior disponível durante a janela de observação. Se uma versão
+precisar ser revertida, promova a versão anterior no Cloudflare Dashboard ou
+com `wrangler versions list`/`wrangler versions deploy <version-id>`; depois
+repita os smoke tests de host, redirects e rotas localizadas. O DNS só deve ser
+alterado de volta como último recurso, preservando os registros de e-mail.

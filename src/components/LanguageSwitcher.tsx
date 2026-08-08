@@ -1,20 +1,20 @@
-"use client";
+import type { Locale } from "@/i18n";
 
-import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
+export default function LanguageSwitcher({ locale }: { locale: Locale }) {
+  function switchLocale(newLocale: Locale) {
+    if (newLocale === locale) return;
 
-export default function LanguageSwitcher() {
-  const locale = useLocale();
-  const pathname = usePathname();
-  const router = useRouter();
+    document.cookie = `bridglabs_locale=${newLocale}; Path=/; Max-Age=31536000; SameSite=Lax; Secure`;
 
-  function switchLocale(newLocale: "pt" | "en") {
-    router.replace(pathname, { locale: newLocale });
+    const destination = new URL(window.location.href);
+    destination.pathname = `/${newLocale}/`;
+    window.location.assign(destination);
   }
 
   return (
     <div className="language-switcher">
       <svg
+        aria-hidden="true"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
