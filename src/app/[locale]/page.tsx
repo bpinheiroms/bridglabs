@@ -5,6 +5,23 @@ import type { Locale, Translator } from "@/i18n";
 
 const shippedProjects = [
   {
+    number: "03",
+    name: "Jobs Search",
+    descriptionKey: "projects.jobsSearch.description",
+    engineeringDescriptionKey: "projects.jobsSearch.engineeringDescription",
+    tagKeys: ["web", "jobs", "newsletter"],
+    stack: [
+      "React 19",
+      "Vite",
+      "TypeScript",
+      "Cloudflare Workers",
+      "D1",
+      "R2",
+    ],
+    href: "https://jobs.bridglabs.com/?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
+    image: "/jobs-search-logo.svg",
+  },
+  {
     number: "01",
     name: "Pinubi",
     descriptionKey: "projects.pinubi.description",

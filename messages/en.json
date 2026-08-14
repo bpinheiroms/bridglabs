@@ -10,7 +10,7 @@
     "headline": "Hi, I’m Bruno",
     "bio": "I am a software engineer with over 10 years of experience. Today I work at Blue River Technology, a John Deere company in Silicon Valley. BridgLabs is where I turn problems that bother me into software other people can use.",
     "seeProjects": "See the build log",
-    "logMeta": "bridg/releases · 2 entries · newest first",
+    "logMeta": "bridg/releases · 3 entries · newest first",
     "logTitle": "What has left the lab",
     "howBuilt": "Under the hood",
     "buildingNow": "Building now",
@@ -28,7 +28,9 @@
       "maps": "maps",
       "ai": "AI",
       "web": "web",
-      "cloud": "cloud"
+      "cloud": "cloud",
+      "jobs": "jobs",
+      "newsletter": "newsletter"
     },
     "projects": {
       "pinubi": {
@@ -38,6 +40,10 @@
       "destrua": {
         "description": "Put two landing pages head to head and watch AI compare, critique, and pick the better one live — for free.",
         "engineeringDescription": "A 100% Cloudflare app with Hono, D1, and KV; automatic OpenRouter failover across 8 models and a generated social image for every battle."
+      },
+      "jobsSearch": {
+        "description": "A portal bringing remote technology jobs to Brazilians, with the context to make better decisions and a newsletter so good opportunities do not slip by.",
+        "engineeringDescription": "A nightly TypeScript pipeline collects and classifies jobs from multiple sources; the public catalog, search, and email alerts run on Cloudflare Workers and R2."
       },
       "pemuli": {
         "description": "Late at night with a baby in your arms, logging feeds, diapers, and hydration cannot rely on memory. Pemuli handles it in a few taps, from your phone or watch.",
