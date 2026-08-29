@@ -1,56 +1,114 @@
 {
   "Metadata": {
-    "title": "BridgLabs — Engenharia de software por Bruno Pinheiro",
-    "description": "Software projetado, construído e entregue pelo engenheiro de software Bruno Pinheiro."
+    "title": "BridgLabs — Bruno Pinheiro, engenheiro de software & Founder",
+    "description": "Trajetória profissional e produtos criados por Bruno Pinheiro, do problema ao lançamento."
   },
   "HomePage": {
+    "homeLabel": "BridgLabs — início",
     "navLabel": "Navegação principal",
-    "navWork": "Entregas",
+    "navJourney": "Trajetória",
+    "navLinkedIn": "LinkedIn",
     "navContact": "Contato",
-    "headline": "Oi, eu sou o Bruno",
-    "bio": "Sou engenheiro de software há mais de 10 anos. Hoje trabalho na Blue River Technology, uma empresa da John Deere no Vale do Silício. A BridgLabs é onde transformo problemas que me incomodam em software que outras pessoas podem usar.",
-    "seeProjects": "Ver o build log",
-    "logMeta": "bridg/releases · 3 entregas · mais recentes primeiro",
-    "logTitle": "O que já saiu do laboratório",
-    "howBuilt": "Por baixo do capô",
-    "buildingNow": "Construindo agora",
-    "live": "no ar",
-    "inProgress": "em construção",
-    "landsHere": "a próxima entrega",
-    "whatsNext": "O que vem agora",
-    "shippedStamp": "SHIPPED",
-    "shippedStampLabel": "Projeto entregue",
-    "visitProject": "Visitar projeto",
-    "followProject": "Acompanhar o Pemuli",
-    "technologiesLabel": "Tecnologias usadas",
-    "tags": {
-      "mobile": "mobile",
-      "maps": "mapas",
-      "ai": "IA",
-      "web": "web",
-      "cloud": "cloud",
-      "jobs": "vagas",
-      "newsletter": "newsletter"
+    "hero": {
+      "name": "BRUNO PINHEIRO",
+      "location": "SÃO PAULO, BRASIL",
+      "experience": "10+ ANOS CONSTRUINDO",
+      "timezone": "GMT−3 · REMOTO",
+      "photoAlt": "Bruno Pinheiro diante da Golden Gate Bridge",
+      "portraitCaption": "ENGENHARIA · PRODUTO · IA",
+      "currentLabel": "AGORA",
+      "currentValue": "Blue River Technology",
+      "currentNote": "John Deere · Vale do Silício",
+      "kicker": "SENIOR SOFTWARE ENGINEER & FOUNDER",
+      "title": "Eu construo produtos — dentro e fora do trabalho.",
+      "description": "Há mais de 10 anos transformo requisitos complexos em experiências usadas por milhões. Na BridgLabs, levo problemas que me incomodam do zero ao produto no ar.",
+      "cta": "Percorrer a trajetória"
+    },
+    "journey": {
+      "proofLabel": "O QUE FICOU"
+    },
+    "timeline": {
+      "now": "AGORA",
+      "current": "atual"
+    },
+    "founder": {
+      "badge": "FOUNDER MODE",
+      "role": "Founder & Product Engineer",
+      "description": "A BridgLabs é o eixo principal desta história: meu laboratório independente para encontrar problemas, definir a tese, desenhar, construir, lançar e operar produtos próprios.",
+      "projectsHeading": "PRODUTOS QUE LEVEI DO ZERO AO AR",
+      "projectProofLabel": "DECISÃO / ENTREGA"
+    },
+    "status": {
+      "building": "EM CONSTRUÇÃO",
+      "follow": "Acompanhar",
+      "visit": "Abrir projeto",
+      "shippedLabel": "Projeto entregue"
     },
     "projects": {
-      "pinubi": {
-        "description": "Chega de perder lugares salvos em Reels, TikToks e prints: o Pinubi transforma tudo em lugares organizados no seu mapa.",
-        "engineeringDescription": "Pipeline multimodal com scraping, Gemini e Google Maps; avaliação no Langfuse com 95% de recall e 97% de precisão."
-      },
-      "destrua": {
-        "description": "Coloque duas landing pages frente a frente e veja a IA comparar, criticar e escolher a melhor ao vivo — de graça.",
-        "engineeringDescription": "Aplicação 100% Cloudflare com Hono, D1 e KV; OpenRouter com failover automático entre 8 modelos e uma imagem social gerada para cada batalha."
+      "pemuli": {
+        "description": "Registro local-first de mamadas, fraldas e hidratação para iPhone e Apple Watch — pensado para funcionar em poucos toques, mesmo de madrugada.",
+        "proof": "A experiência parte do contexto real de sono interrompido: operação offline, relógio, widgets e Live Activities sem depender da memória."
       },
       "jobsSearch": {
-        "description": "Um portal que reúne vagas remotas de tecnologia para brasileiros, com contexto para decidir melhor e uma newsletter para não deixar boas oportunidades passarem.",
-        "engineeringDescription": "Pipeline noturna em TypeScript que coleta e classifica vagas de múltiplas fontes; catálogo público, busca e alertas por e-mail rodam sobre Cloudflare Workers e R2."
+        "description": "Vagas remotas de tecnologia para brasileiros, com contexto para decidir melhor e alertas para não deixar uma boa oportunidade passar.",
+        "proof": "Pesquisa editorial e pipeline recorrente viram um catálogo público confiável, com busca, classificação e distribuição por e-mail."
       },
-      "pemuli": {
-        "description": "De madrugada e com um bebê no colo, registrar mamadas, fraldas e hidratação não pode depender da memória. O Pemuli resolve isso em poucos toques, pelo celular ou relógio.",
-        "engineeringDescription": "App local-first em SwiftUI e Swift 6 para iPhone, iPad e Apple Watch, com Live Activities, Dynamic Island, widgets e sincronização offline com o Watch."
+      "pinubi": {
+        "description": "O link na bio de creators que recomendam lugares vira um mapa pesquisável — e as ações da audiência viram sinais agregados de intenção.",
+        "proof": "Reposicionamento creator-first: o follower não precisa de app ou conta; o creator vê buscas, lugares, posts e cliques de rota sem confundir intenção com visita."
+      },
+      "destrua": {
+        "description": "Duas landing pages entram em uma batalha ao vivo; a IA compara, critica e escolhe a melhor, com uma imagem social para cada confronto.",
+        "proof": "A comparação técnica virou uma experiência pública e compartilhável, com failover entre modelos e uma narrativa visual própria para cada batalha."
       }
     },
-    "footerNote": "Projetado e construído por Bruno Pinheiro.",
-    "footerEmail": "contato@bridglabs.com"
+    "career": {
+      "blueRiver": {
+        "periodShort": "SET 2022 — AGORA",
+        "company": "SparkAI → Blue River Technology · John Deere",
+        "role": "Senior Software Engineer",
+        "description": "Entrei na SparkAI para construir produtos human-in-the-loop. Depois da aquisição, passei a liderar entregas e sistemas frontend para operações de IA na Blue River.",
+        "proof": "A visão computacional da Blue River equipa tratores autônomos da John Deere e o See & Spray, que poupou cerca de 31 milhões de galões de herbicida não residual em 2025."
+      },
+      "gavea": {
+        "periodShort": "MAI 2021 — MAI 2022",
+        "company": "Gavea Marketplace",
+        "role": "Senior Software Engineer · Frontend Tech Lead",
+        "description": "Liderei a arquitetura web, desktop e mobile de uma bolsa digital de commodities com blockchain.",
+        "proof": "US$ 4 bilhões em ordens de compra e venda suportadas pela plataforma, com CI/CD e testes automatizados."
+      },
+      "globo": {
+        "periodShort": "JUN 2020 — MAI 2021",
+        "company": "Globo",
+        "role": "Senior Software Engineer",
+        "description": "Construí experiências digitais de esporte, educação e mídia para uma das maiores empresas de comunicação da América Latina.",
+        "proof": "Produtos de palpites esportivos e correção do ENEM acessados por milhões de pessoas no Brasil."
+      },
+      "b3": {
+        "periodShort": "AGO 2018 — JUN 2020",
+        "company": "B3",
+        "role": "Software Engineer",
+        "description": "Ajudei a modernizar uma plataforma legada e atuei como full-stack, com maior foco em frontend e testes, em software crítico para o mercado de capitais.",
+        "proof": "Sistema de grande porte para rebalanceamento do índice Bovespa reconstruído sobre uma arquitetura moderna."
+      },
+      "oxxy": {
+        "periodShort": "AGO 2015 — AGO 2018",
+        "company": "Grupo Oxxy",
+        "role": "Software Engineer",
+        "description": "Comecei como engenheiro full-stack, mantendo sistemas legados e automatizando processos operacionais repetitivos em diferentes domínios.",
+        "proof": "Automações e sistemas de ponta a ponta para os setores automotivo, multas eletrônicas, autoescolas e condomínios."
+      }
+    },
+    "closing": {
+      "title": "Mais de dez anos depois, a motivação continua a mesma.",
+      "description": "Entender um problema de verdade e construir algo que mereça existir."
+    },
+    "footer": {
+      "note": "Projetado e construído por Bruno Pinheiro.",
+      "navLabel": "Links finais",
+      "backTop": "Voltar ao início",
+      "contact": "E-mail",
+      "email": "contato@bridglabs.com"
+    }
   }
 }

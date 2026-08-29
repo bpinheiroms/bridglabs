@@ -1,56 +1,114 @@
 {
   "Metadata": {
-    "title": "BridgLabs — Software engineering by Bruno Pinheiro",
-    "description": "Software designed, built, and shipped by software engineer Bruno Pinheiro."
+    "title": "BridgLabs — Bruno Pinheiro, Software Engineer & Founder",
+    "description": "Bruno Pinheiro's career and shipped products, from problem to launch."
   },
   "HomePage": {
+    "homeLabel": "BridgLabs — home",
     "navLabel": "Main navigation",
-    "navWork": "Releases",
+    "navJourney": "Journey",
+    "navLinkedIn": "LinkedIn",
     "navContact": "Contact",
-    "headline": "Hi, I’m Bruno",
-    "bio": "I am a software engineer with over 10 years of experience. Today I work at Blue River Technology, a John Deere company in Silicon Valley. BridgLabs is where I turn problems that bother me into software other people can use.",
-    "seeProjects": "See the build log",
-    "logMeta": "bridg/releases · 3 entries · newest first",
-    "logTitle": "What has left the lab",
-    "howBuilt": "Under the hood",
-    "buildingNow": "Building now",
-    "live": "live",
-    "inProgress": "in progress",
-    "landsHere": "landing here next",
-    "whatsNext": "What's next",
-    "shippedStamp": "SHIPPED",
-    "shippedStampLabel": "Shipped project",
-    "visitProject": "Visit project",
-    "followProject": "Follow Pemuli",
-    "technologiesLabel": "Technologies used",
-    "tags": {
-      "mobile": "mobile",
-      "maps": "maps",
-      "ai": "AI",
-      "web": "web",
-      "cloud": "cloud",
-      "jobs": "jobs",
-      "newsletter": "newsletter"
+    "hero": {
+      "name": "BRUNO PINHEIRO",
+      "location": "SÃO PAULO, BRAZIL",
+      "experience": "10+ YEARS BUILDING",
+      "timezone": "GMT−3 · REMOTE",
+      "photoAlt": "Bruno Pinheiro in front of the Golden Gate Bridge",
+      "portraitCaption": "ENGINEERING · PRODUCT · AI",
+      "currentLabel": "NOW",
+      "currentValue": "Blue River Technology",
+      "currentNote": "John Deere · Silicon Valley",
+      "kicker": "SENIOR SOFTWARE ENGINEER & FOUNDER",
+      "title": "I build products — at work and beyond it.",
+      "description": "For more than 10 years, I have turned complex requirements into experiences used by millions. At BridgLabs, I take problems that bother me from zero to a live product.",
+      "cta": "Follow the journey"
+    },
+    "journey": {
+      "proofLabel": "WHAT REMAINED"
+    },
+    "timeline": {
+      "now": "NOW",
+      "current": "current"
+    },
+    "founder": {
+      "badge": "FOUNDER MODE",
+      "role": "Founder & Product Engineer",
+      "description": "BridgLabs is the main thread of this story: my independent lab for finding problems, shaping a thesis, designing, building, launching, and operating my own products.",
+      "projectsHeading": "PRODUCTS I TOOK FROM ZERO TO LIVE",
+      "projectProofLabel": "DECISION / DELIVERY"
+    },
+    "status": {
+      "building": "BUILDING",
+      "follow": "Follow",
+      "visit": "Open project",
+      "shippedLabel": "Shipped project"
     },
     "projects": {
-      "pinubi": {
-        "description": "Stop losing places saved from Reels, TikToks, and screenshots: Pinubi turns them into organized places on your map.",
-        "engineeringDescription": "A multimodal pipeline using scraping, Gemini, and Google Maps; evaluated in Langfuse at 95% recall and 97% precision."
-      },
-      "destrua": {
-        "description": "Put two landing pages head to head and watch AI compare, critique, and pick the better one live — for free.",
-        "engineeringDescription": "A 100% Cloudflare app with Hono, D1, and KV; automatic OpenRouter failover across 8 models and a generated social image for every battle."
+      "pemuli": {
+        "description": "A local-first feeding, diaper, and hydration log for iPhone and Apple Watch — designed for a few taps, even in the middle of the night.",
+        "proof": "The experience starts with the reality of interrupted sleep: offline operation, watch, widgets, and Live Activities without relying on memory."
       },
       "jobsSearch": {
-        "description": "A portal bringing remote technology jobs to Brazilians, with the context to make better decisions and a newsletter so good opportunities do not slip by.",
-        "engineeringDescription": "A nightly TypeScript pipeline collects and classifies jobs from multiple sources; the public catalog, search, and email alerts run on Cloudflare Workers and R2."
+        "description": "Remote technology jobs for Brazilians, with context for better decisions and alerts so a strong opportunity does not slip by.",
+        "proof": "Editorial research and a recurring pipeline become a reliable public catalog with search, classification, and email distribution."
       },
-      "pemuli": {
-        "description": "Late at night with a baby in your arms, logging feeds, diapers, and hydration cannot rely on memory. Pemuli handles it in a few taps, from your phone or watch.",
-        "engineeringDescription": "A local-first SwiftUI and Swift 6 app for iPhone, iPad, and Apple Watch, with Live Activities, Dynamic Island, widgets, and offline Watch sync."
+      "pinubi": {
+        "description": "A creator's link in bio becomes a searchable map of recommended places — while audience actions become aggregated intent signals.",
+        "proof": "A creator-first repositioning: followers need no app or account; creators see searches, places, posts, and route clicks without mistaking intent for a visit."
+      },
+      "destrua": {
+        "description": "Two landing pages enter a live battle; AI compares, critiques, and picks the winner, with a social image generated for every match.",
+        "proof": "A technical comparison became a public, shareable experience with model failover and a visual narrative unique to every battle."
       }
     },
-    "footerNote": "Designed and built by Bruno Pinheiro.",
-    "footerEmail": "contato@bridglabs.com"
+    "career": {
+      "blueRiver": {
+        "periodShort": "SEP 2022 — NOW",
+        "company": "SparkAI → Blue River Technology · John Deere",
+        "role": "Senior Software Engineer",
+        "description": "I joined SparkAI to build human-in-the-loop products. After the acquisition, I moved into leading delivery and frontend systems for AI operations at Blue River.",
+        "proof": "Blue River's computer vision powers John Deere autonomous tractors and See & Spray, which saved customers about 31 million gallons of non-residual herbicide in 2025."
+      },
+      "gavea": {
+        "periodShort": "MAY 2021 — MAY 2022",
+        "company": "Gavea Marketplace",
+        "role": "Senior Software Engineer · Frontend Tech Lead",
+        "description": "I led web, desktop, and mobile architecture for a blockchain-based digital commodities exchange.",
+        "proof": "$4 billion in buy and sell orders supported by the platform, with CI/CD and automated testing."
+      },
+      "globo": {
+        "periodShort": "JUN 2020 — MAY 2021",
+        "company": "Globo",
+        "role": "Senior Software Engineer",
+        "description": "I built sports, education, and media experiences for one of Latin America's largest communication companies.",
+        "proof": "Sports prediction and exam-grading products reached millions of people across Brazil."
+      },
+      "b3": {
+        "periodShort": "AUG 2018 — JUN 2020",
+        "company": "B3",
+        "role": "Software Engineer",
+        "description": "I helped modernize a legacy platform and worked full stack, with a stronger focus on frontend and testing, for critical capital-markets software.",
+        "proof": "A large-scale Bovespa Index rebalancing system rebuilt on a modern architecture."
+      },
+      "oxxy": {
+        "periodShort": "AUG 2015 — AUG 2018",
+        "company": "Grupo Oxxy",
+        "role": "Software Engineer",
+        "description": "I started as a full-stack engineer, maintaining legacy systems and automating repetitive operational processes across several business domains.",
+        "proof": "Automations and end-to-end systems for automotive, electronic fines, driving-school, and condominium operations."
+      }
+    },
+    "closing": {
+      "title": "More than ten years later, the motivation is still the same.",
+      "description": "Understand a real problem and build something that deserves to exist."
+    },
+    "footer": {
+      "note": "Designed and built by Bruno Pinheiro.",
+      "navLabel": "Final links",
+      "backTop": "Back to top",
+      "contact": "Email",
+      "email": "contato@bridglabs.com"
+    }
   }
 }

@@ -6,81 +6,144 @@ export function useScrollParallax() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    const container = containerRef.current;
+    if (!container) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
     gsap.registerPlugin(ScrollTrigger);
+    let refreshFrame = 0;
 
     const ctx = gsap.context(() => {
-      const heroElements = containerRef.current?.querySelectorAll("[data-hero]");
-      if (heroElements && heroElements.length > 0) {
+      const heroElements = container.querySelectorAll<HTMLElement>("[data-hero]");
+
+      gsap.fromTo(
+        heroElements,
+        { opacity: 0, y: 28, filter: "blur(7px)" },
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.86,
+          stagger: 0.09,
+          ease: "power3.out",
+          delay: 0.08,
+        }
+      );
+
+      const journey = container.querySelector<HTMLElement>("[data-journey]");
+      const routeProgress =
+        container.querySelector<HTMLElement>("[data-route-progress]");
+
+      if (journey && routeProgress) {
         gsap.fromTo(
-          heroElements,
+          routeProgress,
+          { clipPath: "inset(0 0 100% 0)" },
           {
-            opacity: 0,
-            y: 36,
-            filter: "blur(8px)",
-          },
-          {
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-            duration: 1,
-            stagger: 0.11,
-            ease: "power3.out",
-            delay: 0.12,
+            clipPath: "inset(0 0 0% 0)",
+            ease: "none",
+            scrollTrigger: {
+              trigger: journey,
+              start: "top 72%",
+              end: "bottom 72%",
+              scrub: 0.35,
+            },
           }
         );
       }
 
-      const projectElements =
-        containerRef.current?.querySelectorAll<HTMLElement>("[data-project]");
+      const entries =
+        container.querySelectorAll<HTMLElement>("[data-journey-entry]");
 
-      projectElements?.forEach((entry, index) => {
-        const revealTarget =
-          entry.querySelector<HTMLElement>("article") ?? entry;
-        const node = entry.querySelector<HTMLElement>(".timeline-node");
-        const stamp = entry.querySelector<HTMLElement>("[data-stamp]");
-        const stampRotation = index % 2 === 0 ? -5 : 4;
+      entries.forEach((entry) => {
+        const content = entry.querySelector<HTMLElement>(
+          ".milestone, .journey-closing"
+        );
+        const date = entry.querySelector<HTMLElement>(".journey-date");
+        const node = entry.querySelector<HTMLElement>(".journey-node");
+        const projectRows = entry.querySelectorAll<HTMLElement>("[data-project-row]");
 
         const timeline = gsap.timeline({
           scrollTrigger: {
             trigger: entry,
-            start: "top 82%",
+            start: "top 84%",
             once: true,
           },
         });
 
-        timeline.fromTo(
-          revealTarget,
-          { opacity: 0, y: 34 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.72,
-            ease: "power3.out",
-          }
-        );
+        if (date) {
+          timeline.fromTo(
+            date,
+            { opacity: 0, x: -10 },
+            { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }
+          );
+        }
 
         if (node) {
           timeline.fromTo(
             node,
-            { scale: 0.35, opacity: 0 },
+            { opacity: 0, scale: 0.4 },
             {
-              scale: 1,
               opacity: 1,
+              scale: 1,
               duration: 0.42,
               ease: "back.out(2.4)",
             },
-            "<+0.12"
+            "<+0.04"
           );
         }
 
-        if (stamp) {
+        if (content) {
           timeline.fromTo(
+            content,
+            { opacity: 0, y: 28 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.68,
+              ease: "power3.out",
+            },
+            "<+0.02"
+          );
+        }
+
+        if (projectRows.length > 0) {
+          timeline.fromTo(
+            projectRows,
+            { opacity: 0, y: 16 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.48,
+              stagger: 0.08,
+              ease: "power2.out",
+            },
+            "-=0.32"
+          );
+        }
+
+      });
+
+      const projectRows =
+        container.querySelectorAll<HTMLElement>("[data-project-row]");
+
+      projectRows.forEach((row, index) => {
+        const stamp = row.querySelector<HTMLElement>("[data-stamp]");
+        if (!stamp) return;
+
+        const stampRotation = index % 2 === 0 ? -5 : 4;
+
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: row,
+              start: "top 76%",
+              once: true,
+            },
+          })
+          .fromTo(
             stamp,
             {
               opacity: 0,
@@ -89,100 +152,57 @@ export function useScrollParallax() {
               filter: "blur(2px)",
             },
             {
-              opacity: 1,
+              opacity: 0.88,
               scale: 1,
               rotation: stampRotation,
               filter: "blur(0px)",
+              transformOrigin: "50% 50%",
               duration: 0.34,
               ease: "back.out(3.5)",
-            },
-            "-=0.06"
-          );
-
-          timeline
-            .to(
-              revealTarget,
-              {
-                x: -2,
-                duration: 0.055,
-                ease: "power1.out",
-              },
-              "<+0.16"
-            )
-            .to(revealTarget, {
-              x: 0,
-              duration: 0.12,
-              ease: "power2.out",
-            });
-        }
-      });
-
-      const nextEntry =
-        containerRef.current?.querySelector<HTMLElement>("[data-next]");
-
-      if (nextEntry) {
-        const nextCard = nextEntry.querySelector<HTMLElement>("article");
-        const nextNode =
-          nextEntry.querySelector<HTMLElement>(".timeline-node");
-
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: nextEntry,
-              start: "top 82%",
-              once: true,
-            },
-          })
-          .fromTo(
-            nextCard,
-            { opacity: 0, y: 28 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              ease: "power3.out",
             }
           )
-          .fromTo(
-            nextNode,
-            { opacity: 0, scale: 0.35 },
+          .to(
+            row,
             {
-              opacity: 1,
-              scale: 1,
-              duration: 0.45,
-              ease: "back.out(2.4)",
+              x: -2,
+              duration: 0.055,
+              ease: "power1.out",
             },
-            "<+0.12"
-          );
-      }
+            "<+0.16"
+          )
+          .to(row, {
+            x: 0,
+            duration: 0.12,
+            ease: "power2.out",
+          });
+      });
 
       const entranceElements =
-        containerRef.current?.querySelectorAll<HTMLElement>("[data-entrance]");
+        container.querySelectorAll<HTMLElement>("[data-entrance]");
 
-      entranceElements?.forEach((element) => {
+      entranceElements.forEach((element) => {
         gsap.fromTo(
           element,
-          { opacity: 0, y: 22 },
+          { opacity: 0, y: 20 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.65,
+            duration: 0.62,
             ease: "power2.out",
             scrollTrigger: {
               trigger: element,
-              start: "top 94%",
+              start: "top 92%",
               once: true,
             },
           }
         );
       });
 
-      requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
-      });
-    }, containerRef);
+      refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
+    }, container);
 
     return () => {
+      cancelAnimationFrame(refreshFrame);
       ctx.revert();
     };
   }, []);
