@@ -25,7 +25,7 @@
       "cta": "Percorrer a trajetória"
     },
     "journey": {
-      "proofLabel": "O QUE FICOU"
+      "proofLabel": "IMPACTO"
     },
     "timeline": {
       "now": "AGORA",
@@ -68,35 +68,35 @@
         "company": "SparkAI → Blue River Technology · John Deere",
         "role": "Senior Software Engineer",
         "description": "Entrei na SparkAI para construir produtos human-in-the-loop. Depois da aquisição, passei a liderar entregas e sistemas frontend para operações de IA na Blue River.",
-        "proof": "A visão computacional da Blue River equipa tratores autônomos da John Deere e o See & Spray, que poupou cerca de 31 milhões de galões de herbicida não residual em 2025."
+        "proof": "Construí interfaces e fluxos para operações human-in-the-loop que ajudam modelos de visão computacional a chegar e permanecer em produção, como parte da equipe por trás das máquinas autônomas e do See & Spray da John Deere."
       },
       "gavea": {
         "periodShort": "MAI 2021 — MAI 2022",
         "company": "Gavea Marketplace",
         "role": "Senior Software Engineer · Frontend Tech Lead",
         "description": "Liderei a arquitetura web, desktop e mobile de uma bolsa digital de commodities com blockchain.",
-        "proof": "US$ 4 bilhões em ordens de compra e venda suportadas pela plataforma, com CI/CD e testes automatizados."
+        "proof": "Unifiquei as bases web, desktop e mobile e introduzi CI/CD e testes automatizados, dando previsibilidade à evolução de uma plataforma de negociação com blockchain."
       },
       "globo": {
         "periodShort": "JUN 2020 — MAI 2021",
         "company": "Globo",
         "role": "Senior Software Engineer",
         "description": "Construí experiências digitais de esporte, educação e mídia para uma das maiores empresas de comunicação da América Latina.",
-        "proof": "Produtos de palpites esportivos e correção do ENEM acessados por milhões de pessoas no Brasil."
+        "proof": "Coloquei no ar experiências de palpites esportivos e correção do ENEM usadas por milhões de pessoas em momentos de grande audiência."
       },
       "b3": {
         "periodShort": "AGO 2018 — JUN 2020",
         "company": "B3",
         "role": "Software Engineer",
         "description": "Ajudei a modernizar uma plataforma legada e atuei como full-stack, com maior foco em frontend e testes, em software crítico para o mercado de capitais.",
-        "proof": "Sistema de grande porte para rebalanceamento do índice Bovespa reconstruído sobre uma arquitetura moderna."
+        "proof": "Ajudei a reconstruir o sistema de rebalanceamento do Ibovespa sobre uma arquitetura moderna e testável, tornando mais segura a evolução de um fluxo crítico do mercado."
       },
       "oxxy": {
         "periodShort": "AGO 2015 — AGO 2018",
         "company": "Grupo Oxxy",
         "role": "Software Engineer",
         "description": "Comecei como engenheiro full-stack, mantendo sistemas legados e automatizando processos operacionais repetitivos em diferentes domínios.",
-        "proof": "Automações e sistemas de ponta a ponta para os setores automotivo, multas eletrônicas, autoescolas e condomínios."
+        "proof": "Automatizei rotinas manuais e entreguei sistemas ponta a ponta para operações automotivas, multas eletrônicas, autoescolas e condomínios."
       }
     },
     "closing": {
