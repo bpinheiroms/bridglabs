@@ -34,10 +34,8 @@
     "founder": {
       "badge": "FOUNDER MODE",
       "role": "Founder & Product Engineer",
-      "description": "BridgLabs is the main thread of this story: my independent lab for finding problems, shaping a thesis, designing, building, launching, and operating my own products.",
-      "projectsHeading": "PRODUCTS I TOOK FROM ZERO TO LIVE",
-      "projectDecisionLabel": "DECISION",
-      "projectDeliveryLabel": "DELIVERY"
+      "description": "BridgLabs is my independent lab for creating and running my own products — from the first idea to the first user.",
+      "projectsHeading": "PRODUCTS I TAKE FROM ZERO TO LAUNCH"
     },
     "status": {
       "building": "BUILDING",
@@ -47,24 +45,20 @@
     },
     "projects": {
       "pemuli": {
-        "description": "A sleep, feeding, and diaper log for iPhone, iPad, and Apple Watch — designed for real care, with one hand and little attention to spare.",
-        "decision": "I cut the product to sleep, feeding, and diapers and reserved the paywall for inviting another caregiver — logging and reviewing care stay free.",
-        "delivery": "A trilingual native MVP with per-child history, family sync, Watch, widgets, and Live Activities — implemented, but still awaiting release validation."
+        "description": "A fast way to log sleep, feedings, and diapers — even at 3 a.m., with little attention and only one free hand.",
+        "highlight": "iPhone, Apple Watch, widgets, and Live Activities keep the baby's routine visible to everyone providing care."
       },
       "jobsSearch": {
-        "description": "An international remote-jobs portal for technology professionals in Brazil. The list — not a landing page — is the first screen.",
-        "decision": "I made acquisition and activation happen on the same screen: the top 10 is public; sign-in only appears when someone opens a job.",
-        "delivery": "A full catalog with search and filters, fed by a nightly pipeline that classifies, enriches, and publishes each snapshot atomically."
+        "description": "International remote jobs open to technology professionals in Brazil, gathered in one place.",
+        "highlight": "The list refreshes every night and can be searched by role, company, location, or technology."
       },
       "pinubi": {
-        "description": "Creators organize place recommendations on a searchable public page; followers go from the link in bio straight to the list, map, post, or route.",
-        "decision": "I removed the app and account requirement for followers and treated clicks as observable signals — never as visits, conversions, or revenue.",
-        "delivery": "A creator-first page with search, filters, list, and map; the aggregate dashboard shows demand, places, and posts that lead to content or route opens."
+        "description": "A creator's place recommendations leave scattered posts behind and become a guide the audience can search.",
+        "highlight": "Followers explore lists, maps, posts, and routes without installing an app; the creator sees what draws interest."
       },
       "destrua": {
-        "description": "Two landing pages enter a live battle; AI compares, critiques, and picks the winner, with a social image generated for every match.",
-        "decision": "I replaced the technical report with a public, shareable experience: humor, scorecards, and a winner make the analysis clear in seconds.",
-        "delivery": "Persistent roasts and battles with criterion-by-criterion critiques, rankings, votes, links, and a social image for every result."
+        "description": "AI analyzes landing pages without the polite fluff — one at a time or head-to-head in a live battle.",
+        "highlight": "Every result gets a scorecard, ranking, and share-ready image."
       }
     },
     "career": {

@@ -723,34 +723,12 @@ a:focus-visible {
   max-width: 650px;
 }
 
-.project-copy .project-proof {
-  display: grid;
-  gap: 6px;
-  margin: 14px 0 0;
-  max-width: 680px;
-}
-
-.project-proof > div {
-  align-items: baseline;
-  column-gap: 12px;
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-}
-
-.project-proof dt {
-  color: var(--signal);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 8px;
-  font-weight: 750;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-}
-
-.project-proof dd {
+.project-copy .project-highlight {
   color: var(--ink-soft);
   font-size: 13px;
   line-height: 1.5;
-  margin: 0;
+  margin-top: 12px;
+  max-width: 680px;
 }
 
 .project-meta {
@@ -1132,15 +1110,6 @@ a:focus-visible {
 
   .project-copy > p {
     font-size: 15px;
-  }
-
-  .project-proof > div {
-    gap: 2px;
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .project-proof > div + div {
-    margin-top: 4px;
   }
 
   .project-meta {

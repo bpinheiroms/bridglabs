@@ -34,10 +34,8 @@
     "founder": {
       "badge": "FOUNDER MODE",
       "role": "Founder & Product Engineer",
-      "description": "A BridgLabs é o eixo principal desta história: meu laboratório independente para encontrar problemas, definir a tese, desenhar, construir, lançar e operar produtos próprios.",
-      "projectsHeading": "PRODUTOS QUE LEVEI DO ZERO AO AR",
-      "projectDecisionLabel": "DECISÃO",
-      "projectDeliveryLabel": "ENTREGA"
+      "description": "A BridgLabs é meu laboratório independente para criar e operar produtos próprios — da primeira ideia ao primeiro usuário.",
+      "projectsHeading": "PRODUTOS QUE LEVO DO ZERO AO AR"
     },
     "status": {
       "building": "EM CONSTRUÇÃO",
@@ -47,24 +45,20 @@
     },
     "projects": {
       "pemuli": {
-        "description": "Registro de sono, mamadas e fraldas para iPhone, iPad e Apple Watch — feito para o cuidado real, com uma mão e pouca atenção disponível.",
-        "decision": "Cortei o produto a sono, mamadas e fraldas e reservei o paywall para convidar outro cuidador — registrar e consultar continuam gratuitos.",
-        "delivery": "MVP nativo trilíngue com histórico por criança, sincronização familiar, Watch, widgets e Live Activities — implementado, mas ainda sem validação de release."
+        "description": "Um jeito rápido de registrar sono, mamadas e fraldas — mesmo de madrugada, com pouca atenção e uma só mão livre.",
+        "highlight": "iPhone, Apple Watch, widgets e Live Activities mantêm a rotina do bebê visível para quem cuida."
       },
       "jobsSearch": {
-        "description": "Portal de vagas internacionais remotas para profissionais de tecnologia no Brasil. A lista — não uma landing page — é a primeira tela.",
-        "decision": "Fiz aquisição e ativação acontecerem na mesma tela: o top 10 é público; o login só aparece quando alguém abre uma vaga.",
-        "delivery": "Catálogo completo com busca e filtros, alimentado por uma pipeline noturna que classifica, enriquece e publica cada snapshot de forma atômica."
+        "description": "Vagas internacionais remotas abertas a profissionais de tecnologia no Brasil, reunidas em um só lugar.",
+        "highlight": "A lista é atualizada todas as noites e permite buscar por cargo, empresa, localização ou tecnologia."
       },
       "pinubi": {
-        "description": "Creators organizam recomendações de lugares em uma página pública pesquisável; seguidores saem do link da bio direto para lista, mapa, post ou rota.",
-        "decision": "Eliminei a exigência de app ou conta para o follower e tratei cliques como sinais observáveis — nunca como visita, conversão ou receita.",
-        "delivery": "Página creator-first com busca, filtros, lista e mapa; o painel agregado mostra demanda, lugares e posts que geram abertura de conteúdo ou rota."
+        "description": "As recomendações de lugares de um creator saem dos posts dispersos e viram um guia que a audiência pode pesquisar.",
+        "highlight": "Quem segue explora lista, mapa, posts e rotas sem instalar um app; o creator entende o que desperta interesse."
       },
       "destrua": {
-        "description": "Duas landing pages entram em uma batalha ao vivo; a IA compara, critica e escolhe a melhor, com uma imagem social para cada confronto.",
-        "decision": "Troquei o relatório técnico por uma experiência pública e compartilhável: humor, placar e vencedor tornam a análise legível em segundos.",
-        "delivery": "Roasts e batalhas persistentes, com crítica por critério, ranking, votos, links e imagens sociais próprios para cada resultado."
+        "description": "Uma IA analisa landing pages sem rodeios — individualmente ou em uma batalha ao vivo entre dois sites.",
+        "highlight": "Cada resultado ganha placar, ranking e uma imagem pronta para compartilhar."
       }
     },
     "career": {
