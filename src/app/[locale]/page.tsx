@@ -242,10 +242,16 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
                                 ) : null}
                               </div>
                               <p>{t(`projects.${project.key}.description`)}</p>
-                              <p className="project-proof">
-                                <span>{t("founder.projectProofLabel")}</span>
-                                {t(`projects.${project.key}.proof`)}
-                              </p>
+                              <dl className="project-proof">
+                                <div>
+                                  <dt>{t("founder.projectDecisionLabel")}</dt>
+                                  <dd>{t(`projects.${project.key}.decision`)}</dd>
+                                </div>
+                                <div>
+                                  <dt>{t("founder.projectDeliveryLabel")}</dt>
+                                  <dd>{t(`projects.${project.key}.delivery`)}</dd>
+                                </div>
+                              </dl>
                               <div className="project-meta">
                                 <a
                                   href={project.href}

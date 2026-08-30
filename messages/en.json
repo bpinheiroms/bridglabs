@@ -36,7 +36,8 @@
       "role": "Founder & Product Engineer",
       "description": "BridgLabs is the main thread of this story: my independent lab for finding problems, shaping a thesis, designing, building, launching, and operating my own products.",
       "projectsHeading": "PRODUCTS I TOOK FROM ZERO TO LIVE",
-      "projectProofLabel": "DECISION / DELIVERY"
+      "projectDecisionLabel": "DECISION",
+      "projectDeliveryLabel": "DELIVERY"
     },
     "status": {
       "building": "BUILDING",
@@ -46,20 +47,24 @@
     },
     "projects": {
       "pemuli": {
-        "description": "A local-first feeding, diaper, and hydration log for iPhone and Apple Watch — designed for a few taps, even in the middle of the night.",
-        "proof": "The experience starts with the reality of interrupted sleep: offline operation, watch, widgets, and Live Activities without relying on memory."
+        "description": "A sleep, feeding, and diaper log for iPhone, iPad, and Apple Watch — designed for real care, with one hand and little attention to spare.",
+        "decision": "I cut the product to sleep, feeding, and diapers and reserved the paywall for inviting another caregiver — logging and reviewing care stay free.",
+        "delivery": "A trilingual native MVP with per-child history, family sync, Watch, widgets, and Live Activities — implemented, but still awaiting release validation."
       },
       "jobsSearch": {
-        "description": "Remote technology jobs for Brazilians, with context for better decisions and alerts so a strong opportunity does not slip by.",
-        "proof": "Editorial research and a recurring pipeline become a reliable public catalog with search, classification, and email distribution."
+        "description": "An international remote-jobs portal for technology professionals in Brazil. The list — not a landing page — is the first screen.",
+        "decision": "I made acquisition and activation happen on the same screen: the top 10 is public; sign-in only appears when someone opens a job.",
+        "delivery": "A full catalog with search and filters, fed by a nightly pipeline that classifies, enriches, and publishes each snapshot atomically."
       },
       "pinubi": {
-        "description": "A creator's link in bio becomes a searchable map of recommended places — while audience actions become aggregated intent signals.",
-        "proof": "A creator-first repositioning: followers need no app or account; creators see searches, places, posts, and route clicks without mistaking intent for a visit."
+        "description": "Creators organize place recommendations on a searchable public page; followers go from the link in bio straight to the list, map, post, or route.",
+        "decision": "I removed the app and account requirement for followers and treated clicks as observable signals — never as visits, conversions, or revenue.",
+        "delivery": "A creator-first page with search, filters, list, and map; the aggregate dashboard shows demand, places, and posts that lead to content or route opens."
       },
       "destrua": {
         "description": "Two landing pages enter a live battle; AI compares, critiques, and picks the winner, with a social image generated for every match.",
-        "proof": "A technical comparison became a public, shareable experience with model failover and a visual narrative unique to every battle."
+        "decision": "I replaced the technical report with a public, shareable experience: humor, scorecards, and a winner make the analysis clear in seconds.",
+        "delivery": "Persistent roasts and battles with criterion-by-criterion critiques, rankings, votes, links, and a social image for every result."
       }
     },
     "career": {

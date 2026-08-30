@@ -36,7 +36,8 @@
       "role": "Founder & Product Engineer",
       "description": "A BridgLabs é o eixo principal desta história: meu laboratório independente para encontrar problemas, definir a tese, desenhar, construir, lançar e operar produtos próprios.",
       "projectsHeading": "PRODUTOS QUE LEVEI DO ZERO AO AR",
-      "projectProofLabel": "DECISÃO / ENTREGA"
+      "projectDecisionLabel": "DECISÃO",
+      "projectDeliveryLabel": "ENTREGA"
     },
     "status": {
       "building": "EM CONSTRUÇÃO",
@@ -46,20 +47,24 @@
     },
     "projects": {
       "pemuli": {
-        "description": "Registro local-first de mamadas, fraldas e hidratação para iPhone e Apple Watch — pensado para funcionar em poucos toques, mesmo de madrugada.",
-        "proof": "A experiência parte do contexto real de sono interrompido: operação offline, relógio, widgets e Live Activities sem depender da memória."
+        "description": "Registro de sono, mamadas e fraldas para iPhone, iPad e Apple Watch — feito para o cuidado real, com uma mão e pouca atenção disponível.",
+        "decision": "Cortei o produto a sono, mamadas e fraldas e reservei o paywall para convidar outro cuidador — registrar e consultar continuam gratuitos.",
+        "delivery": "MVP nativo trilíngue com histórico por criança, sincronização familiar, Watch, widgets e Live Activities — implementado, mas ainda sem validação de release."
       },
       "jobsSearch": {
-        "description": "Vagas remotas de tecnologia para brasileiros, com contexto para decidir melhor e alertas para não deixar uma boa oportunidade passar.",
-        "proof": "Pesquisa editorial e pipeline recorrente viram um catálogo público confiável, com busca, classificação e distribuição por e-mail."
+        "description": "Portal de vagas internacionais remotas para profissionais de tecnologia no Brasil. A lista — não uma landing page — é a primeira tela.",
+        "decision": "Fiz aquisição e ativação acontecerem na mesma tela: o top 10 é público; o login só aparece quando alguém abre uma vaga.",
+        "delivery": "Catálogo completo com busca e filtros, alimentado por uma pipeline noturna que classifica, enriquece e publica cada snapshot de forma atômica."
       },
       "pinubi": {
-        "description": "O link na bio de creators que recomendam lugares vira um mapa pesquisável — e as ações da audiência viram sinais agregados de intenção.",
-        "proof": "Reposicionamento creator-first: o follower não precisa de app ou conta; o creator vê buscas, lugares, posts e cliques de rota sem confundir intenção com visita."
+        "description": "Creators organizam recomendações de lugares em uma página pública pesquisável; seguidores saem do link da bio direto para lista, mapa, post ou rota.",
+        "decision": "Eliminei a exigência de app ou conta para o follower e tratei cliques como sinais observáveis — nunca como visita, conversão ou receita.",
+        "delivery": "Página creator-first com busca, filtros, lista e mapa; o painel agregado mostra demanda, lugares e posts que geram abertura de conteúdo ou rota."
       },
       "destrua": {
         "description": "Duas landing pages entram em uma batalha ao vivo; a IA compara, critica e escolhe a melhor, com uma imagem social para cada confronto.",
-        "proof": "A comparação técnica virou uma experiência pública e compartilhável, com failover entre modelos e uma narrativa visual própria para cada batalha."
+        "decision": "Troquei o relatório técnico por uma experiência pública e compartilhável: humor, placar e vencedor tornam a análise legível em segundos.",
+        "delivery": "Roasts e batalhas persistentes, com crítica por critério, ranking, votos, links e imagens sociais próprios para cada resultado."
       }
     },
     "career": {
