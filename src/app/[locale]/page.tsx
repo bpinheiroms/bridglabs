@@ -15,6 +15,14 @@ const projects = [
     image: "/pemuli-logo.svg",
   },
   {
+    key: "refound",
+    name: "Re:Found",
+    status: "shipped",
+    release: "rel/04",
+    href: "https://refound.lol/?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
+    image: "/refound-logo.svg",
+  },
+  {
     key: "jobsSearch",
     name: "Jobs Search",
     status: "shipped",
