@@ -15,6 +15,14 @@ const projects = [
     image: "/pemuli-logo.svg",
   },
   {
+    key: "sentuni",
+    name: "Sentuni",
+    status: "shipped",
+    release: "rel/05",
+    href: "https://apps.apple.com/app/id6811380725",
+    image: "/sentuni-logo.png",
+  },
+  {
     key: "refound",
     name: "Re:Found",
     status: "shipped",
@@ -57,6 +65,11 @@ const careerMilestones = [
       { src: "/company-logos/blue-river.jpg", name: "Blue River Technology" },
       { src: "/company-logos/john-deere.jpg", name: "John Deere" },
     ],
+  },
+  {
+    key: "pagaleve",
+    year: "2022",
+    logos: [{ src: "/company-logos/pagaleve.jpg", name: "Pagaleve" }],
   },
   {
     key: "gavea",

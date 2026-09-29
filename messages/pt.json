@@ -44,6 +44,10 @@
       "shippedLabel": "Projeto entregue"
     },
     "projects": {
+      "sentuni": {
+        "description": "Um diário emocional para iPhone que ajuda a dar nome ao que você sente a partir de situações, pensamentos e sinais do corpo.",
+        "highlight": "Registros rápidos, guia de emoções e calendário ajudam a revisitar seus dias. Relatórios semanais ou mensais em PDF reúnem o que você quer levar para a terapia."
+      },
       "pemuli": {
         "description": "Um jeito rápido de registrar sono, mamadas e fraldas — mesmo de madrugada, com pouca atenção e uma só mão livre.",
         "highlight": "iPhone, Apple Watch, widgets e Live Activities mantêm a rotina do bebê visível para quem cuida."
@@ -72,6 +76,13 @@
         "role": "Senior Software Engineer",
         "description": "Entrei na SparkAI para construir produtos human-in-the-loop. Depois da aquisição, passei a liderar entregas e sistemas frontend para operações de IA na Blue River.",
         "proof": "Construí interfaces e fluxos para operações human-in-the-loop que ajudam modelos de visão computacional a chegar e permanecer em produção, como parte da equipe por trás das máquinas autônomas e do See & Spray da John Deere."
+      },
+      "pagaleve": {
+        "periodShort": "MAI 2022 — SET 2022",
+        "company": "Pagaleve",
+        "role": "Senior Software Engineer",
+        "description": "Atuei no desenvolvimento, nas integrações, nos testes e na entrega de uma plataforma fintech, incluindo integrações de lojas e coleta de dados para decisões de risco de crédito.",
+        "proof": "Construí bibliotecas internas, microfrontends com Module Federation e um design system com Atomic Design. Implementei monitoramento e testes A/B e contribuí para a publicação na VTEX e integrações com Shopify e NuvemShop."
       },
       "gavea": {
         "periodShort": "MAI 2021 — MAI 2022",
