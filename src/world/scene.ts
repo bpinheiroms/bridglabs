@@ -187,24 +187,25 @@ function buildTerrain(solid: Builder) {
   }
 }
 
-function buildBridge(solid: Builder, lamps: Builder) {
+/** `steel` is everything painted orange; it gets its own material so it can stay red after dark. */
+function buildBridge(steel: Builder, solid: Builder, lamps: Builder) {
   const { z, half, tower, deck, height } = BRIDGE;
   const top = deck + height;
   const cableZ = 4.6;
 
-  solid.box(ORANGE, 0, deck, z, half * 2, 1.4, 8.4);
-  solid.box(ORANGE_SHADE, 0, deck - 1.6, z, half * 2, 1.8, 6);
+  steel.box(ORANGE, 0, deck, z, half * 2, 1.4, 8.4);
+  steel.box(ORANGE_SHADE, 0, deck - 1.6, z, half * 2, 1.8, 6);
   solid.box(ASPHALT, 0, deck + 0.75, z, half * 2, 0.12, 6.6);
   solid.box(CONCRETE, half + 6, deck - 5, z, 14, 12, 12);
   solid.box(CONCRETE, -half - 6, deck - 5, z, 14, 12, 12);
 
   for (const x of [-tower, tower]) {
     for (const side of [-cableZ, cableZ]) {
-      solid.box(ORANGE, x, (top - 4) / 2, z + side, 3.2, top + 4, 3.2);
-      solid.box(ORANGE_SHADE, x, top + 1.2, z + side, 4, 1.4, 4);
+      steel.box(ORANGE, x, (top - 4) / 2, z + side, 3.2, top + 4, 3.2);
+      steel.box(ORANGE_SHADE, x, top + 1.2, z + side, 4, 1.4, 4);
     }
     for (const y of [deck - 8, deck + 16, deck + 30, deck + 42, top - 2]) {
-      solid.box(ORANGE_SHADE, x, y, z, 2.2, 2.6, cableZ * 2);
+      steel.box(ORANGE_SHADE, x, y, z, 2.2, 2.6, cableZ * 2);
     }
     solid.box(CONCRETE, x, 0.5, z, 10, 5, 18);
   }
@@ -224,9 +225,9 @@ function buildBridge(solid: Builder, lamps: Builder) {
     const angle = Math.atan2(to - from, span);
 
     for (const side of [-cableZ, cableZ]) {
-      solid.add(BOX, ORANGE, x + span / 2, middle, z + side, length + 0.2, 0.8, 0.8, 0, 0, angle);
+      steel.add(BOX, ORANGE, x + span / 2, middle, z + side, length + 0.2, 0.8, 0.8, 0, 0, angle);
       if (middle - deck > 2.2) {
-        solid.box(ORANGE_SHADE, x + span / 2, (middle + deck) / 2, z + side, 0.32, middle - deck, 0.32);
+        steel.box(ORANGE_SHADE, x + span / 2, (middle + deck) / 2, z + side, 0.32, middle - deck, 0.32);
       }
     }
 
@@ -719,7 +720,8 @@ export function createWorld({ logos, years }: WorldOptions) {
   const lamps = new Builder();
 
   buildTerrain(solid);
-  buildBridge(solid, lamps);
+  const steel = new Builder();
+  buildBridge(steel, solid, lamps);
   buildCity(solid, glass);
   buildLombard(solid, glass, lamps);
   buildStreet(solid, glass, lamps, years.length);
@@ -734,6 +736,12 @@ export function createWorld({ logos, years }: WorldOptions) {
   const solidMaterial = new MeshLambertMaterial({ vertexColors: true });
   const glassMaterial = new MeshBasicMaterial({ color: GLASS_DAY.getHex() });
   const lampMaterial = new MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 0 });
+  // Moonlight alone turns the bridge and the cable car almost black, so both
+  // keep some of their own colour after dark, as if floodlit.
+  const steelMaterial = new MeshLambertMaterial({ vertexColors: true });
+  const tramPaint = new MeshLambertMaterial({ vertexColors: true });
+  const tramTrim = new MeshLambertMaterial({ vertexColors: true });
+  scene.add(new Mesh(steel.build(), steelMaterial));
   const lampMesh = new Mesh(lamps.build(), lampMaterial);
   scene.add(new Mesh(solid.build(), solidMaterial), new Mesh(glass.build(), glassMaterial), lampMesh);
 
@@ -848,14 +856,17 @@ export function createWorld({ logos, years }: WorldOptions) {
   );
   scene.add(car);
 
-  // The cable car.
-  const tramBuilder = new Builder();
-  tramBuilder.box(0x2a2f3d, 0, 0.6, 0, 3.4, 0.8, 9.6);
-  tramBuilder.box(0x8f2a2a, 0, 1.75, 0, 3.8, 1.5, 9.8);
-  tramBuilder.box(0xe0b65a, 0, 2.55, 0, 3.9, 0.22, 9.9);
-  tramBuilder.box(0xead9a8, 0, 3.2, 0, 3.6, 1.2, 9.6);
-  tramBuilder.box(0xf0e2b6, 0, 3.98, 0, 4.2, 0.4, 10.4);
-  tramBuilder.box(0xd9c88f, 0, 4.4, 0, 2.6, 0.5, 8.4);
+  // The cable car: maroon body, cream top, and running lights at both ends,
+  // since the camera rides behind it.
+  const tramChassis = new Builder();
+  tramChassis.box(0x2a2f3d, 0, 0.6, 0, 3.4, 0.8, 9.6);
+  const tramBody = new Builder();
+  tramBody.box(0x8f2a2a, 0, 1.75, 0, 3.8, 1.5, 9.8);
+  const tramTop = new Builder();
+  tramTop.box(0xe0b65a, 0, 2.55, 0, 3.9, 0.22, 9.9);
+  tramTop.box(0xead9a8, 0, 3.2, 0, 3.6, 1.2, 9.6);
+  tramTop.box(0xf0e2b6, 0, 3.98, 0, 4.2, 0.4, 10.4);
+  tramTop.box(0xd9c88f, 0, 4.4, 0, 2.6, 0.5, 8.4);
   const tram = new Group();
   tram.rotation.order = "YXZ";
   const tramGlass = new Builder();
@@ -867,10 +878,18 @@ export function createWorld({ logos, years }: WorldOptions) {
   tramGlass.box(0xffffff, 0, 3.2, -4.85, 2.7, 0.82, 0.14);
   const tramLamp = new Builder();
   tramLamp.box(0xffe9a8, 0, 1.9, 5, 0.7, 0.7, 0.3);
+  tramLamp.box(0xff4b3e, -1.4, 1.55, -4.95, 0.4, 0.32, 0.12);
+  tramLamp.box(0xff4b3e, 1.4, 1.55, -4.95, 0.4, 0.32, 0.12);
+  tramLamp.box(0xffd36a, 0, 4.4, -4.25, 1.1, 0.3, 0.12);
+  const tramBeam = new Mesh(new BoxGeometry(3, 0.06, 8), beamMaterial);
+  tramBeam.position.set(0, -0.05, 9.4);
   tram.add(
-    new Mesh(tramBuilder.build(), solidMaterial),
+    new Mesh(tramChassis.build(), solidMaterial),
+    new Mesh(tramBody.build(), tramPaint),
+    new Mesh(tramTop.build(), tramTrim),
     new Mesh(tramGlass.build(), glassMaterial),
     new Mesh(tramLamp.build(), lampMaterial),
+    tramBeam,
   );
   scene.add(tram);
 
@@ -953,8 +972,13 @@ export function createWorld({ logos, years }: WorldOptions) {
     discMaterial.color.lerpColors(SUN, MOON, night);
     beacons.visible = night > 0.4 && Math.floor(time * 1.4) % 2 === 0;
     carPaint.emissive.setHex(0x8fb09b).multiplyScalar(night * 0.5);
+    steelMaterial.emissive.setHex(0xc8452b).multiplyScalar(night * 0.34);
+    // Just enough to read as dark wine; the bridge is the red thing in this world.
+    tramPaint.emissive.setHex(0x8f2a2a).multiplyScalar(night * 0.16);
+    tramTrim.emissive.setHex(0xd9c88f).multiplyScalar(night * 0.26);
     beamMaterial.opacity = night * 0.34;
     beam.visible = night > 0.02;
+    tramBeam.visible = night > 0.02;
 
     const uniforms = water.material.uniforms;
     uniforms.uTime.value = Math.floor(time * 8) / 8;

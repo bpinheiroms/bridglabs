@@ -122,6 +122,19 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
   const careerStops = careerMilestones.map((milestone) => ({
     id: milestone.key,
     marker: <span className="stop-year">{milestone.year}</span>,
+    icons: (
+      <span className="stop-logos">
+        {milestone.logos.map((logo) => (
+          // The title already names the company; only the other logos need reading out.
+          <img
+            key={logo.src}
+            src={logo.src}
+            alt={milestone.short.startsWith(logo.name) ? "" : logo.name}
+            title={logo.name}
+          />
+        ))}
+      </span>
+    ),
     title: milestone.short,
     body: (
       <>
@@ -130,11 +143,6 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
           <span>{t(`career.${milestone.key}.periodShort`)}</span>
         </p>
         <p>{t(`career.${milestone.key}.description`)}</p>
-        <p className="stop-logos">
-          {milestone.logos.map((logo) => (
-            <img key={logo.src} src={logo.src} alt={logo.name} title={logo.name} />
-          ))}
-        </p>
       </>
     ),
   }));

@@ -5,6 +5,8 @@ export interface RouteStop {
   id: string;
   /** What identifies the stop in the list: a logo, a year. */
   marker: ReactNode;
+  /** Small marks shown just before the title, such as company logos. */
+  icons?: ReactNode;
   title: string;
   body: ReactNode;
 }
@@ -67,7 +69,10 @@ export default function RouteSection({ id, heading, lead, stops, leadIn = 0 }: R
                       }}
                     >
                       <span className="stop-marker">{stop.marker}</span>
-                      <span className="stop-title">{stop.title}</span>
+                      <span className="stop-title">
+                        {stop.icons}
+                        {stop.title}
+                      </span>
                     </button>
                   </h3>
                   <div id={bodyId} className="stop-body" inert={!open}>

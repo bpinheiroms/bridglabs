@@ -494,15 +494,22 @@ main {
   margin-top: 4px;
 }
 
-.stop-logos {
+.stop-title {
+  align-items: center;
   display: flex;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.stop-logos {
+  display: inline-flex;
+  gap: 4px;
 }
 
 .stop-logos img {
   display: block;
-  height: 24px;
-  width: 24px;
+  height: 22px;
+  width: 22px;
 }
 
 .px-btn {
