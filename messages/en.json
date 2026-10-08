@@ -6,26 +6,35 @@
   "HomePage": {
     "homeLabel": "BridgLabs — home",
     "navLabel": "Main navigation",
+    "navProducts": "Products",
     "navJourney": "Journey",
     "navLinkedIn": "LinkedIn",
     "navContact": "Contact",
+    "theme": {
+      "label": "Switch between day and night",
+      "day": "Day",
+      "night": "Night"
+    },
     "hero": {
-      "name": "BRUNO PINHEIRO",
-      "location": "SÃO PAULO, BRAZIL",
-      "experience": "10+ YEARS BUILDING",
+      "name": "Bruno Pinheiro",
+      "location": "São Paulo, Brazil",
+      "experience": "10+ years building",
       "timezone": "GMT−3 · REMOTE",
-      "photoAlt": "Bruno Pinheiro in front of the Golden Gate Bridge",
-      "portraitCaption": "ENGINEERING · PRODUCT · AI",
+      "photoAlt": "Pixel-art avatar of Bruno Pinheiro",
+      "portraitCaption": "Engineering · Product · AI",
       "currentLabel": "NOW",
       "currentValue": "Blue River Technology",
       "currentNote": "John Deere · Silicon Valley",
-      "kicker": "SENIOR SOFTWARE ENGINEER & FOUNDER",
-      "title": "I build products — at work and beyond it.",
-      "description": "For more than 10 years, I have turned complex requirements into experiences used by millions. At BridgLabs, I take problems that bother me from zero to a live product.",
-      "cta": "Follow the journey"
+      "kicker": "Senior Software Engineer & Founder",
+      "cta": "Follow the journey",
+      "ctaProducts": "See the products",
+      "scrollCue": "Scroll for more"
     },
     "journey": {
-      "proofLabel": "IMPACT"
+      "proofLabel": "IMPACT",
+      "lead": "Every address is a chapter. Follow the cable car through my career.",
+      "tramAlt": "Bruno smiling in the front window of a cable car",
+      "stopLabel": "Stop"
     },
     "timeline": {
       "now": "NOW",
@@ -35,7 +44,8 @@
       "badge": "FOUNDER MODE",
       "role": "Founder & Product Engineer",
       "description": "BridgLabs is my independent lab for creating and running my own products — from the first idea to the first user.",
-      "projectsHeading": "PRODUCTS I TAKE FROM ZERO TO LAUNCH"
+      "projectsHeading": "PRODUCTS I TAKE FROM ZERO TO LAUNCH",
+      "carAlt": "Pixel-art car following Lombard Street's turns"
     },
     "status": {
       "building": "BUILDING",
@@ -45,28 +55,22 @@
     },
     "projects": {
       "sentuni": {
-        "description": "An emotional journal for iPhone that helps you name what you feel through situations, thoughts, and signals from your body.",
-        "highlight": "Quick entries, an emotion guide, and a calendar help you look back on your days. Weekly or monthly PDF reports bring together what you want to discuss in therapy."
+        "description": "An emotional journal to name what you feel."
       },
       "pemuli": {
-        "description": "A fast way to log sleep, feedings, and diapers — even at 3 a.m., with little attention and only one free hand.",
-        "highlight": "iPhone, Apple Watch, widgets, and Live Activities keep the baby's routine visible to everyone providing care."
+        "description": "Baby's routine, logged with one hand."
       },
       "refound": {
-        "description": "A bilingual catalog turns the public history of Y Combinator startups into opportunities worth investigating today.",
-        "highlight": "Each dossier is paid and brings together the thesis, evidence, risks, validation plan, and an MVP prompt; every confirmed purchase raises the price for the next reader."
+        "description": "YC startup ideas worth revisiting today."
       },
       "jobsSearch": {
-        "description": "International remote jobs open to technology professionals in Brazil, gathered in one place.",
-        "highlight": "The catalog refreshes daily, with search by role, company, location, or technology. The MCP integration lets AI assistants look up jobs and requirements directly."
+        "description": "International remote jobs for devs in Brazil."
       },
       "pinubi": {
-        "description": "A creator's place recommendations leave scattered posts behind and become a guide the audience can search.",
-        "highlight": "Followers explore lists, maps, posts, and routes without installing an app; the creator sees what draws interest."
+        "description": "Creator recommendations turned into a searchable guide."
       },
       "destrua": {
-        "description": "AI analyzes landing pages without the polite fluff — one at a time or head-to-head in a live battle.",
-        "highlight": "Every result gets a scorecard, ranking, and share-ready image."
+        "description": "An AI reviews your landing page, no sugarcoating."
       }
     },
     "career": {

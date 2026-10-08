@@ -24,6 +24,23 @@ npm run build
 npm run verify
 ```
 
+## Imagem de compartilhamento
+
+`public/og.png` (1200×630) é a imagem que aparece quando o link do site é
+compartilhado. Ela é capturada de `og.html`, uma página só de desenvolvimento
+que monta a mesma cena 3D da abertura com o nome por cima; essa página não
+entra no build. Para gerar de novo, com `npm run dev` rodando:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+  --enable-unsafe-swiftshader --use-angle=swiftshader --hide-scrollbars \
+  --force-device-scale-factor=1 --window-size=1200,630 \
+  --virtual-time-budget=9000 --screenshot=public/og.png \
+  http://127.0.0.1:3100/og.html
+```
+
+O Chrome grava o arquivo e pode ficar aberto depois; encerre com Ctrl+C.
+
 ## Publicação
 
 ```bash

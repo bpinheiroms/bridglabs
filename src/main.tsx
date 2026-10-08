@@ -1,10 +1,11 @@
-import "@fontsource-variable/geist";
 import "@fontsource-variable/geist-mono";
+import "@fontsource-variable/geist";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import Home from "@/app/[locale]/page";
 import "@/app/globals.css";
 import { localeFromPath, translatorFor } from "@/i18n";
+import { syncThemeColor } from "@/theme";
 
 const root = document.getElementById("root");
 
@@ -14,6 +15,7 @@ if (!root) {
 
 const locale = localeFromPath(window.location.pathname);
 document.documentElement.lang = locale === "pt" ? "pt-BR" : "en";
+syncThemeColor();
 
 createRoot(root).render(
   <StrictMode>

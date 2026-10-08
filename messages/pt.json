@@ -6,26 +6,35 @@
   "HomePage": {
     "homeLabel": "BridgLabs — início",
     "navLabel": "Navegação principal",
+    "navProducts": "Produtos",
     "navJourney": "Trajetória",
     "navLinkedIn": "LinkedIn",
     "navContact": "Contato",
+    "theme": {
+      "label": "Alternar entre dia e noite",
+      "day": "Dia",
+      "night": "Noite"
+    },
     "hero": {
-      "name": "BRUNO PINHEIRO",
-      "location": "SÃO PAULO, BRASIL",
-      "experience": "10+ ANOS CONSTRUINDO",
+      "name": "Bruno Pinheiro",
+      "location": "São Paulo, Brasil",
+      "experience": "10+ anos construindo",
       "timezone": "GMT−3 · REMOTO",
-      "photoAlt": "Bruno Pinheiro diante da Golden Gate Bridge",
-      "portraitCaption": "ENGENHARIA · PRODUTO · IA",
+      "photoAlt": "Avatar de Bruno Pinheiro em pixel art",
+      "portraitCaption": "Engenharia · Produto · IA",
       "currentLabel": "AGORA",
       "currentValue": "Blue River Technology",
       "currentNote": "John Deere · Vale do Silício",
-      "kicker": "SENIOR SOFTWARE ENGINEER & FOUNDER",
-      "title": "Eu construo produtos — dentro e fora do trabalho.",
-      "description": "Há mais de 10 anos transformo requisitos complexos em experiências usadas por milhões. Na BridgLabs, levo problemas que me incomodam do zero ao produto no ar.",
-      "cta": "Percorrer a trajetória"
+      "kicker": "Senior Software Engineer & Founder",
+      "cta": "Percorrer a trajetória",
+      "ctaProducts": "Ver os produtos",
+      "scrollCue": "Role para ver mais"
     },
     "journey": {
-      "proofLabel": "IMPACTO"
+      "proofLabel": "IMPACTO",
+      "lead": "Cada endereço, um capítulo. Siga o bondinho pela minha trajetória.",
+      "tramAlt": "Bruno sorrindo na janela de um bondinho de frente",
+      "stopLabel": "Parada"
     },
     "timeline": {
       "now": "AGORA",
@@ -35,7 +44,8 @@
       "badge": "FOUNDER MODE",
       "role": "Founder & Product Engineer",
       "description": "A BridgLabs é meu laboratório independente para criar e operar produtos próprios — da primeira ideia ao primeiro usuário.",
-      "projectsHeading": "PRODUTOS QUE LEVO DO ZERO AO AR"
+      "projectsHeading": "PRODUTOS QUE LEVO DO ZERO AO AR",
+      "carAlt": "Carro em pixel art percorrendo as curvas da Lombard Street"
     },
     "status": {
       "building": "EM CONSTRUÇÃO",
@@ -45,28 +55,22 @@
     },
     "projects": {
       "sentuni": {
-        "description": "Um diário emocional para iPhone que ajuda a dar nome ao que você sente a partir de situações, pensamentos e sinais do corpo.",
-        "highlight": "Registros rápidos, guia de emoções e calendário ajudam a revisitar seus dias. Relatórios semanais ou mensais em PDF reúnem o que você quer levar para a terapia."
+        "description": "Diário emocional para dar nome ao que você sente."
       },
       "pemuli": {
-        "description": "Um jeito rápido de registrar sono, mamadas e fraldas — mesmo de madrugada, com pouca atenção e uma só mão livre.",
-        "highlight": "iPhone, Apple Watch, widgets e Live Activities mantêm a rotina do bebê visível para quem cuida."
+        "description": "Rotina do bebê registrada com uma só mão."
       },
       "refound": {
-        "description": "Um catálogo bilíngue transforma a história pública de startups da Y Combinator em oportunidades que vale investigar hoje.",
-        "highlight": "Cada dossiê é pago e reúne tese, evidências, riscos, plano de validação e um prompt de MVP; a cada compra confirmada, o preço aumenta para o próximo leitor."
+        "description": "Ideias de startups da YC que valem revisitar."
       },
       "jobsSearch": {
-        "description": "Vagas internacionais remotas abertas a profissionais de tecnologia no Brasil, reunidas em um só lugar.",
-        "highlight": "O catálogo é atualizado diariamente, com busca por cargo, empresa, localização ou tecnologia. A integração MCP permite consultar vagas e requisitos direto em assistentes de IA."
+        "description": "Vagas remotas internacionais para devs no Brasil."
       },
       "pinubi": {
-        "description": "As recomendações de lugares de um creator saem dos posts dispersos e viram um guia que a audiência pode pesquisar.",
-        "highlight": "Quem segue explora lista, mapa, posts e rotas sem instalar um app; o creator entende o que desperta interesse."
+        "description": "Recomendações de creators viram um guia pesquisável."
       },
       "destrua": {
-        "description": "Uma IA analisa landing pages sem rodeios — individualmente ou em uma batalha ao vivo entre dois sites.",
-        "highlight": "Cada resultado ganha placar, ranking e uma imagem pronta para compartilhar."
+        "description": "Uma IA critica sua landing page sem rodeios."
       }
     },
     "career": {
