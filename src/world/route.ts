@@ -70,17 +70,19 @@ export function streetAt(t: number): Point {
 
 /**
  * Turns a section's scroll progress into the stop the visitor is at and how
- * far along the route the vehicle is. The vehicle slows through each stop
- * rather than halting, so a steady scroll gives a steady ride. `lead` reserves the start of the
- * section for the camera to travel in from the previous scene.
+ * far along the route the vehicle is. The vehicle moves at an even pace: any
+ * slowing at the stops would fight the scroll and read as stutter. `lead`
+ * reserves the start of the section for the camera to travel in from the
+ * previous scene.
  */
 export function stopState(progress: number, stops: number, lead = 0) {
-  const local = clamp((progress - lead) / (1 - lead), 0, 1);
-  const position = local * (stops - 1);
-  const index = Math.min(stops - 2, Math.floor(position));
-  const travel = (index + smooth((position - index - 0.1) / 0.8)) / (stops - 1);
+  const travel = clamp((progress - lead) / (1 - lead), 0, 1);
 
-  return { active: Math.round(position), travel, arrival: smooth(progress / (lead || 1)) };
+  return {
+    active: Math.round(travel * (stops - 1)),
+    travel,
+    arrival: smooth(progress / (lead || 1)),
+  };
 }
 
 /** Scroll progress at which a stop is the active one. */

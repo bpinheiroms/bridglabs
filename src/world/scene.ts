@@ -373,10 +373,9 @@ function buildStreet(solid: Builder, glass: Builder, lamps: Builder, stops: numb
     strip(0xb9c0cc, x - 1.45, x - 1.05, z, 2, 0.08);
     strip(0xb9c0cc, x + 1.05, x + 1.45, z, 2, 0.08);
     strip(0x2a2f3d, x - 0.14, x + 0.14, z, 2, 0.08);
-    if (Math.floor(z / 2) % 3 !== 0) {
-      strip(0xe2b84a, x - 3.6, x - 3.3, z, 2, 0.06);
-      strip(0xe2b84a, x + 3.3, x + 3.6, z, 2, 0.06);
-    }
+    // Unbroken lines: dashes rushing at the camera strobe at this resolution.
+    strip(0xe2b84a, x - 3.7, x - 3.2, z, 2, 0.06);
+    strip(0xe2b84a, x + 3.2, x + 3.7, z, 2, 0.06);
   }
 
   for (let z = STREET.top - 20; z <= STREET.bottom + 4; z += 10.2) {

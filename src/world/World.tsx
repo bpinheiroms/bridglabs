@@ -18,6 +18,9 @@ interface WorldProps extends WorldOptions {
   figure: string;
 }
 
+/** Seconds the route position takes to catch up with the scroll. */
+const ROUTE_SMOOTHING = 0.32;
+
 /** Where he stands on the pier, and how tall he is in world units. */
 const FIGURE = { x: 331, y: 3.2, z: 145.4, height: 8.6, ratio: 571 / 1457 };
 
@@ -53,11 +56,12 @@ function lombardPose(travel: number, reach: number, out: Pose) {
 function tramPose(travel: number, reach: number, out: Pose) {
   const tram = streetAt(travel);
   const z = tram.z - 26 * reach;
-  out.position.set(
-    tram.x - 4,
-    Math.max(tram.y + 11.5 * reach, heightAt(tram.x, z) + 6.5),
-    z,
-  );
+  // High enough above both the car and the ground under the camera. A rounded
+  // maximum: a hard one would jolt the camera where one takes over from the other.
+  const overCar = tram.y + 11.5 * reach;
+  const overGround = heightAt(tram.x, z) + 6.5;
+  const height = (overCar + overGround + Math.hypot(overCar - overGround, 3)) / 2;
+  out.position.set(tram.x - 4, height, z);
   out.target.set(tram.x + 1.5, tram.y - 4, tram.z + 36);
   out.side = 1;
   // The car sits low in this view, so it needs more room above the panel.
@@ -173,6 +177,7 @@ export default function World(options: WorldProps) {
     let compact = false;
     let night = nightRef.current;
     let route = 0;
+    let speed = 0;
     let started = false;
     let last = performance.now();
     let clock = 0;
@@ -207,9 +212,23 @@ export default function World(options: WorldProps) {
         (sections.career ? pinnedProgress(sections.career) : 0) +
         (closing ? clamp(1 - closing.top / window.innerHeight, 0, 1) : 0);
 
-      // Only this one number is eased. The vehicles and the camera are both
-      // derived from it, so wheel steps become a glide and nothing drifts apart.
-      route = !started || reducedMotion ? scrolled : route + (scrolled - route) * (1 - Math.exp(-delta * 5.5));
+      // Only this one number is smoothed. The vehicles and the camera are both
+      // derived from it, so nothing drifts apart. It follows the scroll like a
+      // critically damped spring rather than a plain ease: a mouse wheel moves
+      // the page in jumps, and an ease turns every jump into a lurch, whereas
+      // the spring keeps the speed continuous and blends the jumps together.
+      if (!started || reducedMotion) {
+        route = scrolled;
+        speed = 0;
+      } else {
+        const omega = 2 / ROUTE_SMOOTHING;
+        const x = omega * delta;
+        const decay = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);
+        const offset = route - scrolled;
+        const push = (speed + omega * offset) * delta;
+        speed = (speed - omega * push) * decay;
+        route = scrolled + (offset + push) * decay;
+      }
       started = true;
 
       const heroProgress = clamp(route, 0, 1);
