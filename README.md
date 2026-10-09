@@ -43,6 +43,16 @@ O Chrome grava o arquivo e pode ficar aberto depois; encerre com Ctrl+C.
 
 ## Publicação
 
+Todo push na `main` publica sozinho: o workflow `.github/workflows/ci.yml`
+roda `npm run verify` e, se passar, `npm run deploy`. Pull requests rodam só a
+verificação. O deploy usa o ambiente `production` do GitHub, que precisa dos
+secrets `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID`.
+
+Como só o que está no Git é publicado, arquivos locais fora do controle de
+versão em `public/` não vão para o ar por esse caminho.
+
+Para publicar à mão, a partir da sua máquina:
+
 ```bash
 npm run deploy
 ```
