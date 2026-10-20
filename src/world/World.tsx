@@ -6,14 +6,20 @@ import {
   clamp,
   heightAt,
   lombardAt,
-  pinnedProgress,
   smooth,
   stopState,
   streetAt,
 } from "@/world/route";
 import { createWorld, type WorldOptions } from "@/world/scene";
 
+/**
+ * `portrait`: a framed view of the bridge that sits in the page and ignores the scroll.
+ * `ambient`: a faint backdrop behind the whole page, flying the route as the page scrolls.
+ */
+export type WorldMode = "portrait" | "ambient";
+
 interface WorldProps extends WorldOptions {
+  mode: WorldMode;
   /** Bruno's full-body portrait, shown standing on the pier at the end of the route. */
   figure: string;
 }
@@ -27,20 +33,14 @@ const FIGURE = { x: 331, y: 3.2, z: 145.4, height: 8.6, ratio: 571 / 1457 };
 interface Pose {
   position: Vector3;
   target: Vector3;
-  /** Wide screens: how far the subject is pushed right, clear of the copy. */
-  side: number;
-  /** Narrow screens: how far it is raised above the docked panel (negative lowers it). */
-  lift: number;
 }
 
-const makePose = (): Pose => ({ position: new Vector3(), target: new Vector3(), side: 0, lift: 0 });
+const makePose = (): Pose => ({ position: new Vector3(), target: new Vector3() });
 
 /** From the shore below the bridge, looking along it toward Marin. */
 function bridgePose(out: Pose) {
   out.position.set(160, 8, 14);
   out.target.set(-40, 60, -104);
-  out.side = 1;
-  out.lift = -0.7;
 }
 
 /** In front of and above the car, watching it come down the switchbacks. */
@@ -48,8 +48,6 @@ function lombardPose(travel: number, reach: number, out: Pose) {
   const car = lombardAt(travel);
   out.position.set(230 + (car.x - 230) * 0.25 - 3, car.y + 27 * reach, car.z + 54 * reach);
   out.target.set(230 + (car.x - 230) * 0.5, car.y + 3, car.z - 10);
-  out.side = 1;
-  out.lift = 1;
 }
 
 /** Riding behind the cable car, looking down the street to the bay. */
@@ -63,17 +61,12 @@ function tramPose(travel: number, reach: number, out: Pose) {
   const height = (overCar + overGround + Math.hypot(overCar - overGround, 3)) / 2;
   out.position.set(tram.x - 4, height, z);
   out.target.set(tram.x + 1.5, tram.y - 4, tram.z + 36);
-  out.side = 1;
-  // The car sits low in this view, so it needs more room above the panel.
-  out.lift = 1.6;
 }
 
 /** Low over the water, looking back at the pier and the city above it. */
 function pierPose(out: Pose) {
   out.position.set(300, 7.5, 198);
   out.target.set(344, 17, 112);
-  out.side = 0;
-  out.lift = 0.9;
 }
 
 const gaze = new Vector3();
@@ -111,13 +104,10 @@ function blend(from: Pose, to: Pose, t: number, arc: number, out: Pose) {
     out.position.y + Math.sin(pitch) * length,
     out.position.z + Math.sin(yaw) * Math.cos(pitch) * length,
   );
-  out.side = from.side + (to.side - from.side) * t;
-  out.lift = from.lift + (to.lift - from.lift) * t;
 }
 
 /**
- * The world behind the page: one low-resolution San Francisco, with a camera
- * that travels through it as the visitor scrolls.
+ * One low-resolution San Francisco, either framed in the page or behind it.
  */
 export default function World(options: WorldProps) {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -161,13 +151,7 @@ export default function World(options: WorldProps) {
     const careerStops = optionsRef.current.years.length;
     const camera = new PerspectiveCamera(38, 1, 1, 2200);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const sections = {
-      hero: document.getElementById("top"),
-      lab: document.querySelector('[data-route="lab"]'),
-      career: document.querySelector('[data-route="trajectory"]'),
-      closing: document.getElementById("closing"),
-    };
+    const portrait = optionsRef.current.mode === "portrait";
 
     const pose = makePose();
     const from = makePose();
@@ -182,6 +166,8 @@ export default function World(options: WorldProps) {
     let last = performance.now();
     let clock = 0;
     let animationFrame = 0;
+    // A framed view scrolled out of sight stops drawing.
+    let visible = true;
 
     const resize = () => {
       width = host.clientWidth;
@@ -195,22 +181,15 @@ export default function World(options: WorldProps) {
 
     const frame = (now: number) => {
       animationFrame = requestAnimationFrame(frame);
-      if (document.hidden || !width) return;
-
       const delta = Math.min(0.1, (now - last) / 1000);
       last = now;
+      if (document.hidden || !visible || !width) return;
       if (!reducedMotion) clock += delta;
 
-      const hero = sections.hero?.getBoundingClientRect();
-      const closing = sections.closing?.getBoundingClientRect();
-
-      // The four sections follow one another, so their progress adds up to a
-      // single position along the route: 0 bridge, 1-2 Lombard, 2-3 cable car, 4 pier.
-      const scrolled =
-        (hero ? clamp(-hero.top / hero.height, 0, 1) : 0) +
-        (sections.lab ? pinnedProgress(sections.lab) : 0) +
-        (sections.career ? pinnedProgress(sections.career) : 0) +
-        (closing ? clamp(1 - closing.top / window.innerHeight, 0, 1) : 0);
+      // The whole page is one position along the route:
+      // 0 bridge, 1-2 Lombard, 2-3 cable car, 4 pier.
+      const page = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = portrait ? 0 : page > 0 ? clamp(window.scrollY / page, 0, 1) * 4 : 0;
 
       // Only this one number is smoothed. The vehicles and the camera are both
       // derived from it, so nothing drifts apart. It follows the scroll like a
@@ -240,7 +219,16 @@ export default function World(options: WorldProps) {
       // A tall, narrow frame sees less to each side, so the camera stands further back.
       const reach = compact ? 1.25 : 1;
 
-      if (closingProgress > 0) {
+      if (portrait) {
+        bridgePose(pose);
+        // A slow sway around the view, so the frame reads as a place rather than a picture.
+        const sway = Math.sin(clock * 0.12) * 0.07;
+        gaze.subVectors(pose.position, pose.target);
+        const radius = Math.hypot(gaze.x, gaze.z);
+        const angle = Math.atan2(gaze.z, gaze.x) + sway;
+        pose.position.x = pose.target.x + Math.cos(angle) * radius;
+        pose.position.z = pose.target.z + Math.sin(angle) * radius;
+      } else if (closingProgress > 0) {
         tramPose(1, reach, from);
         pierPose(to);
         blend(from, to, smooth(closingProgress), 10, pose);
@@ -259,30 +247,26 @@ export default function World(options: WorldProps) {
       const target = nightRef.current;
       night = reducedMotion ? target : night + clamp(target - night, -delta * 1.4, delta * 1.4);
 
-      // Wide screens push the subject right of the copy; narrow ones raise it above the sheet.
-      const sideways = compact ? 0 : 0.19 * pose.side;
-      const upward = compact ? 0.26 * pose.lift : 0;
-      const fullWidth = width * (1 + sideways * 2);
-      const fullHeight = height * (1 + Math.abs(upward) * 2);
-      camera.aspect = fullWidth / fullHeight;
+      camera.aspect = width / height;
       // Keep roughly the same horizontal view whatever the shape of the screen.
       camera.fov = clamp((Math.atan(0.42 / camera.aspect) * 360) / Math.PI, 38, 66);
-      camera.setViewOffset(fullWidth, fullHeight, 0, Math.max(0, upward) * 2 * height, width, height);
+      camera.updateProjectionMatrix();
       camera.position.copy(pose.position);
       camera.lookAt(pose.target);
 
       world.update({
         time: clock,
         night: smooth(night),
-        car: product.travel,
-        tram: career.travel,
+        // In the frame the vehicles keep their rounds on their own.
+        car: portrait ? (clock * 0.04) % 1 : product.travel,
+        tram: portrait ? (clock * 0.03) % 1 : career.travel,
         product: product.active,
         career: career.active,
       });
       renderer.render(world.scene, camera);
 
       // He appears as the camera comes down to the pier, never through the city.
-      const arrival = smooth((closingProgress - 0.35) / 0.45);
+      const arrival = portrait ? 0 : smooth((closingProgress - 0.35) / 0.45);
       if (arrival > 0) {
         feet.set(FIGURE.x, FIGURE.y, FIGURE.z).project(camera);
         head.set(FIGURE.x, FIGURE.y + FIGURE.height, FIGURE.z).project(camera);
@@ -303,12 +287,17 @@ export default function World(options: WorldProps) {
 
     const observer = new ResizeObserver(resize);
     observer.observe(host);
+    const sight = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+    });
+    sight.observe(host);
     resize();
     animationFrame = requestAnimationFrame(frame);
 
     return () => {
       cancelAnimationFrame(animationFrame);
       observer.disconnect();
+      sight.disconnect();
       world.dispose();
       renderer.dispose();
       canvas.remove();
@@ -317,5 +306,5 @@ export default function World(options: WorldProps) {
     };
   }, []);
 
-  return <div ref={hostRef} className="world" aria-hidden="true" />;
+  return <div ref={hostRef} className="world" data-mode={options.mode} aria-hidden="true" />;
 }

@@ -85,18 +85,5 @@ export function stopState(progress: number, stops: number, lead = 0) {
   };
 }
 
-/** Scroll progress at which a stop is the active one. */
-export function stopProgress(index: number, stops: number, lead = 0) {
-  return lead + (1 - lead) * (index / (stops - 1));
-}
-
-/** How far a tall section with a pinned stage has been scrolled, 0 to 1. */
-export function pinnedProgress(element: Element) {
-  const bounds = element.getBoundingClientRect();
-  const travel = bounds.height - window.innerHeight;
-  if (travel <= 0) return bounds.top <= 0 ? 1 : 0;
-  return clamp(-bounds.top / travel, 0, 1);
-}
-
 /** Share of the career section spent flying from Lombard to the cable car. */
 export const CAREER_LEAD = 0.14;

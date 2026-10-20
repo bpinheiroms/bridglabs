@@ -1,10 +1,5 @@
-import Sprite from "@/components/Sprite";
 import type { Translator } from "@/i18n";
-import { moonMini, sunMini } from "@/sprites";
 import { toggleTheme, useTheme } from "@/theme";
-
-const sunColors = { y: "#ffb92e", o: "#ffe680" };
-const moonColors = { m: "#f3efd8", s: "#c9c5b4" };
 
 export default function ThemeToggle({ t }: { t: Translator }) {
   const theme = useTheme();
@@ -16,11 +11,19 @@ export default function ThemeToggle({ t }: { t: Translator }) {
       role="switch"
       aria-checked={theme === "night"}
       aria-label={t("theme.label")}
+      title={t(theme === "night" ? "theme.night" : "theme.day")}
       onClick={toggleTheme}
     >
-      <span className="theme-toggle-knob" aria-hidden="true">
-        <Sprite art={theme === "night" ? moonMini : sunMini} colors={theme === "night" ? moonColors : sunColors} />
-      </span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        {theme === "night" ? (
+          <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />
+        ) : (
+          <>
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+          </>
+        )}
+      </svg>
     </button>
   );
 }

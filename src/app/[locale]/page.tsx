@@ -1,249 +1,168 @@
-import { lazy } from "react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import PixelImage from "@/components/PixelImage";
-import RouteSection from "@/components/RouteSection";
-import Scenery from "@/components/Scenery";
-import Sprite from "@/components/Sprite";
+import Mark from "@/components/Mark";
 import ThemeToggle from "@/components/ThemeToggle";
 import type { Locale, Translator } from "@/i18n";
-import { arrowDown, arrowOut, brand } from "@/sprites";
-import { CAREER_LEAD } from "@/world/route";
+import { richText } from "@/richText";
 
-// The 3D world is the heaviest thing on the page; the copy never waits for it.
-const World = lazy(() => import("@/world/World"));
-
-const brandColors = { "#": "var(--ink)", b: "var(--surface)" };
+const overcoded = {
+  href: "https://overcoded.app/?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
+  image: "/overcoded-icon.png",
+};
 
 const projects = [
   {
     key: "jobsSearch",
     name: "Jobs Search",
     href: "https://jobs.bridglabs.com/?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
+    domain: "jobs.bridglabs.com",
     image: "/jobs-search-logo.svg",
   },
   {
     key: "sentuni",
     name: "Sentuni",
     href: "https://apps.apple.com/app/id6811380725",
+    domain: "App Store",
     image: "/sentuni-logo.png",
   },
   {
     key: "pinubi",
     name: "Pinubi",
     href: "https://pinubi.com/pt?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
+    domain: "pinubi.com",
     image: "/pinubi-logo.png",
   },
-  {
-    key: "refound",
-    name: "Re:Found",
-    href: "https://refound.lol/?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
-    image: "/refound-logo.svg",
-  },
-  {
-    key: "destrua",
-    name: "Destrua.me",
-    href: "https://destrua.me?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
-    image: "/destrua-me-logo.svg",
-  },
 ] as const;
 
-const careerMilestones = [
-  {
-    key: "blueRiver",
-    short: "Blue River Technology",
-    year: "2022",
-    logos: [
-      { src: "/company-logos/sparkai.jpg", name: "SparkAI" },
-      { src: "/company-logos/blue-river.jpg", name: "Blue River Technology" },
-      { src: "/company-logos/john-deere.jpg", name: "John Deere" },
-    ],
-  },
-  {
-    key: "pagaleve",
-    short: "Pagaleve",
-    year: "2022",
-    logos: [{ src: "/company-logos/pagaleve.jpg", name: "Pagaleve" }],
-  },
-  {
-    key: "gavea",
-    short: "Gavea Marketplace",
-    year: "2021",
-    logos: [{ src: "/company-logos/gavea.jpg", name: "Gavea Marketplace" }],
-  },
-  {
-    key: "globo",
-    short: "Globo",
-    year: "2020",
-    logos: [{ src: "/company-logos/globo.jpg", name: "Globo" }],
-  },
-  {
-    key: "b3",
-    short: "B3",
-    year: "2018",
-    logos: [{ src: "/company-logos/b3.jpg", name: "B3" }],
-  },
-  {
-    key: "oxxy",
-    short: "Grupo Oxxy",
-    year: "2015",
-    logos: [{ src: "/company-logos/grupo-oxxy.jpg", name: "Grupo Oxxy" }],
-  },
+const chapters = [
+  { key: "blueRiver", from: "2022", to: null },
+  { key: "pagaleve", from: "2022", to: "2022" },
+  { key: "gavea", from: "2021", to: "2022" },
+  { key: "globo", from: "2020", to: "2021" },
+  { key: "b3", from: "2018", to: "2020" },
+  { key: "oxxy", from: "2015", to: "2018" },
 ] as const;
+
+const profiles = [
+  { name: "GitHub", href: "https://github.com/bpinheiroms" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/bpinheiroms/" },
+  { name: "X", href: "https://x.com/brunopinheiroms" },
+] as const;
+
+function Arrow() {
+  return (
+    <svg className="arrow" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 17 17 7M8 7h9v9" />
+    </svg>
+  );
+}
 
 export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
-  const action = t("status.visit");
-  const productStops = projects.map((project) => {
-    return {
-      id: project.key,
-      marker: (
-        <span className="logo-tile">
-          <PixelImage src={project.image} grid={28} fit={0.86} />
-        </span>
-      ),
-      title: project.name,
-      body: (
-        <>
-          <p>{t(`projects.${project.key}.description`)}</p>
-          <a
-            className="px-btn"
-            href={project.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${action}: ${project.name}`}
-          >
-            {action}
-            <Sprite art={arrowOut} />
-          </a>
-        </>
-      ),
-    };
-  });
-
-  const careerStops = careerMilestones.map((milestone) => ({
-    id: milestone.key,
-    marker: <span className="stop-year">{milestone.year}</span>,
-    icons: (
-      <span className="stop-logos">
-        {milestone.logos.map((logo) => (
-          // The title already names the company; only the other logos need reading out.
-          <img
-            key={logo.src}
-            src={logo.src}
-            alt={milestone.short.startsWith(logo.name) ? "" : logo.name}
-            title={logo.name}
-          />
-        ))}
-      </span>
-    ),
-    title: milestone.short,
-    body: (
-      <>
-        <p className="stop-meta">
-          {t(`career.${milestone.key}.role`)}
-          <span>{t(`career.${milestone.key}.periodShort`)}</span>
-        </p>
-        <p>{t(`career.${milestone.key}.description`)}</p>
-      </>
-    ),
-  }));
-
   return (
-    <div className="site-shell">
-      <Scenery>
-        <World
-          logos={projects.map((project) => project.image)}
-          years={careerMilestones.map((milestone) => milestone.year)}
-          figure="/bruno-full.webp"
-        />
-      </Scenery>
-
-      <header className="site-header">
-        <a className="wordmark" href="#top" aria-label={t("homeLabel")}>
-          <Sprite art={brand} colors={brandColors} className="wordmark-mark" />
-          <span>
-            bridg<span>/labs</span>
-          </span>
-        </a>
-
-        <nav className="site-nav" aria-label={t("navLabel")}>
-          <a className="nav-link" href="#lab">
-            {t("navProducts")}
-          </a>
-          <a className="nav-link" href="#trajectory">
-            {t("navJourney")}
-          </a>
-          <a className="nav-link" href="#closing">
-            {t("navContact")}
-          </a>
+    <div className="page">
+      <header className="topbar">
+        <span className="topbar-name">{t("hero.name")}</span>
+        <div className="topbar-controls">
           <LanguageSwitcher locale={locale} />
           <ThemeToggle t={t} />
-        </nav>
+        </div>
       </header>
 
       <main>
-        <section id="top" className="hero" aria-labelledby="hero-heading">
-          <div className="hero-inner">
-            <img
-              className="hero-avatar"
-              src="/illustrations/bruno-portrait-v4.webp"
-              alt={t("hero.photoAlt")}
-              width={1254}
-              height={1254}
-              fetchPriority="high"
-            />
-            <h1 id="hero-heading">{t("hero.name")}</h1>
-            <p className="hero-role">{t("hero.kicker")}</p>
+        <section className="hero" aria-labelledby="hero-heading">
+          <div className="hero-copy">
+            <p className="eyebrow">{t("hero.role")}</p>
+            <h1 id="hero-heading">{richText(t("hero.headline"))}</h1>
+            <p className="hero-lead">{t("hero.lead")}</p>
           </div>
-          <a className="scroll-cue" href="#lab">
-            {t("hero.scrollCue")}
-            <Sprite art={arrowDown} />
-          </a>
+          <img
+            className="hero-avatar"
+            src="/illustrations/bruno-portrait-v4.webp"
+            alt={t("hero.photoAlt")}
+            width={1254}
+            height={1254}
+            fetchPriority="high"
+          />
         </section>
 
-        <RouteSection
-          id="lab"
-          heading="BridgLabs"
-          lead={t("founder.description")}
-          stops={productStops}
-        />
+        <section className="block" aria-labelledby="chapters-heading">
+          <h2 id="chapters-heading" className="eyebrow">
+            {t("chapters.heading")}
+          </h2>
+          <ol className="chapters">
+            {chapters.map((chapter) => (
+              <li key={chapter.key} className="chapter">
+                {/* Holds its place while the chapter's text scrolls past. */}
+                <div className="chapter-label">
+                  <span className="chapter-years">
+                    {chapter.from === chapter.to
+                      ? chapter.from
+                      : `${chapter.from} — ${chapter.to ?? t("chapters.now")}`}
+                  </span>
+                  <h3>{t(`chapters.${chapter.key}.company`)}</h3>
+                  <span className="chapter-role">{t(`chapters.${chapter.key}.role`)}</span>
+                </div>
+                <p className="chapter-text">{richText(t(`chapters.${chapter.key}.text`))}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-        <RouteSection
-          id="trajectory"
-          heading={t("navJourney")}
-          lead={t("journey.lead")}
-          stops={careerStops}
-          leadIn={CAREER_LEAD}
-        />
+        <section className="block" aria-labelledby="building-heading">
+          <h2 id="building-heading" className="eyebrow">
+            {t("building.heading")}
+          </h2>
+          <p className="block-lead">{t("building.lead")}</p>
 
-        <section id="closing" className="closing" aria-labelledby="closing-heading">
-          <div className="closing-note">
-            <h2 id="closing-heading">{t("closing.title")}</h2>
-            <p>{t("closing.description")}</p>
-            <nav className="closing-links" aria-label={t("footer.navLabel")}>
-              <a className="px-btn px-btn-primary" href={`mailto:${t("footer.email")}`}>
-                {t("footer.email")}
+          <a className="feature" href={overcoded.href} target="_blank" rel="noopener noreferrer">
+            <div className="feature-copy">
+              <span className="card-head">
+                <img src={overcoded.image} alt="" width={28} height={28} />
+                <span className="card-name">Overcoded</span>
+              </span>
+              <p className="feature-tagline">{t("building.overcoded.tagline")}</p>
+              <p>{t("building.overcoded.text")}</p>
+              <span className="feature-cta">
+                {t("building.play")}
+                <Arrow />
+              </span>
+            </div>
+            <div className="feature-stat">
+              <Mark kind="highlight">{t("building.overcoded.stat")}</Mark>
+              <span>{t("building.overcoded.statLabel")}</span>
+            </div>
+          </a>
+
+          <ul className="cards">
+            {projects.map((project) => (
+              <li key={project.key}>
+                <a className="card" href={project.href} target="_blank" rel="noopener noreferrer">
+                  <span className="card-head">
+                    <img src={project.image} alt="" width={22} height={22} loading="lazy" />
+                    <span className="card-name">{project.name}</span>
+                    <Arrow />
+                  </span>
+                  <p>{t(`building.${project.key}`)}</p>
+                  <span className="card-domain">{project.domain}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="contact" aria-label={t("contact.navLabel")}>
+          <a className="contact-email" href={`mailto:${t("contact.email")}`}>
+            <Mark kind="underline">{t("contact.email")}</Mark>
+          </a>
+          <nav className="contact-links" aria-label={t("contact.navLabel")}>
+            {profiles.map((profile) => (
+              <a key={profile.name} href={profile.href} target="_blank" rel="noopener noreferrer">
+                {profile.name}
               </a>
-              <a
-                className="px-btn"
-                href="https://www.linkedin.com/in/bpinheiroms/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-                <Sprite art={arrowOut} />
-              </a>
-              <a
-                className="px-btn"
-                href="https://x.com/brunopinheiroms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                X
-                <Sprite art={arrowOut} />
-              </a>
-            </nav>
-          </div>
-          <p className="closing-credit">{t("footer.note")}</p>
+            ))}
+            <span>
+              {t("contact.location")} · {new Date().getFullYear()}
+            </span>
+          </nav>
         </section>
       </main>
     </div>

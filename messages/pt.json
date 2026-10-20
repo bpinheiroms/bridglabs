@@ -1,15 +1,9 @@
 {
   "Metadata": {
-    "title": "BridgLabs — Bruno Pinheiro, engenheiro de software & Founder",
-    "description": "Trajetória profissional e produtos criados por Bruno Pinheiro, do problema ao lançamento."
+    "title": "Bruno Pinheiro — Senior Software Engineer",
+    "description": "Bruno Pinheiro é engenheiro de software em São Paulo, com mais de 10 anos construindo produtos do zero. Criador do Overcoded."
   },
   "HomePage": {
-    "homeLabel": "BridgLabs — início",
-    "navLabel": "Navegação principal",
-    "navProducts": "Produtos",
-    "navJourney": "Trajetória",
-    "navLinkedIn": "LinkedIn",
-    "navContact": "Contato",
     "theme": {
       "label": "Alternar entre dia e noite",
       "day": "Dia",
@@ -17,116 +11,64 @@
     },
     "hero": {
       "name": "Bruno Pinheiro",
-      "location": "São Paulo, Brasil",
-      "experience": "10+ anos construindo",
-      "timezone": "GMT−3 · REMOTO",
-      "photoAlt": "Avatar de Bruno Pinheiro em pixel art",
-      "portraitCaption": "Engenharia · Produto · IA",
-      "currentLabel": "AGORA",
-      "currentValue": "Blue River Technology",
-      "currentNote": "John Deere · Vale do Silício",
-      "kicker": "Senior Software Engineer & Founder",
-      "cta": "Percorrer a trajetória",
-      "ctaProducts": "Ver os produtos",
-      "scrollCue": "Role para ver mais"
+      "role": "Senior Software Engineer · IA aplicada · São Paulo",
+      "headline": "Há [[hl:mais de 10 anos]] eu levo ideias do zero até produção.",
+      "lead": "Frontend, backend, integrações e o que mais for preciso. Hoje no time da SparkAI, na Blue River Technology, da John Deere.",
+      "photoAlt": "Avatar de Bruno Pinheiro em pixel art"
     },
-    "journey": {
-      "proofLabel": "IMPACTO",
-      "lead": "Cada endereço, um capítulo. Siga o bondinho pela minha trajetória.",
-      "tramAlt": "Bruno sorrindo na janela de um bondinho de frente",
-      "stopLabel": "Parada"
-    },
-    "timeline": {
-      "now": "AGORA",
-      "current": "atual"
-    },
-    "founder": {
-      "badge": "FOUNDER MODE",
-      "role": "Founder & Product Engineer",
-      "description": "A BridgLabs é meu laboratório independente para criar e operar produtos próprios — da primeira ideia ao primeiro usuário.",
-      "projectsHeading": "PRODUTOS QUE LEVO DO ZERO AO AR",
-      "carAlt": "Carro em pixel art percorrendo as curvas da Lombard Street"
-    },
-    "status": {
-      "building": "EM CONSTRUÇÃO",
-      "follow": "Acompanhar",
-      "visit": "Abrir projeto",
-      "shippedLabel": "Projeto entregue"
-    },
-    "projects": {
-      "sentuni": {
-        "description": "Diário emocional para dar nome ao que você sente."
-      },
-      "pemuli": {
-        "description": "Rotina do bebê registrada com uma só mão."
-      },
-      "refound": {
-        "description": "Ideias de startups da YC que valem revisitar."
-      },
-      "jobsSearch": {
-        "description": "Vagas remotas internacionais para devs no Brasil."
-      },
-      "pinubi": {
-        "description": "Recomendações de creators viram um guia pesquisável."
-      },
-      "destrua": {
-        "description": "Uma IA critica sua landing page sem rodeios."
-      }
-    },
-    "career": {
+    "chapters": {
+      "heading": "Trajetória",
+      "now": "agora",
       "blueRiver": {
-        "periodShort": "SET 2022 — AGORA",
-        "company": "SparkAI → Blue River Technology · John Deere",
+        "company": "SparkAI → Blue River",
         "role": "Senior Software Engineer",
-        "description": "Entrei na SparkAI para construir produtos human-in-the-loop. Depois da aquisição, passei a liderar entregas e sistemas frontend para operações de IA na Blue River.",
-        "proof": "Construí interfaces e fluxos para operações human-in-the-loop que ajudam modelos de visão computacional a chegar e permanecer em produção, como parte da equipe por trás das máquinas autônomas e do See & Spray da John Deere."
+        "text": "Para o time usar IA com confiança, criei a ferramenta de code review com IA que virou padrão interno: [[hl:90% de acurácia]] pegando bugs gerados por IA. Ajudei a [[hl:cortar pela metade o tempo do CI/CD]], reduzindo custos, e a levar a cobertura de testes [[hl:de 40% para 80%]]."
       },
       "pagaleve": {
-        "periodShort": "MAI 2022 — SET 2022",
         "company": "Pagaleve",
         "role": "Senior Software Engineer",
-        "description": "Atuei no desenvolvimento, nas integrações, nos testes e na entrega de uma plataforma fintech, incluindo integrações de lojas e coleta de dados para decisões de risco de crédito.",
-        "proof": "Construí bibliotecas internas, microfrontends com Module Federation e um design system com Atomic Design. Implementei monitoramento e testes A/B e contribuí para a publicação na VTEX e integrações com Shopify e NuvemShop."
+        "text": "Num checkout de BNPL presente em [[hl:mais de 200 e-commerces]], ajudei nas integrações com VTEX, Shopify e NuvemShop, deixei o carregamento [[hl:40% mais rápido]] e reforcei a [[ul:segurança do fluxo de pagamento]]."
       },
       "gavea": {
-        "periodShort": "MAI 2021 — MAI 2022",
         "company": "Gavea Marketplace",
-        "role": "Senior Software Engineer · Frontend Tech Lead",
-        "description": "Liderei a arquitetura web, desktop e mobile de uma bolsa digital de commodities com blockchain.",
-        "proof": "Unifiquei as bases web, desktop e mobile e introduzi CI/CD e testes automatizados, dando previsibilidade à evolução de uma plataforma de negociação com blockchain."
+        "role": "Frontend Tech Lead",
+        "text": "Como tech lead, defini a arquitetura de frontend web, desktop e mobile e implantei CI/CD e testes automatizados numa bolsa de commodities cuja blockchain processou [[hl:US$ 4 bilhões em ordens]]."
       },
       "globo": {
-        "periodShort": "JUN 2020 — MAI 2021",
         "company": "Globo",
         "role": "Senior Software Engineer",
-        "description": "Construí experiências digitais de esporte, educação e mídia para uma das maiores empresas de comunicação da América Latina.",
-        "proof": "Coloquei no ar experiências de palpites esportivos e correção do ENEM usadas por milhões de pessoas em momentos de grande audiência."
+        "text": "Liderei o projeto de palpites esportivos e trabalhei na correção do ENEM, [[hl:usados por milhões de pessoas]], alguns deles exibidos na TV."
       },
       "b3": {
-        "periodShort": "AGO 2018 — JUN 2020",
         "company": "B3",
         "role": "Software Engineer",
-        "description": "Ajudei a modernizar uma plataforma legada e atuei como full-stack, com maior foco em frontend e testes, em software crítico para o mercado de capitais.",
-        "proof": "Ajudei a reconstruir o sistema de rebalanceamento do Ibovespa sobre uma arquitetura moderna e testável, tornando mais segura a evolução de um fluxo crítico do mercado."
+        "text": "Ajudei a tirar o [[ul:rebalanceamento do Ibovespa]] de um sistema legado para uma arquitetura moderna e testável."
       },
       "oxxy": {
-        "periodShort": "AGO 2015 — AGO 2018",
         "company": "Grupo Oxxy",
         "role": "Software Engineer",
-        "description": "Comecei como engenheiro full-stack, mantendo sistemas legados e automatizando processos operacionais repetitivos em diferentes domínios.",
-        "proof": "Automatizei rotinas manuais e entreguei sistemas ponta a ponta para operações automotivas, multas eletrônicas, autoescolas e condomínios."
+        "text": "Onde comecei: sistemas ponta a ponta e automações para operações automotivas, multas eletrônicas, autoescolas e condomínios."
       }
     },
-    "closing": {
-      "title": "Mais de dez anos depois, a motivação continua a mesma.",
-      "description": "Entender um problema de verdade e construir algo que mereça existir."
+    "building": {
+      "heading": "Construindo",
+      "lead": "A BridgLabs é meu laboratório de produtos próprios.",
+      "play": "Jogar agora",
+      "open": "Abrir",
+      "overcoded": {
+        "tagline": "Uma garagem, um laptop e um prazo.",
+        "text": "Monte sua startup antes que o dinheiro acabe, acendendo San Francisco no caminho. Grátis, no navegador.",
+        "stat": "300+",
+        "statLabel": "pessoas já jogaram no mapa"
+      },
+      "jobsSearch": "Vagas remotas internacionais para devs no Brasil.",
+      "sentuni": "Diário emocional para dar nome ao que você sente.",
+      "pinubi": "Recomendações de creators viram um guia pesquisável."
     },
-    "footer": {
-      "note": "Projetado e construído por Bruno Pinheiro.",
-      "navLabel": "Links finais",
-      "backTop": "Voltar ao início",
-      "contact": "E-mail",
-      "email": "contato@bridglabs.com"
+    "contact": {
+      "navLabel": "Contato e redes",
+      "email": "contato@bridglabs.com",
+      "location": "São Paulo, Brasil"
     }
   }
 }

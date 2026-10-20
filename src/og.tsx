@@ -18,6 +18,7 @@ if (root) {
     <div style={{ height: 630, overflow: "hidden", position: "relative", width: 1200 }}>
       {/* The stops are never in shot here; the world only needs some to exist. */}
       <World
+        mode="portrait"
         logos={["/jobs-search-logo.svg", "/sentuni-logo.png"]}
         years={["2022", "2015"]}
         figure="/bruno-full.webp"

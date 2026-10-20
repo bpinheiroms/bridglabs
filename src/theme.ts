@@ -2,7 +2,7 @@ import { useSyncExternalStore } from "react";
 
 export type Theme = "day" | "night";
 
-const THEME_COLOR: Record<Theme, string> = { day: "#a9d8f5", night: "#141a33" };
+const THEME_COLOR: Record<Theme, string> = { day: "#fbfaf7", night: "#121522" };
 const listeners = new Set<() => void>();
 
 function readTheme(): Theme {
