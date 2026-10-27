@@ -22,7 +22,7 @@
       "blueRiver": {
         "company": "SparkAI → Blue River",
         "role": "Senior Software Engineer",
-        "text": "Para o time usar IA com confiança, criei a ferramenta de code review com IA que virou padrão interno: [[hl:90% de acurácia]] pegando bugs gerados por IA. Ajudei a [[hl:cortar pela metade o tempo do CI/CD]], reduzindo custos, e a levar a cobertura de testes [[hl:de 40% para 80%]]."
+        "text": "Atuo como engenheiro de produto full-stack: do discovery à observabilidade, entrego features [[hl:de ponta a ponta, do backend ao frontend]]. Também sou responsável pelo [[hl:AI harness do time]], melhorando nossos workflows e criando soluções internas com IA. Ajudei a levar a cobertura de testes [[hl:de 40% para 80%]], a [[ul:cortar pela metade o tempo do CI/CD]] e a elevar a acurácia do nosso code review com IA para [[hl:90%]]."
       },
       "pagaleve": {
         "company": "Pagaleve",
@@ -58,9 +58,11 @@
       "overcoded": {
         "tagline": "Uma garagem, um laptop e um prazo.",
         "text": "Monte sua startup antes que o dinheiro acabe, acendendo San Francisco no caminho. Grátis, no navegador.",
-        "stat": "300+",
+        "stat": "+360",
         "statLabel": "pessoas já jogaram no mapa"
       },
+      "adevinha": "O Akinator da bolha dev: pense em alguém da bolha dev e ele adivinha quem é em poucas perguntas.",
+      "opencodereview": "Code review com IA para quem lança sozinho, rodando na sua máquina com Claude, Codex ou Gemini.",
       "jobsSearch": "Vagas remotas internacionais para devs no Brasil.",
       "sentuni": "Diário emocional para dar nome ao que você sente.",
       "pinubi": "Recomendações de creators viram um guia pesquisável."

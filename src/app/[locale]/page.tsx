@@ -9,13 +9,31 @@ const overcoded = {
   image: "/overcoded-icon.png",
 };
 
+// `hidden` keeps a product ready here without showing it yet.
 const projects = [
+  {
+    key: "adevinha",
+    name: "aDEVinha",
+    href: "https://adevinha.com.br/?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
+    domain: "adevinha.com.br",
+    image: "/adevinha-icon.svg",
+    hidden: false,
+  },
+  {
+    key: "opencodereview",
+    name: "OpenCodeReview",
+    href: "https://opencodereview.run/?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
+    domain: "opencodereview.run",
+    image: "/opencodereview-icon.svg",
+    hidden: true,
+  },
   {
     key: "jobsSearch",
     name: "Jobs Search",
     href: "https://jobs.bridglabs.com/?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
     domain: "jobs.bridglabs.com",
     image: "/jobs-search-logo.svg",
+    hidden: false,
   },
   {
     key: "sentuni",
@@ -23,6 +41,7 @@ const projects = [
     href: "https://apps.apple.com/app/id6811380725",
     domain: "App Store",
     image: "/sentuni-logo.png",
+    hidden: false,
   },
   {
     key: "pinubi",
@@ -30,6 +49,7 @@ const projects = [
     href: "https://pinubi.com/pt?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
     domain: "pinubi.com",
     image: "/pinubi-logo.png",
+    hidden: false,
   },
 ] as const;
 
@@ -133,19 +153,21 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
           </a>
 
           <ul className="cards">
-            {projects.map((project) => (
-              <li key={project.key}>
-                <a className="card" href={project.href} target="_blank" rel="noopener noreferrer">
-                  <span className="card-head">
-                    <img src={project.image} alt="" width={22} height={22} loading="lazy" />
-                    <span className="card-name">{project.name}</span>
-                    <Arrow />
-                  </span>
-                  <p>{t(`building.${project.key}`)}</p>
-                  <span className="card-domain">{project.domain}</span>
-                </a>
-              </li>
-            ))}
+            {projects
+              .filter((project) => !project.hidden)
+              .map((project) => (
+                <li key={project.key}>
+                  <a className="card" href={project.href} target="_blank" rel="noopener noreferrer">
+                    <span className="card-head">
+                      <img src={project.image} alt="" width={22} height={22} loading="lazy" />
+                      <span className="card-name">{project.name}</span>
+                      <Arrow />
+                    </span>
+                    <p>{t(`building.${project.key}`)}</p>
+                    <span className="card-domain">{project.domain}</span>
+                  </a>
+                </li>
+              ))}
           </ul>
         </section>
 

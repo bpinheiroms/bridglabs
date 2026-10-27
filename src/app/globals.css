@@ -330,7 +330,7 @@ p {
 .cards {
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   list-style: none;
   margin: 16px 0 0;
   padding: 0;
@@ -481,6 +481,14 @@ p {
   transition-delay: 700ms;
 }
 
+.mark:nth-of-type(4) {
+  transition-delay: 1050ms;
+}
+
+.mark:nth-of-type(5) {
+  transition-delay: 1400ms;
+}
+
 /* The world, now only in the share image (og.html): rendered small and scaled up hard. */
 
 .world {
@@ -513,12 +521,6 @@ p {
 .world[data-mode="portrait"] {
   inset: 0;
   position: absolute;
-}
-
-@media (max-width: 980px) and (min-width: 761px) {
-  .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 760px) {
