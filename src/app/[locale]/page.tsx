@@ -9,7 +9,7 @@ const overcoded = {
   image: "/overcoded-icon.png",
 };
 
-// `hidden` keeps a product ready here without showing it yet.
+// `hidden` keeps a product ready here without showing it yet; `stat` adds a line of real numbers.
 const projects = [
   {
     key: "adevinha",
@@ -18,6 +18,7 @@ const projects = [
     domain: "adevinha.com.br",
     image: "/adevinha-icon.svg",
     hidden: false,
+    stat: true,
   },
   {
     key: "opencodereview",
@@ -26,6 +27,7 @@ const projects = [
     domain: "opencodereview.run",
     image: "/opencodereview-icon.svg",
     hidden: true,
+    stat: false,
   },
   {
     key: "jobsSearch",
@@ -34,6 +36,7 @@ const projects = [
     domain: "jobs.bridglabs.com",
     image: "/jobs-search-logo.svg",
     hidden: false,
+    stat: true,
   },
   {
     key: "sentuni",
@@ -42,6 +45,7 @@ const projects = [
     domain: "App Store",
     image: "/sentuni-logo.png",
     hidden: false,
+    stat: false,
   },
   {
     key: "pinubi",
@@ -50,6 +54,7 @@ const projects = [
     domain: "pinubi.com",
     image: "/pinubi-logo.png",
     hidden: false,
+    stat: false,
   },
 ] as const;
 
@@ -149,6 +154,7 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
             <div className="feature-stat">
               <Mark kind="highlight">{t("building.overcoded.stat")}</Mark>
               <span>{t("building.overcoded.statLabel")}</span>
+              <p className="feature-facts">{richText(t("building.overcoded.facts"))}</p>
             </div>
           </a>
 
@@ -164,6 +170,7 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
                       <Arrow />
                     </span>
                     <p>{t(`building.${project.key}`)}</p>
+                    {project.stat && <p className="card-stat">{richText(t(`building.stats.${project.key}`))}</p>}
                     <span className="card-domain">{project.domain}</span>
                   </a>
                 </li>

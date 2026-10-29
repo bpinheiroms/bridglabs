@@ -296,7 +296,7 @@ p {
   gap: 8px;
 }
 
-.feature-stat .mark {
+.feature-stat > .mark {
   color: var(--ink);
   font-size: clamp(4.5rem, 11vw, 8rem);
   font-variant-numeric: tabular-nums;
@@ -355,6 +355,15 @@ p {
 .card .arrow {
   color: var(--muted);
   margin-left: auto;
+}
+
+.card-stat,
+.feature-facts {
+  color: var(--ink);
+}
+
+.feature-facts {
+  margin-top: 16px;
 }
 
 .card-domain {
