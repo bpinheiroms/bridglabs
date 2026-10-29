@@ -7,6 +7,14 @@
   --muted: #8a837c;
   --line: #e7e3dd;
   --surface: #f3f0ea;
+  --line-strong: #d6d0c7;
+  /* Paper laid on the page: cards, stickers, the photo. */
+  --card: #fffdf9;
+  --tape: rgb(226 201 158 / 0.72);
+  --shadow-paper: 0 1px 2px rgb(60 40 20 / 0.08), 0 10px 28px -8px rgb(60 40 20 / 0.18);
+  --photo-top: #bfe3f7;
+  --photo-bottom: #f6e7d3;
+  --accent-soft: rgb(200 69 43 / 0.25);
   /* International orange, the bridge's own colour: focus, the pen line, the highlighter. */
   --accent: #c8452b;
   /* The highlighter: the same orange, thinned out like ink on paper. */
@@ -16,6 +24,7 @@
 
   --font-body: "Geist Variable", system-ui, sans-serif;
   --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+  --font-hand: "Caveat Variable", cursive;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
   color-scheme: light;
@@ -29,6 +38,13 @@
   --muted: #7f7d8c;
   --line: #262a3d;
   --surface: #181c2c;
+  --line-strong: #363b52;
+  --card: #1c2133;
+  --tape: rgb(214 186 140 / 0.38);
+  --shadow-paper: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -8px rgb(0 0 0 / 0.55);
+  --photo-top: #26305a;
+  --photo-bottom: #3a2f45;
+  --accent-soft: rgb(255 138 92 / 0.22);
   --accent: #ff8a5c;
   --marker: rgb(255 112 60 / 0.42);
   --pen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='6'%3E%3Cpath d='M0 3.4Q6 1.4 12 3.2T24 3' fill='none' stroke='%23ff8a5c' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -95,13 +111,8 @@ p {
 .topbar {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 24px 0;
-}
-
-.topbar-name {
-  color: var(--ink);
-  font-weight: 500;
 }
 
 .topbar-controls {
@@ -143,6 +154,206 @@ p {
   width: 16px;
 }
 
+/* Handwriting, for a few words only. */
+
+.hand {
+  color: var(--ink);
+  font-family: var(--font-hand);
+  font-size: 1.32em;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.hand-icon {
+  white-space: nowrap;
+}
+
+.hand-icon img {
+  border-radius: 5px;
+  height: 0.8em;
+  margin-right: 0.18em;
+  vertical-align: -0.08em;
+  width: 0.8em;
+}
+
+/* Opening: centred, with the stickers, the pen arrow and the photo stuck under it. */
+
+.hero {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(32px, 8vh, 88px) 0 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  margin-top: 20px;
+  max-width: 14ch;
+}
+
+.hero-greeting {
+  display: block;
+}
+
+.hero h1 .mark[data-kind="underline"] {
+  background-size: 100% 0.5em, 64px 0.24em;
+  padding-bottom: 0.08em;
+}
+
+.hero h1 .mark[data-kind="underline"][data-drawn] {
+  background-size: 0% 0.5em, 64px 0.24em;
+}
+
+.hero .stickers {
+  margin-top: 40px;
+}
+
+.hero-lead {
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  line-height: 1.75;
+  margin-top: 36px;
+  max-width: 36rem;
+  position: relative;
+}
+
+.scribble {
+  fill: none;
+  height: 130px;
+  left: -128px;
+  position: absolute;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  top: -84px;
+  width: 120px;
+}
+
+.scribble path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 900ms var(--ease-out);
+}
+
+.scribble .scribble-head {
+  transition-delay: 800ms;
+  transition-duration: 300ms;
+}
+
+.scribble[data-drawn] path {
+  stroke-dashoffset: 0;
+}
+
+.polaroid {
+  background: var(--card);
+  box-shadow: var(--shadow-paper);
+  margin: 64px 0 0;
+  padding: 14px 14px 0;
+  position: relative;
+  rotate: -2deg;
+  width: min(320px, 82vw);
+}
+
+/* A strip of tape holding it to the page. */
+.polaroid::before,
+.sheet::before {
+  background: var(--tape);
+  content: "";
+  height: 30px;
+  left: 50%;
+  position: absolute;
+  rotate: 3deg;
+  top: -15px;
+  translate: -50% 0;
+  width: 112px;
+}
+
+.polaroid-photo {
+  aspect-ratio: 1;
+  background: linear-gradient(180deg, var(--photo-top), var(--photo-bottom));
+  overflow: hidden;
+}
+
+.polaroid-photo img {
+  display: block;
+  height: 100%;
+  image-rendering: pixelated;
+  object-fit: cover;
+  width: 100%;
+}
+
+.polaroid figcaption {
+  color: var(--ink-soft);
+  font-size: 1.5rem;
+  padding: 14px 0 18px;
+}
+
+/* Stickers: little paper labels, each at its own slight angle, straightening under the cursor. */
+
+.stickers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.sticker {
+  --mark-bg: var(--card);
+  align-items: center;
+  background: var(--card);
+  border-radius: 8px;
+  box-shadow: var(--shadow-paper);
+  color: var(--ink);
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 500;
+  gap: 8px;
+  padding: 9px 14px;
+  rotate: -3deg;
+  text-decoration: none;
+  transition: rotate 200ms var(--ease-out), translate 200ms var(--ease-out);
+}
+
+.sticker:nth-child(2) {
+  rotate: 2deg;
+}
+
+.sticker:nth-child(3) {
+  rotate: -1deg;
+}
+
+.sticker:nth-child(4) {
+  rotate: 2.5deg;
+}
+
+.sticker:hover {
+  rotate: 0deg;
+  translate: 0 -2px;
+}
+
+.sticker svg {
+  fill: currentColor;
+  flex: none;
+  height: 16px;
+  width: 16px;
+}
+
+.sticker svg[data-icon="linkedin"] {
+  color: #0a66c2;
+}
+
+.sticker svg[data-icon="mail"] {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .eyebrow {
   color: var(--muted);
   font: 400 13px/1.4 var(--font-mono);
@@ -150,136 +361,125 @@ p {
   text-transform: uppercase;
 }
 
-/* Opening: one sentence, set large, with the avatar beside it. */
-
-.hero {
-  align-items: center;
-  display: grid;
-  gap: 48px;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  /* Short enough that the first chapter shows below it: the page has to look scrollable. */
-  padding: clamp(24px, 6vh, 72px) 0 0;
-}
-
-.hero-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.hero h1 {
-  font-size: clamp(2.4rem, 5.4vw, 4.5rem);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.04;
-}
-
-.hero-lead {
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  max-width: 34rem;
-}
-
-.hero-avatar {
-  height: auto;
-  image-rendering: pixelated;
-  justify-self: center;
-  max-height: 46svh;
-  max-width: 340px;
-  width: 100%;
-}
-
 .block {
-  padding-top: clamp(40px, 10vh, 120px);
+  margin: 0 auto;
+  max-width: 50rem;
+  padding-top: clamp(96px, 16vh, 168px);
+}
+
+.block-title {
+  text-align: center;
 }
 
 .block-lead {
   color: var(--ink);
-  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
-  margin: 12px 0 40px;
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  letter-spacing: -0.01em;
+  margin: 12px 0 48px;
+  text-align: center;
 }
 
-/* Career, told as chapters: each one's label holds still while its text goes by. */
+/* Career: one line down the page, a dot for every stop. */
 
-.chapters {
+.timeline {
+  border-left: 1.5px dashed var(--line-strong);
   list-style: none;
-  margin: 16px 0 0;
+  margin: 48px 0 0 8px;
   padding: 0;
 }
 
-.chapter {
-  border-top: 1px solid var(--line);
-  display: grid;
-  gap: 16px 56px;
-  grid-template-columns: 17rem minmax(0, 1fr);
-  padding: clamp(24px, 5vh, 44px) 0 72px;
+.timeline-item {
+  padding: 0 0 64px 36px;
+  position: relative;
 }
 
-.chapter-label {
-  align-self: start;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  position: sticky;
-  top: 32px;
+.timeline-item:last-child {
+  padding-bottom: 8px;
 }
 
-.chapter-years {
+.timeline-item::before {
+  background: var(--paper);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  content: "";
+  height: 13px;
+  left: -7.5px;
+  position: absolute;
+  top: 5px;
+  width: 13px;
+}
+
+.timeline-item:first-child::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--marker);
+}
+
+.timeline-years {
   color: var(--muted);
   font: 400 13px/1.4 var(--font-mono);
 }
 
-.chapter h3 {
+.timeline-item h3 {
+  align-items: baseline;
   color: var(--ink);
-  font-size: 1.15rem;
-  font-weight: 500;
-  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.35rem;
+  font-weight: 600;
+  gap: 4px 12px;
+  letter-spacing: -0.015em;
+  margin: 6px 0 14px;
 }
 
-.chapter-role {
+.timeline-role {
   color: var(--muted);
   font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
-.chapter-text {
-  font-size: clamp(1.2rem, 2.1vw, 1.6rem);
-  line-height: 1.55;
-  max-width: 40rem;
+.timeline-text {
+  font-size: clamp(1.1rem, 1.9vw, 1.4rem);
+  line-height: 1.6;
 }
 
-/* Products: Overcoded on its own, the rest in a grid. */
+/* Products: Overcoded on a taped sheet, the rest on index cards. */
 
-.feature {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
+.sheet {
+  --mark-bg: var(--card);
+  background: var(--card);
+  border-radius: 6px;
+  box-shadow: var(--shadow-paper);
   display: grid;
-  gap: 40px;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  padding: clamp(24px, 4vw, 48px);
+  gap: 32px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  padding: clamp(28px, 4vw, 48px);
+  position: relative;
+  rotate: -0.6deg;
   text-decoration: none;
-  transition: border-color 200ms linear;
+  transition: rotate 250ms var(--ease-out);
 }
 
-.feature:hover {
-  border-color: var(--muted);
+.sheet:hover {
+  rotate: 0deg;
 }
 
-.feature-copy {
+.sheet-copy {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.feature-tagline {
+.sheet-tagline {
   color: var(--ink);
-  font-size: clamp(1.4rem, 2.6vw, 2rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-top: 8px;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-top: 6px;
 }
 
-.feature-cta {
+.sheet-cta {
   align-items: center;
   color: var(--ink);
   display: inline-flex;
@@ -289,16 +489,16 @@ p {
   padding-top: 16px;
 }
 
-.feature-stat {
+.sheet-stat {
   align-self: center;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.feature-stat > .mark {
+.sheet-stat > .mark {
   color: var(--ink);
-  font-size: clamp(4.5rem, 11vw, 8rem);
+  font-size: clamp(4.5rem, 10vw, 7.5rem);
   font-variant-numeric: tabular-nums;
   font-weight: 600;
   letter-spacing: -0.05em;
@@ -306,8 +506,13 @@ p {
   width: fit-content;
 }
 
-.feature-stat span {
+.sheet-stat > span {
   color: var(--muted);
+}
+
+.sheet-facts {
+  color: var(--ink);
+  margin-top: 12px;
 }
 
 .card-head {
@@ -317,53 +522,66 @@ p {
 }
 
 .card-head img {
-  border-radius: 6px;
+  border-radius: 7px;
   flex: none;
   object-fit: contain;
 }
 
 .card-name {
-  color: var(--ink);
-  font-weight: 500;
+  font-size: 1.75rem;
 }
 
-.cards {
+.index-cards {
   display: grid;
-  gap: 16px;
+  gap: 28px 24px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   list-style: none;
-  margin: 16px 0 0;
+  margin: 40px 0 0;
   padding: 0;
 }
 
-.card {
-  border: 1px solid var(--line);
-  border-radius: 14px;
+.index-card {
+  --mark-bg: var(--card);
+  background:
+    linear-gradient(var(--accent-soft), var(--accent-soft)) 0 58px / 100% 1px no-repeat,
+    var(--card);
+  border-radius: 4px;
+  box-shadow: var(--shadow-paper);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   height: 100%;
-  padding: 22px;
+  padding: 16px 22px 20px;
+  rotate: 0.8deg;
   text-decoration: none;
-  transition: border-color 200ms linear;
+  transition: rotate 200ms var(--ease-out), translate 200ms var(--ease-out);
 }
 
-.card:hover {
-  border-color: var(--muted);
+.index-cards li:nth-child(even) .index-card {
+  rotate: -1deg;
 }
 
-.card .arrow {
+.index-cards li:nth-child(3) .index-card {
+  rotate: -0.5deg;
+}
+
+.index-card:hover,
+.index-cards li .index-card:hover {
+  rotate: 0deg;
+  translate: 0 -3px;
+}
+
+.index-card .card-head {
+  min-height: 34px;
+}
+
+.index-card .arrow {
   color: var(--muted);
   margin-left: auto;
 }
 
-.card-stat,
-.feature-facts {
+.card-stat {
   color: var(--ink);
-}
-
-.feature-facts {
-  margin-top: 16px;
 }
 
 .card-domain {
@@ -384,43 +602,44 @@ p {
   width: 14px;
 }
 
-.feature:hover .arrow,
-.card:hover .arrow {
+.sheet:hover .arrow,
+.index-card:hover .arrow {
   transform: translate(2px, -2px);
 }
 
 /* Closing. */
 
 .contact {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 160px 0 72px;
+  gap: 24px;
+  padding: clamp(120px, 20vh, 200px) 0 64px;
+  text-align: center;
+}
+
+.contact-cta {
+  color: var(--accent);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  rotate: -2deg;
 }
 
 .contact-email {
   color: var(--ink);
-  font-size: clamp(1.3rem, 3vw, 2.2rem);
+  font-size: clamp(1.5rem, 4.2vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
   text-decoration: none;
-  width: fit-content;
 }
 
-.contact-links {
+.contact .stickers {
+  margin-top: 12px;
+}
+
+.contact-foot {
   color: var(--muted);
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 15px;
-  gap: 6px 22px;
-  margin-top: 24px;
-}
-
-.contact-links a {
-  color: var(--ink-soft);
-  text-underline-offset: 3px;
-}
-
-.contact-links a:hover {
-  color: var(--ink);
+  font: 400 13px/1.4 var(--font-mono);
+  margin-top: 56px;
 }
 
 /* The phrases that matter. */
@@ -464,7 +683,7 @@ p {
    * The wave sits under the words, hidden by a strip of paper that slides off
    * to the right. Being backgrounds, both follow the phrase onto every line it wraps to.
    */
-  background-image: linear-gradient(var(--paper), var(--paper)), var(--pen);
+  background-image: linear-gradient(var(--mark-bg, var(--paper)), var(--mark-bg, var(--paper))), var(--pen);
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat, repeat-x;
   background-size: 100% 0.5em, 24px 0.36em;
@@ -538,46 +757,38 @@ p {
   }
 
   .hero {
-    gap: 28px;
+    padding-top: 24px;
+  }
+
+  .scribble {
+    display: none;
+  }
+
+  .polaroid {
+    margin-top: 48px;
+    width: min(260px, 76vw);
+  }
+
+  .sticker {
+    font-size: 14px;
+  }
+
+  .sheet {
     grid-template-columns: 1fr;
-    min-height: 0;
-    padding-top: 16px;
+    rotate: 0deg;
   }
 
-  .hero-avatar {
-    grid-row: 1;
-    justify-self: start;
-    max-width: 150px;
-  }
-
-  .block {
-    padding-top: 88px;
-  }
-
-  .chapter {
-    grid-template-columns: 1fr;
-    padding: 32px 0 44px;
-  }
-
-  .chapter-label {
-    position: static;
-  }
-
-  .feature {
-    grid-template-columns: 1fr;
-  }
-
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .feature-stat {
+  .sheet-stat {
     align-self: start;
     grid-row: 1;
   }
 
-  .contact {
-    padding-top: 112px;
+  .index-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-item {
+    padding: 0 0 48px 26px;
   }
 }
 

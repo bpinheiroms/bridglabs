@@ -10,10 +10,11 @@
       "night": "Night"
     },
     "hero": {
-      "name": "Bruno Pinheiro",
-      "role": "Senior Software Engineer · Applied AI · São Paulo",
-      "headline": "For [[hl:more than 10 years]] I've taken ideas from zero to production.",
-      "lead": "Frontend, backend, integrations and whatever else it takes. Today on the SparkAI team at John Deere's Blue River Technology.",
+      "role": "Senior Software Engineer · Applied AI",
+      "greeting": "Hi!",
+      "headline": "For more than 10 years I've taken ideas from [[ul:zero to production]].",
+      "lead": "I'm [[hand:Bruno Pinheiro]], a Senior Software Engineer on the [[hand:SparkAI]] team at John Deere's Blue River Technology. Outside it, I build products of my own at [[hand:BridgLabs]], like [[icon:/overcoded-icon.png|Overcoded]] and [[icon:/adevinha-icon.svg|aDEVinha]].",
+      "caption": "me, the 8-bit edition",
       "photoAlt": "Pixel-art avatar of Bruno Pinheiro"
     },
     "chapters": {
@@ -74,6 +75,7 @@
     },
     "contact": {
       "navLabel": "Contact and profiles",
+      "cta": "Let's talk?",
       "email": "contato@bridglabs.com",
       "location": "São Paulo, Brazil"
     }

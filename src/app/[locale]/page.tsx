@@ -1,5 +1,7 @@
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Mark from "@/components/Mark";
+import Scribble from "@/components/Scribble";
+import Stickers from "@/components/Stickers";
 import ThemeToggle from "@/components/ThemeToggle";
 import type { Locale, Translator } from "@/i18n";
 import { richText } from "@/richText";
@@ -67,12 +69,6 @@ const chapters = [
   { key: "oxxy", from: "2015", to: "2018" },
 ] as const;
 
-const profiles = [
-  { name: "GitHub", href: "https://github.com/bpinheiroms" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/bpinheiroms/" },
-  { name: "X", href: "https://x.com/brunopinheiroms" },
-] as const;
-
 function Arrow() {
   return (
     <svg className="arrow" viewBox="0 0 24 24" aria-hidden="true">
@@ -85,7 +81,6 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
   return (
     <div className="page">
       <header className="topbar">
-        <span className="topbar-name">{t("hero.name")}</span>
         <div className="topbar-controls">
           <LanguageSwitcher locale={locale} />
           <ThemeToggle t={t} />
@@ -94,79 +89,87 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
 
       <main>
         <section className="hero" aria-labelledby="hero-heading">
-          <div className="hero-copy">
-            <p className="eyebrow">{t("hero.role")}</p>
-            <h1 id="hero-heading">{richText(t("hero.headline"))}</h1>
-            <p className="hero-lead">{t("hero.lead")}</p>
+          <p className="eyebrow">{t("hero.role")}</p>
+          <h1 id="hero-heading">
+            <span className="hero-greeting">{t("hero.greeting")}</span>
+            {richText(t("hero.headline"))}
+          </h1>
+          <Stickers label={t("contact.navLabel")} email={t("contact.email")} />
+          <div className="hero-lead">
+            <Scribble />
+            <p>{richText(t("hero.lead"))}</p>
           </div>
-          <img
-            className="hero-avatar"
-            src="/illustrations/bruno-portrait-v4.webp"
-            alt={t("hero.photoAlt")}
-            width={1254}
-            height={1254}
-            fetchPriority="high"
-          />
+          <figure className="polaroid">
+            <div className="polaroid-photo">
+              <img
+                src="/illustrations/bruno-portrait-v4.webp"
+                alt={t("hero.photoAlt")}
+                width={1254}
+                height={1254}
+                fetchPriority="high"
+              />
+            </div>
+            <figcaption className="hand">{t("hero.caption")}</figcaption>
+          </figure>
         </section>
 
         <section className="block" aria-labelledby="chapters-heading">
-          <h2 id="chapters-heading" className="eyebrow">
-            {t("chapters.heading")}
+          <h2 id="chapters-heading" className="block-title">
+            <span className="eyebrow">{t("chapters.heading")}</span>
           </h2>
-          <ol className="chapters">
+          <ol className="timeline">
             {chapters.map((chapter) => (
-              <li key={chapter.key} className="chapter">
-                {/* Holds its place while the chapter's text scrolls past. */}
-                <div className="chapter-label">
-                  <span className="chapter-years">
-                    {chapter.from === chapter.to
-                      ? chapter.from
-                      : `${chapter.from} — ${chapter.to ?? t("chapters.now")}`}
-                  </span>
-                  <h3>{t(`chapters.${chapter.key}.company`)}</h3>
-                  <span className="chapter-role">{t(`chapters.${chapter.key}.role`)}</span>
-                </div>
-                <p className="chapter-text">{richText(t(`chapters.${chapter.key}.text`))}</p>
+              <li key={chapter.key} className="timeline-item">
+                <span className="timeline-years">
+                  {chapter.from === chapter.to
+                    ? chapter.from
+                    : `${chapter.from} — ${chapter.to ?? t("chapters.now")}`}
+                </span>
+                <h3>
+                  {t(`chapters.${chapter.key}.company`)}
+                  <span className="timeline-role">{t(`chapters.${chapter.key}.role`)}</span>
+                </h3>
+                <p className="timeline-text">{richText(t(`chapters.${chapter.key}.text`))}</p>
               </li>
             ))}
           </ol>
         </section>
 
         <section className="block" aria-labelledby="building-heading">
-          <h2 id="building-heading" className="eyebrow">
-            {t("building.heading")}
+          <h2 id="building-heading" className="block-title">
+            <span className="eyebrow">{t("building.heading")}</span>
           </h2>
           <p className="block-lead">{t("building.lead")}</p>
 
-          <a className="feature" href={overcoded.href} target="_blank" rel="noopener noreferrer">
-            <div className="feature-copy">
+          <a className="sheet" href={overcoded.href} target="_blank" rel="noopener noreferrer">
+            <div className="sheet-copy">
               <span className="card-head">
-                <img src={overcoded.image} alt="" width={28} height={28} />
-                <span className="card-name">Overcoded</span>
+                <img src={overcoded.image} alt="" width={32} height={32} />
+                <span className="card-name hand">Overcoded</span>
               </span>
-              <p className="feature-tagline">{t("building.overcoded.tagline")}</p>
+              <p className="sheet-tagline">{t("building.overcoded.tagline")}</p>
               <p>{t("building.overcoded.text")}</p>
-              <span className="feature-cta">
+              <span className="sheet-cta">
                 {t("building.play")}
                 <Arrow />
               </span>
             </div>
-            <div className="feature-stat">
+            <div className="sheet-stat">
               <Mark kind="highlight">{t("building.overcoded.stat")}</Mark>
               <span>{t("building.overcoded.statLabel")}</span>
-              <p className="feature-facts">{richText(t("building.overcoded.facts"))}</p>
+              <p className="sheet-facts">{richText(t("building.overcoded.facts"))}</p>
             </div>
           </a>
 
-          <ul className="cards">
+          <ul className="index-cards">
             {projects
               .filter((project) => !project.hidden)
               .map((project) => (
                 <li key={project.key}>
-                  <a className="card" href={project.href} target="_blank" rel="noopener noreferrer">
+                  <a className="index-card" href={project.href} target="_blank" rel="noopener noreferrer">
                     <span className="card-head">
-                      <img src={project.image} alt="" width={22} height={22} loading="lazy" />
-                      <span className="card-name">{project.name}</span>
+                      <img src={project.image} alt="" width={26} height={26} loading="lazy" />
+                      <span className="card-name hand">{project.name}</span>
                       <Arrow />
                     </span>
                     <p>{t(`building.${project.key}`)}</p>
@@ -178,20 +181,17 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
           </ul>
         </section>
 
-        <section className="contact" aria-label={t("contact.navLabel")}>
+        <section className="contact" aria-labelledby="contact-heading">
+          <h2 id="contact-heading" className="contact-cta hand">
+            {t("contact.cta")}
+          </h2>
           <a className="contact-email" href={`mailto:${t("contact.email")}`}>
             <Mark kind="underline">{t("contact.email")}</Mark>
           </a>
-          <nav className="contact-links" aria-label={t("contact.navLabel")}>
-            {profiles.map((profile) => (
-              <a key={profile.name} href={profile.href} target="_blank" rel="noopener noreferrer">
-                {profile.name}
-              </a>
-            ))}
-            <span>
-              {t("contact.location")} · {new Date().getFullYear()}
-            </span>
-          </nav>
+          <Stickers label={t("contact.navLabel")} />
+          <p className="contact-foot">
+            {t("contact.location")} · {new Date().getFullYear()}
+          </p>
         </section>
       </main>
     </div>
