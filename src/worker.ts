@@ -140,7 +140,14 @@ async function refreshStats(env: Env) {
   return stats;
 }
 
-async function statsResponse(env: Env): Promise<Response> {
+async function statsResponse(url: URL, env: Env, ctx: ExecutionContext): Promise<Response> {
+  // Each data center answers from its own copy for an hour, so a flood of calls never reaches KV.
+  // The key drops the query string, so `?anything` cannot get around it.
+  const cache = (caches as unknown as { default: Cache }).default;
+  const cacheKey = new Request(new URL("/api/stats", url));
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached;
+
   let stats = await env.STATS.get(STATS_KEY, "json");
 
   // The very first visit after a deploy fills the store instead of waiting for the cron.
@@ -153,9 +160,11 @@ async function statsResponse(env: Env): Promise<Response> {
     }
   }
 
-  return Response.json(stats, {
+  const response = Response.json(stats, {
     headers: { "Cache-Control": "public, max-age=3600" },
   });
+  ctx.waitUntil(cache.put(cacheKey, response.clone()));
+  return response;
 }
 
 export default {
@@ -163,7 +172,7 @@ export default {
     ctx.waitUntil(refreshStats(env));
   },
 
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const target = redirectTarget(request);
 
     if (target) {
@@ -171,7 +180,7 @@ export default {
     }
 
     const url = new URL(request.url);
-    if (url.pathname === "/api/stats") return withResponseHeaders(await statsResponse(env), url);
+    if (url.pathname === "/api/stats") return withResponseHeaders(await statsResponse(url, env, ctx), url);
 
     const special = specialResponse(url);
     if (special) return withResponseHeaders(special, url);
