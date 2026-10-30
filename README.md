@@ -81,6 +81,9 @@ Configurado no painel da zona, fora do repositório:
 - Redirect Rule `apex-to-www`: `bridglabs.com` → `www.bridglabs.com` com 301;
 - Cache Rule `cache-stats`: cacheia `stats.bridglabs.com` ignorando a query
   string, para que nenhuma variação de URL chegue ao R2;
+- Custom rule `stats-only-json`: bloqueia em `stats.bridglabs.com` tudo que não
+  seja `GET`/`HEAD`/`OPTIONS` de `/stats.json`, para que caminhos inventados não
+  virem leituras cobradas no R2;
 - Rate limiting rule `limit-site`: bloqueia por 10 s o IP que passar de 60
   requisições em 10 s nos três hosts.
 
