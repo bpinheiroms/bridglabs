@@ -8,7 +8,7 @@ export type Stats = {
   jobsSearch: { subscribers: number; revenue: number; requests: number };
 };
 
-/** Shown until `/api/stats` answers, and whenever it cannot. */
+/** Shown until stats.json arrives, and whenever it cannot. */
 export const snapshot: Stats = {
   updatedAt: "2026-10-30T12:00:00.000Z",
   overcoded: { visitors: 1629, players: 362, rounds: 702 },

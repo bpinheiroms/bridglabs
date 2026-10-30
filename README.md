@@ -1,11 +1,10 @@
 # BridgLabs
 
-Site institucional bilíngue da BridgLabs, construído com React, Vite e publicado como Cloudflare Worker com Static Assets.
+Site institucional bilíngue da BridgLabs, construído com React, Vite e publicado como Cloudflare Worker só com Static Assets.
 
-O Worker é necessário porque a publicação também precisa controlar o host
-canônico, a escolha de idioma na raiz e os headers de segurança. O build
-estático preserva o conteúdo e os metadados das rotas `/pt/` e `/en/` sem
-manter runtime de Next.js ou dependência de hosting da Vercel.
+O Worker do site não tem script: a Cloudflare serve cada requisição direto dos
+arquivos estáticos, que não são cobrados. Assim, nenhum volume de acessos, nem
+um ataque, gera custo de execução.
 
 ## Desenvolvimento
 
@@ -57,14 +56,33 @@ Para publicar à mão, a partir da sua máquina:
 npm run deploy
 ```
 
-O Worker:
+O `npm run deploy` publica dois Workers:
 
-- redireciona `bridglabs.com` para `www.bridglabs.com` com 301;
-- escolhe `/pt/` ou `/en/` na raiz por cookie e `Accept-Language`;
-- normaliza `/pt` e `/en` para a forma com barra final;
-- injeta headers de segurança e cache imutável nos assets versionados;
-- serve o sitemap diretamente pelo Worker e mantém `robots.txt` sob o controle
-  gerenciado do Cloudflare (incluindo content signals para crawlers).
+- `bridglabs` (`wrangler.jsonc`), o site, só com assets:
+  - `index.html` na raiz escolhe `/pt/` ou `/en/` no navegador, por cookie e
+    idioma;
+  - `html_handling` normaliza `/pt` e `/en` para a forma com barra final;
+  - `public/_headers` define os headers de segurança e o cache imutável dos
+    assets versionados;
+  - `public/sitemap.xml` e `public/robots.txt` são arquivos estáticos.
+- `bridglabs-stats` (`stats/wrangler.jsonc`), sem rotas, roda só no cron diário
+  das 06:00 de São Paulo: lê os números dos produtos no PostHog e grava
+  `stats.json` no bucket R2 `bridglabs-stats`, servido em
+  `https://stats.bridglabs.com/stats.json`. A página parte de um snapshot
+  embutido (`src/stats.ts`) e troca pelos números do arquivo quando ele chega.
+  Precisa do secret `POSTHOG_API_KEY` (personal API key com escopo Query: Read):
+
+  ```bash
+  npx wrangler secret put POSTHOG_API_KEY -c stats/wrangler.jsonc
+  ```
+
+Configurado no painel da zona, fora do repositório:
+
+- Redirect Rule `apex-to-www`: `bridglabs.com` → `www.bridglabs.com` com 301;
+- Cache Rule `cache-stats`: cacheia `stats.bridglabs.com` ignorando a query
+  string, para que nenhuma variação de URL chegue ao R2;
+- Rate limiting rule `limit-site`: bloqueia por 10 s o IP que passar de 60
+  requisições em 10 s nos três hosts.
 
 As rotas localizadas mantêm canonical, Open Graph, `hreflang`, título,
 descrição e o conteúdo bilíngue do site anterior. O site não tinha variáveis de

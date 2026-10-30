@@ -1,7 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "bridglabs",
-  "main": "src/worker.ts",
   "compatibility_date": "2026-08-08",
   "workers_dev": false,
   "preview_urls": false,
@@ -9,16 +8,16 @@
     { "pattern": "bridglabs.com", "custom_domain": true },
     { "pattern": "www.bridglabs.com", "custom_domain": true }
   ],
+  // Static files only, with no Worker script: Cloudflare serves every request
+  // straight from the assets, which it does not bill. Headers live in
+  // public/_headers and the apex → www redirect is a Redirect Rule on the zone.
   "assets": {
     "directory": "./dist",
-    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "none",
-    "run_worker_first": true
+    "not_found_handling": "none"
   },
-  // Product numbers for the page, refreshed from PostHog once a day (06:00 in São Paulo).
-  "kv_namespaces": [{ "binding": "STATS", "id": "fc95f4dfbb5a46d3b53a6aa10ff4924c" }],
-  "triggers": { "crons": ["0 9 * * *"] },
+  // Clears the cron this Worker used to run; it now lives in stats/wrangler.jsonc.
+  "triggers": { "crons": [] },
   "observability": {
     "enabled": true
   }
