@@ -1,17 +1,20 @@
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import CountUp from "@/components/CountUp";
 import Mark from "@/components/Mark";
 import Scribble from "@/components/Scribble";
 import Stickers from "@/components/Stickers";
 import ThemeToggle from "@/components/ThemeToggle";
 import type { Locale, Translator } from "@/i18n";
 import { richText } from "@/richText";
+import { fill, formatCount, formatDay, formatRevenue } from "@/stats";
+import { useStats } from "@/useStats";
 
 const overcoded = {
   href: "https://overcoded.app/?utm_source=bridglabs&utm_medium=website&utm_campaign=homepage",
   image: "/overcoded-icon.png",
 };
 
-// `hidden` keeps a product ready here without showing it yet; `stat` adds a line of real numbers.
+// `hidden` keeps a product ready here without showing it yet.
 const projects = [
   {
     key: "adevinha",
@@ -20,7 +23,6 @@ const projects = [
     domain: "adevinha.com.br",
     image: "/adevinha-icon.svg",
     hidden: false,
-    stat: true,
   },
   {
     key: "opencodereview",
@@ -29,7 +31,6 @@ const projects = [
     domain: "opencodereview.run",
     image: "/opencodereview-icon.svg",
     hidden: true,
-    stat: false,
   },
   {
     key: "jobsSearch",
@@ -38,7 +39,6 @@ const projects = [
     domain: "jobs.bridglabs.com",
     image: "/jobs-search-logo.svg",
     hidden: false,
-    stat: true,
   },
   {
     key: "sentuni",
@@ -47,7 +47,6 @@ const projects = [
     domain: "App Store",
     image: "/sentuni-logo.png",
     hidden: false,
-    stat: false,
   },
   {
     key: "pinubi",
@@ -56,7 +55,6 @@ const projects = [
     domain: "pinubi.com",
     image: "/pinubi-logo.png",
     hidden: false,
-    stat: false,
   },
 ] as const;
 
@@ -78,6 +76,18 @@ function Arrow() {
 }
 
 export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
+  const stats = useStats();
+  const count = (n: number) => formatCount(n, locale);
+  // Products with a line of real numbers, filled into the `{slots}` of `building.stats.*`.
+  const statValues: Record<string, Record<string, string>> = {
+    adevinha: { games: count(stats.adevinha.games), answers: count(stats.adevinha.answers) },
+    jobsSearch: {
+      subscribers: String(stats.jobsSearch.subscribers),
+      revenue: formatRevenue(stats.jobsSearch.revenue, locale),
+      requests: count(stats.jobsSearch.requests),
+    },
+  };
+
   return (
     <div className="page">
       <header className="topbar">
@@ -140,6 +150,10 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
             <span className="eyebrow">{t("building.heading")}</span>
           </h2>
           <p className="block-lead">{t("building.lead")}</p>
+          <p className="live-note">
+            <span className="live-dot" aria-hidden="true" />
+            {fill(t("building.updated"), { day: formatDay(stats.updatedAt, locale) })}
+          </p>
 
           <a className="sheet" href={overcoded.href} target="_blank" rel="noopener noreferrer">
             <div className="sheet-copy">
@@ -155,9 +169,16 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
               </span>
             </div>
             <div className="sheet-stat">
-              <Mark kind="highlight">{t("building.overcoded.stat")}</Mark>
+              <Mark kind="highlight">
+                <CountUp value={stats.overcoded.players} format={count} />
+              </Mark>
               <span>{t("building.overcoded.statLabel")}</span>
-              <p className="sheet-facts">{richText(t("building.overcoded.facts"))}</p>
+              <p className="sheet-facts">{richText(
+                  fill(t("building.overcoded.facts"), {
+                    visitors: count(stats.overcoded.visitors),
+                    rounds: count(stats.overcoded.rounds),
+                  }),
+                )}</p>
             </div>
           </a>
 
@@ -173,7 +194,11 @@ export default function Home({ locale, t }: { locale: Locale; t: Translator }) {
                       <Arrow />
                     </span>
                     <p>{t(`building.${project.key}`)}</p>
-                    {project.stat && <p className="card-stat">{richText(t(`building.stats.${project.key}`))}</p>}
+                    {statValues[project.key] && (
+                      <p className="card-stat">
+                        {richText(fill(t(`building.stats.${project.key}`), statValues[project.key]))}
+                      </p>
+                    )}
                     <span className="card-domain">{project.domain}</span>
                   </a>
                 </li>

@@ -54,14 +54,14 @@
     "building": {
       "heading": "Building",
       "lead": "BridgLabs is my lab for products of my own.",
+      "updated": "Real numbers, updated daily · {day}",
       "play": "Play now",
       "open": "Open",
       "overcoded": {
         "tagline": "A garage, a laptop and a deadline.",
         "text": "Build your startup before the money runs out, lighting up San Francisco along the way. Free, in your browser.",
-        "stat": "+360",
         "statLabel": "people have played on the map",
-        "facts": "[[hl:1,600+ visitors]] and [[hl:700+ games]] in the first 16 days."
+        "facts": "[[hl:{visitors} visitors]] and [[hl:{rounds} games]] since launch."
       },
       "adevinha": "Akinator for the Brazilian dev scene: think of someone in it and it guesses who in a few questions.",
       "opencodereview": "AI code review for people who ship alone, running on your machine with Claude, Codex or Gemini.",
@@ -69,8 +69,8 @@
       "sentuni": "An emotional journal to name what you feel.",
       "pinubi": "Creator recommendations become a searchable guide.",
       "stats": {
-        "adevinha": "[[hl:500+ games]] and [[ul:10k+ answers]] in the first week.",
-        "jobsSearch": "[[hl:51 subscribers]] in the first month of billing and [[ul:90k+ requests]] through ChatGPT and Claude."
+        "adevinha": "[[hl:{games} games]] and [[ul:{answers} answers]] since launch.",
+        "jobsSearch": "[[hl:{subscribers} subscribers]], [[hl:{revenue} in revenue]] and [[ul:{requests} requests]] through ChatGPT and Claude."
       }
     },
     "contact": {

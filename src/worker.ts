@@ -1,9 +1,23 @@
+import { isStats } from "./stats";
+import { collectStats } from "./statsCollector";
+
 type AssetsBinding = {
   fetch(request: Request): Promise<Response>;
 };
 
+type KVBinding = {
+  get(key: string, type: "json"): Promise<unknown>;
+  put(key: string, value: string): Promise<void>;
+};
+
+type ExecutionContext = {
+  waitUntil(promise: Promise<unknown>): void;
+};
+
 export type Env = {
   ASSETS: AssetsBinding;
+  STATS: KVBinding;
+  POSTHOG_API_KEY?: string;
 };
 
 export type Locale = "pt" | "en";
@@ -115,7 +129,40 @@ function specialResponse(url: URL): Response | null {
   });
 }
 
+const STATS_KEY = "stats";
+
+/** Asks PostHog for fresh numbers and keeps them until the next day's run. */
+async function refreshStats(env: Env) {
+  if (!env.POSTHOG_API_KEY) throw new Error("POSTHOG_API_KEY is not set");
+
+  const stats = await collectStats(env.POSTHOG_API_KEY);
+  await env.STATS.put(STATS_KEY, JSON.stringify(stats));
+  return stats;
+}
+
+async function statsResponse(env: Env): Promise<Response> {
+  let stats = await env.STATS.get(STATS_KEY, "json");
+
+  // The very first visit after a deploy fills the store instead of waiting for the cron.
+  if (!isStats(stats)) {
+    try {
+      stats = await refreshStats(env);
+    } catch (error) {
+      console.error("stats refresh failed", error);
+      return new Response(null, { status: 503 });
+    }
+  }
+
+  return Response.json(stats, {
+    headers: { "Cache-Control": "public, max-age=3600" },
+  });
+}
+
 export default {
+  async scheduled(_controller: unknown, env: Env, ctx: ExecutionContext) {
+    ctx.waitUntil(refreshStats(env));
+  },
+
   async fetch(request: Request, env: Env): Promise<Response> {
     const target = redirectTarget(request);
 
@@ -124,6 +171,8 @@ export default {
     }
 
     const url = new URL(request.url);
+    if (url.pathname === "/api/stats") return withResponseHeaders(await statsResponse(env), url);
+
     const special = specialResponse(url);
     if (special) return withResponseHeaders(special, url);
 

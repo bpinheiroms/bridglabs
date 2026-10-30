@@ -16,6 +16,9 @@
     "not_found_handling": "none",
     "run_worker_first": true
   },
+  // Product numbers for the page, refreshed from PostHog once a day (06:00 in São Paulo).
+  "kv_namespaces": [{ "binding": "STATS", "id": "fc95f4dfbb5a46d3b53a6aa10ff4924c" }],
+  "triggers": { "crons": ["0 9 * * *"] },
   "observability": {
     "enabled": true
   }

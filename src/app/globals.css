@@ -375,8 +375,45 @@ p {
   color: var(--ink);
   font-size: clamp(1.3rem, 2.4vw, 1.75rem);
   letter-spacing: -0.01em;
-  margin: 12px 0 48px;
+  margin: 12px 0 0;
   text-align: center;
+}
+
+/* A pulsing dot saying the product numbers below are read fresh every day. */
+
+.live-note {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  gap: 10px;
+  justify-content: center;
+  margin: 16px 0 48px;
+}
+
+.live-dot {
+  background: #3fae6a;
+  border-radius: 50%;
+  height: 8px;
+  position: relative;
+  width: 8px;
+}
+
+.live-dot::after {
+  animation: live-pulse 2s var(--ease-out) infinite;
+  background: inherit;
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+@keyframes live-pulse {
+  to {
+    opacity: 0;
+    scale: 2.6;
+  }
 }
 
 /* Career: one line down the page, a dot for every stop. */
@@ -798,5 +835,9 @@ p {
   *::after {
     transition-duration: 0ms !important;
     transition-delay: 0ms !important;
+  }
+
+  .live-dot::after {
+    animation: none;
   }
 }

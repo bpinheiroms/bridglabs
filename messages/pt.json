@@ -54,14 +54,14 @@
     "building": {
       "heading": "Construindo",
       "lead": "A BridgLabs é meu laboratório de produtos próprios.",
+      "updated": "Números reais, atualizados todo dia · {day}",
       "play": "Jogar agora",
       "open": "Abrir",
       "overcoded": {
         "tagline": "Uma garagem, um laptop e um prazo.",
         "text": "Monte sua startup antes que o dinheiro acabe, acendendo San Francisco no caminho. Grátis, no navegador.",
-        "stat": "+360",
         "statLabel": "pessoas já jogaram no mapa",
-        "facts": "[[hl:+1.600 visitantes]] e [[hl:+700 partidas]] nos primeiros 16 dias."
+        "facts": "[[hl:{visitors} visitantes]] e [[hl:{rounds} partidas]] desde o lançamento."
       },
       "adevinha": "O Akinator da bolha dev: pense em alguém da bolha dev e ele adivinha quem é em poucas perguntas.",
       "opencodereview": "Code review com IA para quem lança sozinho, rodando na sua máquina com Claude, Codex ou Gemini.",
@@ -69,8 +69,8 @@
       "sentuni": "Diário emocional para dar nome ao que você sente.",
       "pinubi": "Recomendações de creators viram um guia pesquisável.",
       "stats": {
-        "adevinha": "[[hl:+500 partidas]] e [[ul:+10 mil respostas]] na primeira semana.",
-        "jobsSearch": "[[hl:51 assinantes]] no primeiro mês de cobrança e [[ul:+90 mil requisições]] via ChatGPT e Claude."
+        "adevinha": "[[hl:{games} partidas]] e [[ul:{answers} respostas]] desde o lançamento.",
+        "jobsSearch": "[[hl:{subscribers} assinantes]], [[hl:{revenue} faturados]] e [[ul:{requests} requisições]] via ChatGPT e Claude."
       }
     },
     "contact": {
